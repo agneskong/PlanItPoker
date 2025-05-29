@@ -23,6 +23,10 @@ public class Blackboard {
 		names.add(name);
 	}
 
+	public static String getCurrentRoom() {
+		return currentRoom;
+	}
+
 	public static void addStory(Story story) {
 		stories.add(story);
 	}

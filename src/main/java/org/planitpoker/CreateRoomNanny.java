@@ -34,11 +34,14 @@ public class CreateRoomNanny {
     public void publishRoomCreation(String roomName) {
         try {
             MQTTPublisher publisher = new MQTTPublisher();
-            publisher.publish("planit/create", roomName);
+            String msg = "create-room:" + roomName;
+            publisher.publish("planitpoker/events", msg);
             publisher.close();
-        } catch (MqttException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+    
 
 }

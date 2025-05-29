@@ -16,13 +16,32 @@ public class LoginNanny {
     public void enterRoom(String name) {
         System.out.println(name + " Entering a room...");
         login(name);
+        // Optionally, you may want to call joinRoom here if your UI separates join/login
+        // joinRoom(name, Blackboard.getCurrentRoom());
         switchGUI();
     }
 
     public void login(String name) {
         System.out.println(name + " Logging in...");
         Blackboard.addName(name);
+        // Publish join-room event if joining a specific room
+        String room = Blackboard.getCurrentRoom();
+        if (room != null) {
+            joinRoom(name, room);
+        }
         switchGUI();
+    }
+
+    // NEW: Join room event
+    public void joinRoom(String name, String room) {
+        try {
+            MQTTPublisher publisher = new MQTTPublisher();
+            String msg = "join-room:" + room + ":" + name;
+            publisher.publish("planitpoker/events", msg);
+            publisher.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void switchGUI() {
