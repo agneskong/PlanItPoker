@@ -1,37 +1,30 @@
 package org.planitpoker;
 
-import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-
-import static java.lang.Float.sum;
-
-/**
- * Represents a story to be estimated in PlanItPoker.
- * Each story has a title, description, and a set of votes from participants.
- *
- * Related to Story #39: As a facilitator, I want to add stories to estimate
- * so the team can vote on them.
- *
- * @author agneskong
- */
 
 public class Story {
     private final String title;
     private Map<String, Integer> votes;
-    private boolean status; // true if active, false if completed vote
+    private boolean active; 
 
     public Story(String title) {
         this.title = title;
-        this.status = true;
+        this.active = true;
         this.votes = new HashMap<>();
     }
 
     public String getTitle() {
         return title;
     }
-    public boolean getStatus() { return status;}
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void markCompleted() {
+        this.active = false;
+    }
 
     public void submitVotes(String user, int vote) {
         votes.put(user, vote);
@@ -46,10 +39,7 @@ public class Story {
     }
 
     public double calculateAverage() {
-        return votes.values().stream()
-                .mapToInt(Integer::intValue)
-                .average()
-                .orElse(0.0);
+        if (votes.isEmpty()) return 0.0;
+        return votes.values().stream().mapToInt(Integer::intValue).average().orElse(0.0);
     }
-
 }

@@ -3,11 +3,7 @@ package org.planitpoker;
 
 import javax.swing.*;
 
-/**
- * Controller responsible for managing the stories and their interactions with the user interface.
- *
- * @author javiergs
- */
+
 public class StoriesNanny {
 
     private Main main;
@@ -23,11 +19,20 @@ public class StoriesNanny {
             line = line.trim();
             if (!line.isEmpty()) {
                 Blackboard.addStory(new Story(line));
+                // NEW: Publish story creation event
+                try {
+                    MQTTPublisher publisher = new MQTTPublisher();
+                    String room = Blackboard.getCurrentRoom();
+                    String msg = String.format("add-story:%s:%s", room, line);
+                    publisher.publish("planitpoker/events", msg);
+                    publisher.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         }
         storyTextArea.setText("");
         JOptionPane.showMessageDialog(null, "Stories saved successfully!");
-
     }
 
     public void saveAndClose(JTextArea storyTextArea) {
@@ -60,5 +65,17 @@ public class StoriesNanny {
         main.revalidate();
         main.repaint();
     }
+
+    public void goToVotingPanel() {
+        main.setTitle("Voting");
+        VotingNanny votingNanny = new VotingNanny(main);
+        VotingPanel votingPanel = new VotingPanel(votingNanny);
+        main.setContentPane(votingPanel);
+        main.setSize(900, 700);
+        main.setLocationRelativeTo(null);
+        main.revalidate();
+        main.repaint();
+    }
+    
 
 }

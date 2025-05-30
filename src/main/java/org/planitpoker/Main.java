@@ -3,10 +3,9 @@ package org.planitpoker;
 import javax.swing.*;
 
 public class Main extends JFrame {
-
     public Main() {
         try {
-            new DistributedEventHandler("planitpoker/events");
+            new DistributedEventHandler("planitpoker/events", this);
         } catch (Exception e) {
             e.printStackTrace();
         }

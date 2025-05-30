@@ -1,11 +1,7 @@
 package org.planitpoker;
 import org.eclipse.paho.client.mqttv3.MqttCallback;
 
-/**
- * Controller responsible for managing the dashboard and its interactions.
- *
- * @author javiergs
- */
+
 public class DashboardNanny {
     private Main main;
 

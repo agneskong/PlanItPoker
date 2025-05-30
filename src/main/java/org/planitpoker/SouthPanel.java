@@ -3,33 +3,49 @@ package org.planitpoker;
 import javax.swing.*;
 import java.awt.*;
 
-/**
- * Stories organized in tabs.
- * The first tab contains the active stories, and the second one contains the completed stories.
- *
- * @author javiergs
- */
 public class SouthPanel extends JPanel {
+    private JTabbedPane storyTabs;
+    private JTextArea activeStories;
+    private JTextArea completedStories;
+    private JTextArea allStories;
 
     public SouthPanel() {
-        setBackground(new Color(161, 190, 239));
+        setBackground(new Color(245, 248, 255));
         setLayout(new BorderLayout());
-        JTabbedPane storyTabs = new JTabbedPane();
+        storyTabs = new JTabbedPane();
 
-        JTextArea activeStories = new JTextArea();
+        activeStories = new JTextArea();
         activeStories.setEditable(false);
+        completedStories = new JTextArea();
+        completedStories.setEditable(false);
+        allStories = new JTextArea();
+        allStories.setEditable(false);
 
-        StringBuilder storyList = new StringBuilder();
-        for (Story story : Blackboard.getStories()) {
-            storyList.append("- ").append(story.getTitle()).append("\n");
-        }
-        activeStories.setText(storyList.toString());
+        refreshStories();
 
         storyTabs.addTab("Active Stories", new JScrollPane(activeStories));
-        storyTabs.addTab("Completed Stories", new JScrollPane(new JTextArea("")));
-        storyTabs.addTab("All Stories", new JScrollPane(new JTextArea("")));
-
+        storyTabs.addTab("Completed Stories", new JScrollPane(completedStories));
+        storyTabs.addTab("All Stories", new JScrollPane(allStories));
         add(storyTabs, BorderLayout.CENTER);
+
+        new Timer(1000, e -> refreshStories()).start();
     }
 
+    public void refreshStories() {
+        StringBuilder active = new StringBuilder();
+        StringBuilder completed = new StringBuilder();
+        StringBuilder all = new StringBuilder();
+
+        for (Story story : Blackboard.getStories()) {
+            all.append("- ").append(story.getTitle()).append("\n");
+            if (story.isActive()) {
+                active.append("- ").append(story.getTitle()).append("\n");
+            } else {
+                completed.append("- ").append(story.getTitle()).append("\n");
+            }
+        }
+        activeStories.setText(active.toString());
+        completedStories.setText(completed.toString());
+        allStories.setText(all.toString());
+    }
 }

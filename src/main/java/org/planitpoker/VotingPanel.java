@@ -2,43 +2,85 @@ package org.planitpoker;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.LinkedList;
 
-/**
- * Integrates a voting panel with the cards panel and south panel.
- *
- * @author agneskong
- */
 public class VotingPanel extends JPanel {
-    private VotingNanny votingNanny;
+    private static VotingNanny votingNannyStatic;
+    private String storyTitle;
+    private int storyIndex = 0;
+    private EastPanel eastPanel;
 
     public VotingPanel(VotingNanny votingNanny) {
-        this.votingNanny = votingNanny;
+        votingNannyStatic = votingNanny;
+        setLayout(new BorderLayout(20, 20));
+        setBackground(new Color(245, 248, 255));
 
-        setLayout(new BorderLayout());
-        add(new CardsPanel(), BorderLayout.CENTER);
-        add(new EastPanel(), BorderLayout.EAST);
+        JLabel titleLabel = new JLabel("Voting", SwingConstants.CENTER);
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 32));
+        titleLabel.setBorder(BorderFactory.createEmptyBorder(16, 0, 16, 0));
+        add(titleLabel, BorderLayout.NORTH);
+
+        LinkedList<Story> stories = Blackboard.getStories();
+        if (!stories.isEmpty()) {
+            storyTitle = stories.get(storyIndex).getTitle();
+        } else {
+            storyTitle = "No Stories";
+        }
+
+        JPanel cardPanel = new JPanel(new GridLayout(4, 3, 14, 14));
+        cardPanel.setBackground(new Color(245, 248, 255));
+        String[] CARD_VALUES = {"0", "½", "1", "2", "3", "5", "8", "20", "40", "100", "?", "☕"};
+        for (String value : CARD_VALUES) {
+            JButton card = new JButton(value);
+            card.setBackground(Color.WHITE);
+            card.setFocusPainted(false);
+            card.setFont(new Font("Segoe UI", Font.BOLD, 24));
+            card.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(new Color(200, 220, 240), 2, true),
+                BorderFactory.createEmptyBorder(18, 0, 18, 0)
+            ));
+            card.addActionListener(e -> {
+                try {
+                    int val = value.equals("½") ? 1 : (value.matches("\\d+") ? Integer.parseInt(value) : 0);
+                    String user = Blackboard.getNames().isEmpty() ? "DemoUser" : Blackboard.getNames().getLast();
+                    votingNanny.sendEstimate(Blackboard.getCurrentRoom(), storyTitle, user, val);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            });
+            cardPanel.add(card);
+        }
+        add(cardPanel, BorderLayout.CENTER);
+
+        eastPanel = new EastPanel(storyTitle, this::handleNextStory);
+        add(eastPanel, BorderLayout.EAST);
+
         add(new SouthPanel(), BorderLayout.SOUTH);
 
-        // Demo controls for distributed voting actions:
-        JPanel controlPanel = new JPanel(new GridLayout(1, 3));
-        JButton sendVoteButton = new JButton("Send Vote");
-        JButton revealButton = new JButton("Reveal Cards");
-        JButton broadcastButton = new JButton("Broadcast Result");
+        Timer timer = new Timer(1000, e -> eastPanel.updateStats());
+        timer.start();
+    }
 
-        controlPanel.add(sendVoteButton);
-        controlPanel.add(revealButton);
-        controlPanel.add(broadcastButton);
+    public static VotingNanny getVotingNannyStatic() {
+        return votingNannyStatic;
+    }
 
-        add(controlPanel, BorderLayout.NORTH);
-
-        // EXAMPLE data for demonstration. Replace with actual app logic!
-        String room = Blackboard.getStories().isEmpty() ? "DefaultRoom" : Blackboard.getCurrentRoom();
-        String story = Blackboard.getStories().isEmpty() ? "DemoStory" : Blackboard.getStories().get(0).getTitle();
-        String user = "DemoUser";
-        int vote = 5;
-
-        sendVoteButton.addActionListener(e -> votingNanny.sendEstimate(room, story, user, vote));
-        revealButton.addActionListener(e -> votingNanny.revealCards(room, story));
-        broadcastButton.addActionListener(e -> votingNanny.broadcastResult(room, story, 5.0));
+    public void handleNextStory(Void v) {
+        LinkedList<Story> stories = Blackboard.getStories();
+        if (stories.isEmpty()) return;
+        Story currentStory = stories.get(storyIndex);
+        if (currentStory.getVotes().keySet().containsAll(Blackboard.getNames())) {
+            currentStory.markCompleted();
+        }
+        if (storyIndex < stories.size() - 1) {
+            storyIndex++;
+        } else {
+            storyIndex = 0;
+        }
+        storyTitle = stories.get(storyIndex).getTitle();
+        eastPanel.setStoryTitle(storyTitle);
+        eastPanel.updateStats();
+        revalidate();
+        repaint();
     }
 }

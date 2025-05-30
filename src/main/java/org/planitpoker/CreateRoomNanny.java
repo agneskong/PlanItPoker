@@ -1,12 +1,7 @@
 package org.planitpoker;
 import org.eclipse.paho.client.mqttv3.MqttException;
 
-/**
- * Act as a controller for the CreateRoomPanel.
- *
- * @author javiergs
- * @author agneskong
- */
+
 public class CreateRoomNanny {
 
     private Main main;

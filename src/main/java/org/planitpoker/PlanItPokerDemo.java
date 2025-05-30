@@ -30,7 +30,8 @@ public class PlanItPokerDemo {
         frame.setSize(800, 600);
         frame.setLayout(new BorderLayout());
         frame.add(new CardsPanel(), BorderLayout.CENTER);
-        frame.add(new EastPanel(), BorderLayout.EAST);
+        String storyTitle = Blackboard.getStories().isEmpty() ? "No Stories" : Blackboard.getStories().get(0).getTitle();
+        frame.add(new EastPanel(storyTitle, v -> {}), BorderLayout.EAST);
         frame.add(new SouthPanel(), BorderLayout.SOUTH);
 
         frame.setVisible(true);

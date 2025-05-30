@@ -53,7 +53,7 @@ public class PlanItPokerVotingDemo {
                 System.out.println("\nEnter your name to vote (or type 'done' to finish voting):");
                 String name = scanner.nextLine().trim();
 
-                if (name.equals("done")) { // simulates next story button
+                if (name.equals("done")) { 
                     break;
                 }
 
@@ -63,7 +63,7 @@ public class PlanItPokerVotingDemo {
                 int voteValue;
                 try {
                     if (voteInput.equals("½")) {
-                        voteValue = 1; // Treat "½" as 1 for simplicity
+                        voteValue = 1; 
                     } else {
                         voteValue = Integer.parseInt(voteInput);
                     }
