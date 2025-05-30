@@ -4,6 +4,14 @@ import org.eclipse.paho.client.mqttv3.*;
 import javax.swing.*;
 import java.awt.Container;
 
+
+/**
+ * DistributedEventHandler processes all incoming MQTT messages and updates the
+ * shared game state and user interfaces across all distributed clients
+ *
+ * @author Sathvik Chilakala
+ */
+
 public class DistributedEventHandler implements MqttCallback {
     private MQTTSubscriber subscriber;
     private Main mainFrame;
@@ -15,13 +23,13 @@ public class DistributedEventHandler implements MqttCallback {
 
     @Override
     public void connectionLost(Throwable cause) {
-        System.out.println("MQTT connection lost!");
+        System.out.println("MQTT connection lost");
     }
 
     @Override
     public void messageArrived(String topic, MqttMessage message) {
         String msg = new String(message.getPayload());
-        System.out.println("[MQTT RECEIVED] " + msg);
+        System.out.println("MQTT RECEIVED " + msg);
 
         if (msg.startsWith("create-room:")) {
             String room = msg.substring("create-room:".length());

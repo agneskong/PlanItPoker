@@ -2,6 +2,15 @@ package org.planitpoker;
 
 import java.util.LinkedList;
 
+
+/**
+ * Blackboard is a shared data source for all the other components,
+ * voting, and game status
+ *
+ * @author Sathvik Chilakala
+ */
+
+
 public class Blackboard {
 
     private static LinkedList<String> names = new LinkedList<>();

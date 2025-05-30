@@ -4,6 +4,15 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.LinkedList;
 
+
+/**
+ * VotingPanel is responsible for handling the voting user interface
+ * vote submission, and updating the results in real time
+ *
+ * @author Sathvik Chilakala
+ */
+
+
 public class VotingPanel extends JPanel {
     private static VotingNanny votingNannyStatic;
     private String storyTitle;

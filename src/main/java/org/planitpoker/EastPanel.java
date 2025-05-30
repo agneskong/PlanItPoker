@@ -4,6 +4,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.function.Consumer;
 
+/**
+ * EastPanel displays control buttons, voting statistics, reveal icons
+ * as part of interface
+ *
+ * @author Sathvik Chilakala
+ */
+
+
 public class EastPanel extends JPanel {
     private JLabel votesLabel;
     private JLabel averageLabel;

@@ -3,6 +3,15 @@ package org.planitpoker;
 import java.util.HashMap;
 import java.util.Map;
 
+
+/**
+ * Story is a single estimation, added helpers to complete the distrubtedeventhandler
+ * voting results, and status
+ *
+ * @author Sathvik Chilakala
+ */
+
+
 public class Story {
     private final String title;
     private Map<String, Integer> votes;
