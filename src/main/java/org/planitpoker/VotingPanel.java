@@ -25,15 +25,39 @@ public class VotingPanel extends JPanel {
     private long startTime;
     private Map<String, Map<String, Long>> voteTimes = new HashMap<>(); // user -> storyTitle -> time
 
+    private JButton showDataButton;
+    private JPanel cardPanel;
+    private JLabel titleLabel;
+
     public VotingPanel(VotingNanny votingNanny) {
         votingNannyStatic = votingNanny;
         setLayout(new BorderLayout(20, 20));
         setBackground(new Color(245, 248, 255));
 
-        JLabel titleLabel = new JLabel("Voting", SwingConstants.CENTER);
+        // Top panel with title, timer, and Show Data button
+        JPanel topPanel = new JPanel(new BorderLayout());
+        topPanel.setOpaque(false);
+        titleLabel = new JLabel("Voting", SwingConstants.CENTER);
         titleLabel.setFont(new Font("Arial", Font.BOLD, 32));
         titleLabel.setBorder(BorderFactory.createEmptyBorder(16, 0, 16, 0));
-        add(titleLabel, BorderLayout.NORTH);
+        topPanel.add(titleLabel, BorderLayout.CENTER);
+
+        timerLabel = new JLabel("Elapsed: 00:00");
+        timerLabel.setFont(new Font("Segoe UI", Font.BOLD, 22));
+        timerLabel.setHorizontalAlignment(SwingConstants.LEFT);
+        topPanel.add(timerLabel, BorderLayout.WEST);
+
+        showDataButton = new JButton("Show Data");
+        showDataButton.setFont(new Font("Segoe UI", Font.BOLD, 16));
+        showDataButton.setBackground(new Color(255, 180, 60));
+        showDataButton.setFocusPainted(false);
+        showDataButton.addActionListener(e -> showResultsChart());
+        JPanel showDataPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 0, 0));
+        showDataPanel.setOpaque(false);
+        showDataPanel.add(showDataButton);
+        topPanel.add(showDataPanel, BorderLayout.EAST);
+
+        add(topPanel, BorderLayout.NORTH);
 
         LinkedList<Story> stories = Blackboard.getStories();
         if (!stories.isEmpty()) {
@@ -42,7 +66,7 @@ public class VotingPanel extends JPanel {
             storyTitle = "No Stories";
         }
 
-        JPanel cardPanel = new JPanel(new GridLayout(4, 3, 14, 14));
+        cardPanel = new JPanel(new GridLayout(4, 3, 14, 14));
         cardPanel.setBackground(new Color(245, 248, 255));
         String[] CARD_VALUES = {"0", "½", "1", "2", "3", "5", "8", "20", "40", "100", "?", "☕"};
         for (String value : CARD_VALUES) {
@@ -68,12 +92,6 @@ public class VotingPanel extends JPanel {
             cardPanel.add(card);
         }
         add(cardPanel, BorderLayout.CENTER);
-
-        // TIMER LABEL
-        timerLabel = new JLabel("Elapsed: 00:00");
-        timerLabel.setFont(new Font("Segoe UI", Font.BOLD, 22));
-        timerLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        add(timerLabel, BorderLayout.NORTH);
 
         eastPanel = new EastPanel(storyTitle, this::handleNextStory);
         add(eastPanel, BorderLayout.EAST);
@@ -117,9 +135,8 @@ public class VotingPanel extends JPanel {
         LinkedList<Story> stories = Blackboard.getStories();
         if (stories.isEmpty()) return;
         Story currentStory = stories.get(storyIndex);
-        if (currentStory.getVotes().keySet().containsAll(Blackboard.getNames())) {
-            currentStory.markCompleted();
-        }
+        // Only mark as completed and move to next on Next Story
+        currentStory.markCompleted();
         if (storyIndex < stories.size() - 1) {
             storyIndex++;
         } else {
@@ -135,5 +152,32 @@ public class VotingPanel extends JPanel {
 
     public void refreshStories() {
         if (eastPanel != null) eastPanel.refreshStories();
+    }
+
+    private void showResultsChart() {
+        removeAll();
+        Story currentStory = Blackboard.getStories().get(storyIndex);
+        add(new PlotPanel(currentStory, Blackboard.getStories(), this::returnToVoting), BorderLayout.CENTER);
+        revalidate();
+        repaint();
+    }
+
+    private void returnToVoting() {
+        removeAll();
+        // Rebuild the top panel
+        JPanel topPanel = new JPanel(new BorderLayout());
+        topPanel.setOpaque(false);
+        topPanel.add(titleLabel, BorderLayout.CENTER);
+        topPanel.add(timerLabel, BorderLayout.WEST);
+        JPanel showDataPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 0, 0));
+        showDataPanel.setOpaque(false);
+        showDataPanel.add(showDataButton);
+        topPanel.add(showDataPanel, BorderLayout.EAST);
+        add(topPanel, BorderLayout.NORTH);
+        add(cardPanel, BorderLayout.CENTER);
+        add(eastPanel, BorderLayout.EAST);
+        add(new SouthPanel(), BorderLayout.SOUTH);
+        revalidate();
+        repaint();
     }
 }

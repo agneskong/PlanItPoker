@@ -3,6 +3,7 @@ org/planitpoker/StoriesPanel.class
 org/planitpoker/SouthPanel.class
 org/planitpoker/LoginPanel.class
 org/planitpoker/WestPanel.class
+org/planitpoker/PlotPanel.class
 org/planitpoker/VotingNanny.class
 org/planitpoker/MQTTSubscriber.class
 org/planitpoker/CardsPanel.class
