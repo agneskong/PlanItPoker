@@ -1,13 +1,13 @@
 package org.planitpoker;
-import org.eclipse.paho.client.mqttv3.MqttException;
-
 
 public class CreateRoomNanny {
 
     private Main main;
+    private LoginNanny loginNanny;
 
-    public CreateRoomNanny(Main main) {
+    public CreateRoomNanny(Main main, LoginNanny loginNanny) {
         this.main = main;
+        this.loginNanny = loginNanny;
     }
 
     public void createRoom(String name, String selectedItem) {
@@ -19,13 +19,14 @@ public class CreateRoomNanny {
 
     private void switchGUI() {
         main.setTitle("Stories");
-        StoriesNanny createRoomNanny = new StoriesNanny(main);
-        StoriesPanel createRoomPanel = new StoriesPanel(createRoomNanny);
-        main.setContentPane(createRoomPanel);
+        StoriesNanny storiesNanny = new StoriesNanny(main, loginNanny);
+        StoriesPanel storiesPanel = new StoriesPanel(storiesNanny);
+        main.setContentPane(storiesPanel);
         main.setSize(500, 500);
         main.revalidate();
         main.repaint();
     }
+
     public void publishRoomCreation(String roomName) {
         try {
             MQTTPublisher publisher = new MQTTPublisher();
@@ -36,7 +37,4 @@ public class CreateRoomNanny {
             e.printStackTrace();
         }
     }
-
-    
-
 }

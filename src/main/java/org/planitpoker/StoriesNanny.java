@@ -1,15 +1,15 @@
 package org.planitpoker;
 
-
 import javax.swing.*;
-
 
 public class StoriesNanny {
 
     private Main main;
+    private LoginNanny loginNanny;
 
-    public StoriesNanny(Main main) {
+    public StoriesNanny(Main main, LoginNanny loginNanny) {
         this.main = main;
+        this.loginNanny = loginNanny;
     }
 
     public void saveAndAddNew(JTextArea storyTextArea) {
@@ -19,7 +19,6 @@ public class StoriesNanny {
             line = line.trim();
             if (!line.isEmpty()) {
                 Blackboard.addStory(new Story(line));
-                // NEW: Publish story creation event
                 try {
                     MQTTPublisher publisher = new MQTTPublisher();
                     String room = Blackboard.getCurrentRoom();
@@ -57,8 +56,8 @@ public class StoriesNanny {
 
     private void switchGUI() {
         main.setTitle("dashboard");
-        DashboardNanny dashboardNanny = new DashboardNanny(main);
-        DashboardPanel dashboardPanel = new DashboardPanel(dashboardNanny);
+        DashboardNanny dashboardNanny = new DashboardNanny(main, loginNanny);
+        DashboardPanel dashboardPanel = new DashboardPanel(dashboardNanny, main, loginNanny);
         main.setContentPane(dashboardPanel);
         main.setSize(800, 600);
         main.setLocationRelativeTo(null);
@@ -76,6 +75,4 @@ public class StoriesNanny {
         main.revalidate();
         main.repaint();
     }
-    
-
 }

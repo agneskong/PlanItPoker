@@ -60,4 +60,10 @@ public class Blackboard {
     public static String getMode() {
         return mode;
     }
+
+    public static void logoutCurrentUser() {
+        if (!names.isEmpty()) names.removeLast();
+        currentRoom = null;
+        mode = null;
+    }
 }

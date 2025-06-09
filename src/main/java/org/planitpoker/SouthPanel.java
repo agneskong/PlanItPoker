@@ -2,14 +2,18 @@ package org.planitpoker;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Set;
+import java.util.HashSet; // <-- ADD THIS!
 
 public class SouthPanel extends JPanel {
     private JTabbedPane storyTabs;
     private JTextArea activeStories;
     private JTextArea completedStories;
     private JTextArea allStories;
+    public static final Set<SouthPanel> INSTANCES = new HashSet<>();
 
     public SouthPanel() {
+        INSTANCES.add(this);
         setBackground(new Color(245, 248, 255));
         setLayout(new BorderLayout());
         storyTabs = new JTabbedPane();
@@ -47,5 +51,17 @@ public class SouthPanel extends JPanel {
         activeStories.setText(active.toString());
         completedStories.setText(completed.toString());
         allStories.setText(all.toString());
+    }
+
+    public static void refreshAllPanels() {
+        for (SouthPanel panel : INSTANCES) {
+            panel.refreshStories();
+        }
+    }
+
+    @Override
+    public void removeNotify() {
+        INSTANCES.remove(this);
+        super.removeNotify();
     }
 }

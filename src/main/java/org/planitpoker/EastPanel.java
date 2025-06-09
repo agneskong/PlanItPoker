@@ -5,18 +5,17 @@ import java.awt.*;
 import java.util.function.Consumer;
 
 /**
- * EastPanel displays control buttons, voting statistics, reveal icons
- * as part of interface
+ * EastPanel displays control buttons, voting statistics, reveal icons,
+ * player list, and a logout button as part of interface.
  *
  * @author Sathvik Chilakala
  */
-
-
 public class EastPanel extends JPanel {
     private JLabel votesLabel;
     private JLabel averageLabel;
     private String storyTitle;
     private Consumer<Void> nextStoryHandler;
+    private JTextArea playersArea;
 
     public EastPanel(String storyTitle, Consumer<Void> nextStoryHandler) {
         this.storyTitle = storyTitle;
@@ -41,16 +40,44 @@ public class EastPanel extends JPanel {
         averageLabel.setFont(new Font("Segoe UI", Font.PLAIN, 18));
         averageLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
+        // Players label & list
+        JLabel playersLabel = new JLabel("Players:");
+        playersLabel.setFont(new Font("Segoe UI", Font.BOLD, 16));
+        playersLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        playersArea = new JTextArea();
+        playersArea.setEditable(false);
+        playersArea.setBackground(new Color(237, 244, 255));
+        playersArea.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+        playersArea.setAlignmentX(Component.CENTER_ALIGNMENT);
+        playersArea.setMaximumSize(new Dimension(180, 80));
+
+        JButton logoutButton = new JButton("Logout");
+        logoutButton.setFont(new Font("Segoe UI", Font.BOLD, 15));
+        logoutButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+
         add(Box.createVerticalStrut(16));
         add(revealButton);
         add(Box.createVerticalStrut(12));
         add(nextButton);
-        add(Box.createVerticalStrut(22));
+        add(Box.createVerticalStrut(20));
         add(votesLabel);
         add(Box.createVerticalStrut(8));
         add(averageLabel);
+        add(Box.createVerticalStrut(20));
+        add(playersLabel);
+        add(playersArea);
+        add(Box.createVerticalStrut(10));
+        add(logoutButton);
 
         updateStats();
+        updatePlayers();
+
+        // Live update players/stats every second
+        new Timer(1000, e -> {
+            updatePlayers();
+            updateStats();
+        }).start();
 
         revealButton.addActionListener(e -> {
             Story currentStory = findStory();
@@ -68,6 +95,14 @@ public class EastPanel extends JPanel {
 
         nextButton.addActionListener(e -> {
             if (nextStoryHandler != null) nextStoryHandler.accept(null);
+        });
+
+        logoutButton.addActionListener(e -> {
+            // Use main frame's login nanny to logout and switch GUI
+            JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
+            if (topFrame instanceof Main) {
+                ((Main) topFrame).getLoginNanny().logout();
+            }
         });
     }
 
@@ -91,10 +126,25 @@ public class EastPanel extends JPanel {
         }
     }
 
+    // --- New: Update players ---
+    public void updatePlayers() {
+        StringBuilder sb = new StringBuilder();
+        for (String name : Blackboard.getNames()) {
+            sb.append(name).append("\n");
+        }
+        playersArea.setText(sb.toString());
+    }
+
     private Story findStory() {
         for (Story s : Blackboard.getStories()) {
             if (s.getTitle().equals(storyTitle)) return s;
         }
         return null;
+    }
+
+    // --- Called by DistributedEventHandler ---
+    public void refreshStories() {
+        updatePlayers();
+        updateStats();
     }
 }

@@ -1,10 +1,5 @@
 package org.planitpoker;
 
-/**
- * LoginNanny is responsible for handling the login process.
- *
- * @author javiergs
- */
 public class LoginNanny {
 
     private Main main;
@@ -16,7 +11,6 @@ public class LoginNanny {
     public void enterRoom(String name) {
         System.out.println(name + " Entering a room...");
         login(name);
-        // joinRoom(name, Blackboard.getCurrentRoom());
         switchGUI();
     }
 
@@ -35,16 +29,39 @@ public class LoginNanny {
             MQTTPublisher publisher = new MQTTPublisher();
             String msg = "join-room:" + room + ":" + name;
             publisher.publish("planitpoker/events", msg);
+    
+            // Request stories
+            String requestMsg = String.format("request-stories:%s:%s", room, name);
+            publisher.publish("planitpoker/events", requestMsg);
+    
+            // Request users
+            String requestUsers = String.format("request-users:%s:%s", room, name);
+            publisher.publish("planitpoker/events", requestUsers);
+    
             publisher.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+    public void logout() {
+        System.out.println("Logging out...");
+        if (!Blackboard.getNames().isEmpty()) {
+            Blackboard.getNames().removeLast();
+        }
+        main.setTitle("Login");
+        LoginNanny loginNanny = new LoginNanny(main);
+        LoginPanel loginPanel = new LoginPanel(loginNanny);
+        main.setContentPane(loginPanel);
+        main.setSize(400, 400);
+        main.revalidate();
+        main.repaint();
+    }
+
     private void switchGUI() {
         main.setTitle("Room");
-        CreateRoomNanny createRoomNanny = new CreateRoomNanny(main);
-        CreateRoomPanel createRoomPanel = new CreateRoomPanel(createRoomNanny);
+        CreateRoomNanny createRoomNanny = new CreateRoomNanny(main, this);
+        CreateRoomPanel createRoomPanel = new CreateRoomPanel(createRoomNanny, this);
         main.setContentPane(createRoomPanel);
         main.setSize(500, 500);
         main.revalidate();

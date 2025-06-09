@@ -3,7 +3,8 @@ package org.planitpoker;
 import javax.swing.*;
 import java.awt.*;
 import java.util.LinkedList;
-
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * VotingPanel is responsible for handling the voting user interface
@@ -12,12 +13,17 @@ import java.util.LinkedList;
  * @author Sathvik Chilakala
  */
 
-
 public class VotingPanel extends JPanel {
     private static VotingNanny votingNannyStatic;
     private String storyTitle;
     private int storyIndex = 0;
     private EastPanel eastPanel;
+
+    // Timer related
+    private JLabel timerLabel;
+    private Timer timer;
+    private long startTime;
+    private Map<String, Map<String, Long>> voteTimes = new HashMap<>(); // user -> storyTitle -> time
 
     public VotingPanel(VotingNanny votingNanny) {
         votingNannyStatic = votingNanny;
@@ -53,6 +59,8 @@ public class VotingPanel extends JPanel {
                     int val = value.equals("½") ? 1 : (value.matches("\\d+") ? Integer.parseInt(value) : 0);
                     String user = Blackboard.getNames().isEmpty() ? "DemoUser" : Blackboard.getNames().getLast();
                     votingNanny.sendEstimate(Blackboard.getCurrentRoom(), storyTitle, user, val);
+                    // Stop timer for this user/story and save
+                    stopUserTimer(user, storyTitle);
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
@@ -61,13 +69,44 @@ public class VotingPanel extends JPanel {
         }
         add(cardPanel, BorderLayout.CENTER);
 
+        // TIMER LABEL
+        timerLabel = new JLabel("Elapsed: 00:00");
+        timerLabel.setFont(new Font("Segoe UI", Font.BOLD, 22));
+        timerLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        add(timerLabel, BorderLayout.NORTH);
+
         eastPanel = new EastPanel(storyTitle, this::handleNextStory);
         add(eastPanel, BorderLayout.EAST);
 
         add(new SouthPanel(), BorderLayout.SOUTH);
 
-        Timer timer = new Timer(1000, e -> eastPanel.updateStats());
+        Timer eastPanelTimer = new Timer(1000, e -> eastPanel.updateStats());
+        eastPanelTimer.start();
+
+        startUserTimer();
+    }
+
+    private void startUserTimer() {
+        startTime = System.currentTimeMillis();
+        if (timer != null) timer.stop();
+        timer = new Timer(1000, e -> updateTimer());
         timer.start();
+    }
+
+    private void updateTimer() {
+        long elapsed = (System.currentTimeMillis() - startTime) / 1000;
+        long mins = elapsed / 60;
+        long secs = elapsed % 60;
+        timerLabel.setText(String.format("Elapsed: %02d:%02d", mins, secs));
+    }
+
+    private void stopUserTimer(String user, String story) {
+        if (timer != null) timer.stop();
+        long totalTime = (System.currentTimeMillis() - startTime) / 1000;
+        // Save the vote time for this user and story if needed
+        if (!voteTimes.containsKey(user)) voteTimes.put(user, new HashMap<>());
+        voteTimes.get(user).put(story, totalTime);
+        timerLabel.setText("Voted in: " + totalTime + "s");
     }
 
     public static VotingNanny getVotingNannyStatic() {
@@ -89,7 +128,12 @@ public class VotingPanel extends JPanel {
         storyTitle = stories.get(storyIndex).getTitle();
         eastPanel.setStoryTitle(storyTitle);
         eastPanel.updateStats();
+        startUserTimer(); // Restart timer for new story
         revalidate();
         repaint();
+    }
+
+    public void refreshStories() {
+        if (eastPanel != null) eastPanel.refreshStories();
     }
 }

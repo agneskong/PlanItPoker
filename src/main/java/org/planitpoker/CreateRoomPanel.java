@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class CreateRoomPanel extends JPanel {
 
-    public CreateRoomPanel(CreateRoomNanny createRoomNanny) {
+    public CreateRoomPanel(CreateRoomNanny createRoomNanny, LoginNanny loginNanny) {
         setBackground(new Color(245, 248, 255));
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
@@ -36,9 +36,25 @@ public class CreateRoomPanel extends JPanel {
         box2.add(Box.createHorizontalStrut(10));
         box2.add(comboBox);
 
+        JLabel usersLabel = new JLabel("Current Users:");
+        usersLabel.setFont(new Font("Segoe UI", Font.BOLD, 16));
+        usersLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JTextArea usersArea = new JTextArea(5, 20);
+        usersArea.setEditable(false);
+        usersArea.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+        JScrollPane usersScroll = new JScrollPane(usersArea);
+        usersScroll.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        refreshUsers(usersArea);
+        new Timer(1000, e -> refreshUsers(usersArea)).start();
+
         JButton createButton = new JButton("Create");
         createButton.setFont(new Font("Segoe UI", Font.BOLD, 18));
         createButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        JButton logoutButton = new JButton("Logout");
+        logoutButton.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+        logoutButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         add(Box.createVerticalStrut(28));
         add(title);
@@ -46,11 +62,25 @@ public class CreateRoomPanel extends JPanel {
         add(box1);
         add(Box.createVerticalStrut(18));
         add(box2);
-        add(Box.createVerticalStrut(28));
+        add(Box.createVerticalStrut(10));
+        add(usersLabel);
+        add(usersScroll);
+        add(Box.createVerticalStrut(14));
         add(createButton);
+        add(Box.createVerticalStrut(10));
+        add(logoutButton);
 
         createButton.addActionListener(e ->
             createRoomNanny.createRoom(nameField.getText(), (String) comboBox.getSelectedItem())
         );
+        logoutButton.addActionListener(e -> loginNanny.logout());
+    }
+
+    private void refreshUsers(JTextArea usersArea) {
+        StringBuilder sb = new StringBuilder();
+        for (String user : Blackboard.getNames()) {
+            sb.append(user).append("\n");
+        }
+        usersArea.setText(sb.toString());
     }
 }

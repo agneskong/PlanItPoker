@@ -47,8 +47,9 @@ public class VotingNanny {
 
     private void switchGUI() {
         main.setTitle("Room");
-        CreateRoomNanny createRoomNanny = new CreateRoomNanny(main);
-        CreateRoomPanel createRoomPanel = new CreateRoomPanel(createRoomNanny);
+        // Updated for new constructors:
+        CreateRoomNanny createRoomNanny = new CreateRoomNanny(main, main.getLoginNanny());
+        CreateRoomPanel createRoomPanel = new CreateRoomPanel(createRoomNanny, main.getLoginNanny());
         main.setContentPane(createRoomPanel);
         main.setSize(500, 500);
         main.revalidate();

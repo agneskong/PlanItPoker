@@ -1,23 +1,22 @@
 package org.planitpoker;
-import org.eclipse.paho.client.mqttv3.MqttCallback;
-
 
 public class DashboardNanny {
     private Main main;
+    private LoginNanny loginNanny;
 
-    public DashboardNanny(Main main) {
-
+    public DashboardNanny(Main main, LoginNanny loginNanny) {
         this.main = main;
+        this.loginNanny = loginNanny;
     }
 
     public void startButton() {
         switchGUI();
-
     }
+
     private void switchGUI() {
         main.setTitle("voting");
         VotingNanny votingNanny = new VotingNanny(main);
-        VotingPanel votingPanel= new VotingPanel(votingNanny);
+        VotingPanel votingPanel = new VotingPanel(votingNanny);
 
         main.setContentPane(votingPanel);
         main.setSize(800, 600);
@@ -25,6 +24,4 @@ public class DashboardNanny {
         main.revalidate();
         main.repaint();
     }
-
-
 }

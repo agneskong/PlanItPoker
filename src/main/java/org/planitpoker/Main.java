@@ -3,15 +3,21 @@ package org.planitpoker;
 import javax.swing.*;
 
 public class Main extends JFrame {
+    private LoginNanny loginNanny;
+
     public Main() {
         try {
             new DistributedEventHandler("planitpoker/events", this);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        LoginNanny loginNanny = new LoginNanny(this);
+        loginNanny = new LoginNanny(this);
         LoginPanel loginPanel = new LoginPanel(loginNanny);
         add(loginPanel);
+    }
+
+    public LoginNanny getLoginNanny() {
+        return loginNanny;
     }
 
     public static void main(String[] args) {

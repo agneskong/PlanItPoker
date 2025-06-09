@@ -8,9 +8,14 @@ public class WestPanel extends JPanel {
     private JLabel userLabel;
     private JTextArea playersArea;
     private DashboardNanny dashboardNanny;
+    private Main main;
+    private LoginNanny loginNanny;
 
-    public WestPanel(DashboardNanny dashboardNanny) {
+    public WestPanel(DashboardNanny dashboardNanny, Main main, LoginNanny loginNanny) {
         this.dashboardNanny = dashboardNanny;
+        this.main = main;
+        this.loginNanny = loginNanny;
+
         setBackground(new Color(255, 220, 220));
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setPreferredSize(new Dimension(230, 0));
@@ -50,6 +55,10 @@ public class WestPanel extends JPanel {
         JButton copyButton = new JButton("Copy URL");
         copyButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
+        JButton logoutButton = new JButton("Logout");
+        logoutButton.setFont(new Font("Segoe UI", Font.BOLD, 15));
+        logoutButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+
         add(Box.createVerticalStrut(18));
         add(userLabel);
         add(Box.createVerticalStrut(8));
@@ -64,6 +73,8 @@ public class WestPanel extends JPanel {
         add(urlField);
         add(Box.createVerticalStrut(4));
         add(copyButton);
+        add(Box.createVerticalStrut(10));
+        add(logoutButton);
 
         startButton.addActionListener(e -> dashboardNanny.startButton());
 
@@ -72,6 +83,8 @@ public class WestPanel extends JPanel {
             urlField.copy();
             JOptionPane.showMessageDialog(this, "Copied to clipboard!");
         });
+
+        logoutButton.addActionListener(e -> handleLogout());
 
         new Timer(1000, e -> refreshPlayerNames()).start();
     }
@@ -88,5 +101,9 @@ public class WestPanel extends JPanel {
             sb.append(name).append("\n");
         }
         playersArea.setText(sb.toString());
+    }
+
+    private void handleLogout() {
+        loginNanny.logout();
     }
 }
