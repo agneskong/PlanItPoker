@@ -85,8 +85,6 @@ public class WestPanel extends JPanel {
         });
 
         logoutButton.addActionListener(e -> handleLogout());
-
-        new Timer(1000, e -> refreshPlayerNames()).start();
     }
 
     private String getCurrentUser() {
@@ -105,5 +103,9 @@ public class WestPanel extends JPanel {
 
     private void handleLogout() {
         loginNanny.logout();
+    }
+
+    public void refreshStories() {
+        refreshPlayerNames();
     }
 }

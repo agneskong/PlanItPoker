@@ -1,5 +1,7 @@
 package org.planitpoker;
 
+import org.planitpoker.Logger;
+
 public class LoginNanny {
 
     private Main main;
@@ -9,13 +11,13 @@ public class LoginNanny {
     }
 
     public void enterRoom(String name) {
-        System.out.println(name + " Entering a room...");
+        Logger.getLogger().info(name + " Entering a room...");
         login(name);
         switchGUI();
     }
 
     public void login(String name) {
-        System.out.println(name + " Logging in...");
+        Logger.getLogger().info(name + " Logging in...");
         Blackboard.addName(name);
         String room = Blackboard.getCurrentRoom();
         if (room != null) {
@@ -45,7 +47,7 @@ public class LoginNanny {
     }
 
     public void logout() {
-        System.out.println("Logging out...");
+        Logger.getLogger().info("Logging out...");
         if (!Blackboard.getNames().isEmpty()) {
             Blackboard.getNames().removeLast();
         }

@@ -1,5 +1,7 @@
 package org.planitpoker;
 
+import org.planitpoker.Logger;
+
 public class CreateRoomNanny {
 
     private Main main;
@@ -11,7 +13,7 @@ public class CreateRoomNanny {
     }
 
     public void createRoom(String name, String selectedItem) {
-        System.out.println(" Creating room..." + name + ", mode: " + selectedItem);
+        Logger.getLogger().info("Creating room..." + name + ", mode: " + selectedItem);
         Blackboard.addCurrentRoom(name);
         Blackboard.addCurrentMode(selectedItem);
         switchGUI();

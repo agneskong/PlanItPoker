@@ -16,6 +16,7 @@ public class EastPanel extends JPanel {
     private String storyTitle;
     private Consumer<Void> nextStoryHandler;
     private JTextArea playersArea;
+    private JTextArea votedArea;
 
     public EastPanel(String storyTitle, Consumer<Void> nextStoryHandler) {
         this.storyTitle = storyTitle;
@@ -41,7 +42,7 @@ public class EastPanel extends JPanel {
         averageLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         // Players label & list
-        JLabel playersLabel = new JLabel("Players:");
+        JLabel playersLabel = new JLabel("Players in Room:");
         playersLabel.setFont(new Font("Segoe UI", Font.BOLD, 16));
         playersLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
@@ -51,6 +52,17 @@ public class EastPanel extends JPanel {
         playersArea.setFont(new Font("Segoe UI", Font.PLAIN, 15));
         playersArea.setAlignmentX(Component.CENTER_ALIGNMENT);
         playersArea.setMaximumSize(new Dimension(180, 80));
+
+        JLabel votedLabel = new JLabel("Voted:");
+        votedLabel.setFont(new Font("Segoe UI", Font.BOLD, 16));
+        votedLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        votedArea = new JTextArea();
+        votedArea.setEditable(false);
+        votedArea.setBackground(new Color(237, 244, 255));
+        votedArea.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+        votedArea.setAlignmentX(Component.CENTER_ALIGNMENT);
+        votedArea.setMaximumSize(new Dimension(180, 80));
 
         JButton logoutButton = new JButton("Logout");
         logoutButton.setFont(new Font("Segoe UI", Font.BOLD, 15));
@@ -67,17 +79,14 @@ public class EastPanel extends JPanel {
         add(Box.createVerticalStrut(20));
         add(playersLabel);
         add(playersArea);
+        add(Box.createVerticalStrut(8));
+        add(votedLabel);
+        add(votedArea);
         add(Box.createVerticalStrut(10));
         add(logoutButton);
 
         updateStats();
         updatePlayers();
-
-        // Live update players/stats every second
-        new Timer(1000, e -> {
-            updatePlayers();
-            updateStats();
-        }).start();
 
         revealButton.addActionListener(e -> {
             Story currentStory = findStory();
@@ -128,11 +137,22 @@ public class EastPanel extends JPanel {
 
     // --- New: Update players ---
     public void updatePlayers() {
+        // Show all users in the room
         StringBuilder sb = new StringBuilder();
         for (String name : Blackboard.getNames()) {
             sb.append(name).append("\n");
         }
         playersArea.setText(sb.toString());
+
+        // Show users who have voted for the current story
+        Story story = findStory();
+        StringBuilder votedSb = new StringBuilder();
+        if (story != null) {
+            for (String user : story.getVotes().keySet()) {
+                votedSb.append(user).append("\n");
+            }
+        }
+        votedArea.setText(votedSb.toString());
     }
 
     private Story findStory() {

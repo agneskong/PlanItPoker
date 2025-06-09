@@ -1,6 +1,7 @@
 package org.planitpoker;
 
 import org.eclipse.paho.client.mqttv3.*;
+import org.planitpoker.Logger;
 
 public class MQTTPublisher {
     private final String broker = "tcp://test.mosquitto.org:1883";
@@ -16,7 +17,7 @@ public class MQTTPublisher {
         MqttMessage mqttMessage = new MqttMessage(message.getBytes());
         mqttMessage.setQos(1);
         client.publish(topic, mqttMessage);
-        System.out.println("Published to " + topic + ": " + message);
+        Logger.getLogger().info("Published to " + topic + ": " + message);
     }
 
     public void close() throws MqttException {

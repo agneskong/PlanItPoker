@@ -3,6 +3,7 @@ package org.planitpoker;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Scanner;
+import org.planitpoker.Logger;
 
 /**
  * PlanItPokerVotingDemo
@@ -36,7 +37,7 @@ public class PlanItPokerVotingDemo {
 
 
         if (stories.isEmpty()) {
-            System.out.println("❗ No stories found. Please create stories first.");
+            Logger.getLogger().warn("No stories found. Please create stories first.");
             return;
         }
 
@@ -45,19 +46,19 @@ public class PlanItPokerVotingDemo {
         while (currentStoryIndex < stories.size()) {
             Story currentStory = stories.get(currentStoryIndex);
 
-            System.out.println("\n===========================");
-            System.out.println("🧩 Voting on Story: " + currentStory.getTitle());
-            System.out.println("===========================");
+            Logger.getLogger().info("\n===========================");
+            Logger.getLogger().info("🧩 Voting on Story: " + currentStory.getTitle());
+            Logger.getLogger().info("===========================");
 
             while (true) {
-                System.out.println("\nEnter your name to vote (or type 'done' to finish voting):");
+                Logger.getLogger().info("\nEnter your name to vote (or type 'done' to finish voting):");
                 String name = scanner.nextLine().trim();
 
                 if (name.equals("done")) { 
                     break;
                 }
 
-                System.out.println("Choose your vote (0, ½, 1, 2, 3, 5, 8, 13, 20, 40, 100):");
+                Logger.getLogger().info("Choose your vote (0, ½, 1, 2, 3, 5, 8, 13, 20, 40, 100):");
                 String voteInput = scanner.nextLine().trim();
 
                 int voteValue;
@@ -68,29 +69,29 @@ public class PlanItPokerVotingDemo {
                         voteValue = Integer.parseInt(voteInput);
                     }
                 } catch (NumberFormatException e) {
-                    System.out.println("Invalid vote. Try again.");
+                    Logger.getLogger().warn("Invalid vote. Try again.");
                     continue;
                 }
 
                 currentStory.submitVotes(name, voteValue);
-                System.out.println(name + " submitted a vote. (Overwrites previous if already voted.)");
+                Logger.getLogger().debug(name + " submitted a vote. (Overwrites previous if already voted.)");
 
             }
 
-            System.out.println("\n🎉 Revealing votes for story: " + currentStory.getTitle());
+            Logger.getLogger().info("\n🎉 Revealing votes for story: " + currentStory.getTitle());
 
             Map<String, Integer> votes = currentStory.getVotes();
             for (Map.Entry<String, Integer> entry : votes.entrySet()) {
-                System.out.println(entry.getKey() + " voted: " + entry.getValue());
+                Logger.getLogger().info(entry.getKey() + " voted: " + entry.getValue());
             }
 
-            System.out.printf("📊 Average vote: %.2f\n", currentStory.calculateAverage());
+            Logger.getLogger().info(String.format("📊 Average vote: %.2f", currentStory.calculateAverage()));
 
             currentStoryIndex++;
         }
 
 
-        System.out.println("\n🏁 All stories have been estimated. Great job!");
+        Logger.getLogger().info("\n🏁 All stories have been estimated. Great job!");
     }
 }
 

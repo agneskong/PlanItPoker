@@ -1,6 +1,7 @@
 package org.planitpoker;
 
 import org.eclipse.paho.client.mqttv3.*;
+import org.planitpoker.Logger;
 
 public class MQTTSubscriber {
     private final String broker = "tcp://test.mosquitto.org:1883";
@@ -12,7 +13,7 @@ public class MQTTSubscriber {
         client.setCallback(callback);
         client.connect();
         client.subscribe(topic);
-        System.out.println("Subscribed to topic: " + topic);
+        Logger.getLogger().info("Subscribed to topic: " + topic);
     }
 
     public void close() throws MqttException {

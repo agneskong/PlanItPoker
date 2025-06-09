@@ -1,0 +1,33 @@
+[INFO] Subscribed to topic: planitpoker/events
+[INFO] Subscribed to topic: planitpoker/events
+[INFO] bob Entering a room...
+[INFO] bob Logging in...
+[INFO] john Entering a room...
+[INFO] john Logging in...
+[INFO] Creating room...CSC307, mode: Scrum
+[INFO] Creating room...CSC307, mode: Scrum
+[DEBUG] MQTT RECEIVED add-story:CSC307:hey
+[INFO] Published to planitpoker/events: add-story:CSC307:hey
+[DEBUG] MQTT RECEIVED add-story:CSC307:hey
+[DEBUG] MQTT RECEIVED add-story:CSC307:whats up
+[INFO] Published to planitpoker/events: add-story:CSC307:whats up
+[DEBUG] MQTT RECEIVED add-story:CSC307:whats up
+[DEBUG] MQTT RECEIVED add-story:CSC307:here it is
+[INFO] Published to planitpoker/events: add-story:CSC307:here it is
+[DEBUG] MQTT RECEIVED add-story:CSC307:here it is
+[INFO] Subscribed to topic: planitpoker/events
+[INFO] thomas Entering a room...
+[INFO] thomas Logging in...
+[INFO] Creating room...CSC307, mode: Scrum
+[DEBUG] MQTT RECEIVED add-story:CSC307:lastly
+[DEBUG] MQTT RECEIVED add-story:CSC307:lastly
+[INFO] Published to planitpoker/events: add-story:CSC307:lastly
+[DEBUG] MQTT RECEIVED add-story:CSC307:lastly
+[DEBUG] MQTT RECEIVED estimate:CSC307:hey:bob:40
+[DEBUG] MQTT RECEIVED estimate:CSC307:hey:bob:40
+[INFO] Published to planitpoker/events: estimate:CSC307:hey:bob:40
+[DEBUG] MQTT RECEIVED estimate:CSC307:hey:bob:40
+[DEBUG] MQTT RECEIVED estimate:CSC307:hey:john:20
+[DEBUG] MQTT RECEIVED estimate:CSC307:hey:john:20
+[INFO] Published to planitpoker/events: estimate:CSC307:hey:john:20
+[DEBUG] MQTT RECEIVED estimate:CSC307:hey:john:20

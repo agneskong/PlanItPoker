@@ -1,6 +1,7 @@
 package org.planitpoker;
 
 import javax.swing.*;
+import org.planitpoker.Logger;
 
 public class StoriesNanny {
 
@@ -47,11 +48,11 @@ public class StoriesNanny {
     }
 
     public void importStories() {
-        System.out.println("importing stories...");
+        Logger.getLogger().info("importing stories...");
     }
 
     public void cancel() {
-        System.out.println("canceling...");
+        Logger.getLogger().info("canceling...");
     }
 
     private void switchGUI() {

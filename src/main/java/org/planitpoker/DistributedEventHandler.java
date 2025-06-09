@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.Window;
 import org.eclipse.paho.client.mqttv3.*;
 import javax.swing.*;
+import org.planitpoker.Logger;
 
 public class DistributedEventHandler implements MqttCallback {
     private MQTTSubscriber subscriber;
@@ -15,13 +16,13 @@ public class DistributedEventHandler implements MqttCallback {
 
     @Override
     public void connectionLost(Throwable cause) {
-        System.out.println("MQTT connection lost");
+        Logger.getLogger().warn("MQTT connection lost: " + cause.getMessage());
     }
 
     @Override
     public void messageArrived(String topic, MqttMessage message) {
         String msg = new String(message.getPayload());
-        System.out.println("MQTT RECEIVED " + msg);
+        Logger.getLogger().debug("MQTT RECEIVED " + msg);
 
         // Handle story synchronization request (for new users)
         if (msg.startsWith("request-stories:")) {
@@ -128,9 +129,49 @@ public class DistributedEventHandler implements MqttCallback {
             if (parts.length >= 3) {
                 String user = parts[2];
                 Blackboard.addName(user);
+                // Broadcast updated user list to all clients in the room
+                String room = Blackboard.getCurrentRoom();
+                if (room != null) {
+                    try {
+                        MQTTPublisher publisher = new MQTTPublisher();
+                        StringBuilder sb = new StringBuilder();
+                        for (String n : Blackboard.getNames()) {
+                            sb.append(n).append("|");
+                        }
+                        if (sb.length() > 0) sb.setLength(sb.length() - 1);
+                        String syncMsg = String.format("sync-users:%s:%s:%s", room, user, sb.toString());
+                        publisher.publish("planitpoker/events", syncMsg);
+                        publisher.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
             }
 
-        } 
+        } else if (msg.startsWith("logout:")) {
+            String[] parts = msg.split(":");
+            if (parts.length >= 3) {
+                String user = parts[2];
+                Blackboard.getNames().remove(user);
+                // Broadcast updated user list to all clients in the room
+                String room = Blackboard.getCurrentRoom();
+                if (room != null) {
+                    try {
+                        MQTTPublisher publisher = new MQTTPublisher();
+                        StringBuilder sb = new StringBuilder();
+                        for (String n : Blackboard.getNames()) {
+                            sb.append(n).append("|");
+                        }
+                        if (sb.length() > 0) sb.setLength(sb.length() - 1);
+                        String syncMsg = String.format("sync-users:%s:%s:%s", room, user, sb.toString());
+                        publisher.publish("planitpoker/events", syncMsg);
+                        publisher.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
         // --- STORY ADDED HANDLER ---
         else if (msg.startsWith("add-story:")) {
             String[] parts = msg.split(":");

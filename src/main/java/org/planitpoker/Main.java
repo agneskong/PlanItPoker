@@ -1,11 +1,17 @@
 package org.planitpoker;
 
 import javax.swing.*;
+import org.planitpoker.Logger;
+import org.planitpoker.ConsoleAppender;
+import org.planitpoker.FileAppender;
 
 public class Main extends JFrame {
     private LoginNanny loginNanny;
 
     public Main() {
+        // Initialize loggers
+        Logger.addAppender(new ConsoleAppender());
+        Logger.addAppender(new FileAppender());
         try {
             new DistributedEventHandler("planitpoker/events", this);
         } catch (Exception e) {
