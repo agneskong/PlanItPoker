@@ -35,7 +35,10 @@ public class StoriesPanel extends JPanel {
 
         saveAddNewButton.addActionListener(e -> storiesNanny.saveAndAddNew(storyTextArea));
         saveCloseButton.addActionListener(e -> storiesNanny.saveAndClose(storyTextArea));
-        importButton.addActionListener(e -> storiesNanny.importStories());
+        importButton.addActionListener(e -> {
+            JFrame parentFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
+            storiesNanny.importStories(parentFrame, storyTextArea);
+        });
         cancelButton.addActionListener(e -> storiesNanny.cancel());
         startVotingButton.addActionListener(e -> storiesNanny.goToVotingPanel());
     }

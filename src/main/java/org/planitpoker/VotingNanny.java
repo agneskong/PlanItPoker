@@ -1,5 +1,7 @@
 package org.planitpoker;
 
+import org.json.JSONObject;
+
 /**
  * Controller responsible for managing the voting and its interactions.
  *

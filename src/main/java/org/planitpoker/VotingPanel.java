@@ -83,6 +83,8 @@ public class VotingPanel extends JPanel {
                     int val = value.equals("½") ? 1 : (value.matches("\\d+") ? Integer.parseInt(value) : 0);
                     String user = Blackboard.getNames().isEmpty() ? "DemoUser" : Blackboard.getNames().getLast();
                     votingNanny.sendEstimate(Blackboard.getCurrentRoom(), storyTitle, user, val);
+                    votingNanny.broadcastResult(Blackboard.getCurrentRoom(), storyTitle, val);
+
                     // Stop timer for this user/story and save
                     stopUserTimer(user, storyTitle);
                 } catch (Exception ex) {

@@ -1,6 +1,9 @@
 package org.planitpoker;
 
 import javax.swing.*;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.planitpoker.Logger;
 
 public class StoriesNanny {
@@ -47,9 +50,36 @@ public class StoriesNanny {
         switchGUI();
     }
 
-    public void importStories() {
+    public void importStories(JFrame parentFrame, JTextArea outputTextArea) {
+        TaigaLoginDialog loginDialog = new TaigaLoginDialog(parentFrame);
+        loginDialog.setLocationRelativeTo(parentFrame);
+        loginDialog.setVisible(true);
+
+        if (loginDialog.wasSubmitted()) {
+            String username = loginDialog.getUsername();
+            String password = loginDialog.getPassword();
+
+            try {
+                String token = TaigaStoryFetcher.loginAndGetToken(username, password);
+                Blackboard.setAuthToken(token);
+                int projectId = TaigaStoryFetcher.getProjectId(token, "agneskong-test-1");
+
+                JSONArray stories = TaigaStoryFetcher.fetchUserStories(token, projectId);
+
+                outputTextArea.setText("");  // ✅ Clear area and write new stories
+                for (int i = 0; i < stories.length(); i++) {
+                    JSONObject story = stories.getJSONObject(i);
+                    outputTextArea.append("#" + story.getInt("id") + " – " + story.optString("subject", "(no title)") + "\n");
+                }
+            } catch (Exception ex) {
+                outputTextArea.setText("❌ Error: " + ex.getMessage());
+                ex.printStackTrace();
+            }
+        }
+
         Logger.getLogger().info("importing stories...");
     }
+
 
     public void cancel() {
         Logger.getLogger().info("canceling...");
