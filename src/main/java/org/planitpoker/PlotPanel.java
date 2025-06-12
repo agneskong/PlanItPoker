@@ -19,18 +19,15 @@ public class PlotPanel extends JPanel {
         setLayout(new BorderLayout(20, 20));
         setBackground(new Color(245, 248, 255));
 
-        // Top: Story title
         JLabel storyTitleLabel = new JLabel(story.getTitle(), SwingConstants.CENTER);
         storyTitleLabel.setFont(new Font("Arial", Font.BOLD, 28));
         storyTitleLabel.setForeground(new Color(255, 140, 0));
         storyTitleLabel.setBorder(BorderFactory.createEmptyBorder(16, 0, 16, 0));
         add(storyTitleLabel, BorderLayout.NORTH);
 
-        // Center: Charts
         JPanel chartsPanel = new JPanel(new GridLayout(1, 3, 20, 0));
         chartsPanel.setBackground(new Color(245, 248, 255));
 
-        // Pie chart: vote distribution for this story
         DefaultPieDataset pieDataset = new DefaultPieDataset();
         Map<Integer, Integer> voteCounts = new HashMap<>();
         for (Integer vote : story.getVotes().values()) {
