@@ -15,7 +15,7 @@ import java.util.Map;
  * incoming messages, and performs actions accordingly to keep all clients
  * in sync through a publish-subscribe model.
  *
- * Author: Justin
+ * Author: Justin Diaz
  * Date: June 12, 2025
  */
 

@@ -1,7 +1,7 @@
 package org.planitpoker;
 
 /**
- * The  class is an implementation of the {@link Appender} interface
+ * The  class is an implementation of the interface
  * that outputs log messages to the system console. Messages are prefixed with a log level tag.
  * This class is typically used for debugging or monitoring application behavior via the terminal.
  *
