@@ -1,5 +1,21 @@
 package org.planitpoker;
 
+/**
+ * The LoginNanny class manages the login and room entry logic for the PlanitPoker application.
+ * It handles user authentication, MQTT room communication, and dynamic GUI transitions.
+ *
+ * Core responsibilities include:
+ * - Logging users in and out.
+ * - Publishing MQTT messages to join a room and request room data (users and stories).
+ * - Updating the GUI between login and main panels based on user status.
+ *
+ * This class acts as a controller between user interaction and backend communication.
+ *
+ * Author: Sathvik Chilakala
+ * Date: June 12, 2025
+ */
+
+
 public class LoginNanny {
     private Main main;
 

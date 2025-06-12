@@ -1,6 +1,5 @@
 package org.planitpoker;
 
-
 import java.awt.Window;
 import org.eclipse.paho.client.mqttv3.*;
 import javax.swing.*;
@@ -8,6 +7,19 @@ import java.awt.*;
 import org.planitpoker.Logger;
 import java.util.HashMap;
 import java.util.Map;
+
+/**
+ * This class is responsible for handling all distributed messaging events
+ * in the PlanItPoker application using the MQTT protocol. It manages the
+ * synchronization of rooms, users, and story data across clients. This includes
+ * real-time updates for events like story creation, voting, user join/leave, and
+ * story result revelation. It subscribes to a common event topic, interprets
+ * incoming messages, and performs actions accordingly to keep all clients
+ * in sync through a publish-subscribe model.
+ *
+ * Author: Justin
+ * Date: June 12, 2025
+ */
 
 
 public class DistributedEventHandler implements MqttCallback {

@@ -5,11 +5,18 @@ import java.awt.*;
 import java.util.function.Consumer;
 
 /**
- * EastPanel displays control buttons, voting statistics, reveal icons,
- * player list, and a logout button as part of interface.
+ * EastPanel is a Swing UI component in the PlanitPoker application that manages the display
+ * of voting-related information for a selected user story. This panel includes buttons for revealing
+ * votes, moving to the next story, and logging out. It shows the current votes, average score,
+ * users in the room, and which users have already voted. It also communicates with other components
+ * such as the VotingPanel and Main application frame to perform story navigation and session management.
  *
- * @author Sathvik Chilakala
+ * This panel is designed to update dynamically based on events received via MQTT and user interactions.
+ *
+ * Author: Sathvik Chilakala
+ * Date: June 12, 2025
  */
+
 public class EastPanel extends JPanel {
     private JLabel votesLabel;
     private JLabel averageLabel;

@@ -3,6 +3,17 @@ package org.planitpoker;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * StoriesPanel provides the GUI for users to create, import, and manage stories
+ * in the PlanItPoker application. It includes a text area for story entry,
+ * buttons to save stories, import from Taiga, cancel, and start voting.
+ *
+ * This panel interacts with StoriesNanny to perform the underlying logic.
+ *
+ * Author: Agnes Kong
+ * Date: June 12, 2025
+ */
+
 public class StoriesPanel extends JPanel {
 
     public StoriesPanel(StoriesNanny storiesNanny) {

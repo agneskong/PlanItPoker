@@ -5,6 +5,20 @@ import java.awt.*;
 import java.util.Set;
 import java.util.HashSet; // <-- ADD THIS!
 
+/**
+ * SouthPanel is a Swing JPanel that displays stories categorized into Active, Completed, and All stories
+ * using a tabbed pane. It refreshes its content every second to stay up-to-date with the current
+ * state of stories stored in the Blackboard.
+ *
+ * It maintains a static set of all SouthPanel instances for centralized refresh control.
+ *
+ * Purpose: To provide a continuously updated overview of story statuses in the planning poker app.
+ *
+ * Author: Agnes Kong
+ * Date: June 12, 2025
+ */
+
+
 public class SouthPanel extends JPanel {
     private JTabbedPane storyTabs;
     private JTextArea activeStories;

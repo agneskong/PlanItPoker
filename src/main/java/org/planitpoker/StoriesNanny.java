@@ -6,6 +6,21 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.planitpoker.Logger;
 
+/**
+ * StoriesNanny handles operations related to managing user stories within the PlanItPoker app.
+ * It supports saving new stories, importing stories from the Taiga project management system,
+ * navigating between different GUI panels such as the dashboard and voting panel,
+ * and publishing story-related events via MQTT.
+ *
+ * Responsibilities include:
+ * - Saving and adding new stories to the Blackboard and publishing them.
+ * - Importing stories from Taiga with authentication.
+ * - Switching GUI views between dashboard and voting.
+ *
+ * Author: Agnes Kong
+ * Date: June 12, 2025
+ */
+
 public class StoriesNanny {
 
     private Main main;

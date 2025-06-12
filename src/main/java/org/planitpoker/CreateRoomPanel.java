@@ -3,6 +3,16 @@ package org.planitpoker;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * The class defines the user interface for creating a new Planning Poker room.
+ * It allows the user to enter a room name, select a voting mode, view current users, and create the room.
+ * It also includes a logout button and auto-refreshes the user list every second.
+ * This panel is part of the application's login and room setup flow.
+ *
+ * Author: Justin Diaz
+ * Date: June 12, 2025
+ */
+
 public class CreateRoomPanel extends JPanel {
 
     public CreateRoomPanel(CreateRoomNanny createRoomNanny, LoginNanny loginNanny) {

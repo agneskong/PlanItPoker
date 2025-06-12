@@ -3,10 +3,16 @@ package org.planitpoker;
 import org.json.JSONObject;
 
 /**
- * Controller responsible for managing the voting and its interactions.
+ * Controller responsible for managing voting interactions in the Planning Poker app.
  *
- * @author agneskong
+ * This class handles sending estimates, revealing cards, and broadcasting results
+ * by publishing relevant MQTT messages to the designated topic.
+ * It also manages GUI switching related to voting.
+ *
+ * Author: Agnes Kong
+ * Date: June 12, 2025
  */
+
 public class VotingNanny {
     private Main main;
 

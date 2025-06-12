@@ -3,6 +3,20 @@ package org.planitpoker;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * The LoginPanel class provides the initial user interface for entering or logging into a Planning Poker room.
+ * It features input fields and buttons for name entry and handles interaction through the LoginNanny controller.
+ *
+ * Core responsibilities include:
+ * - Displaying a user-friendly layout for entering the application.
+ * - Triggering the login or room entry process via action listeners.
+ * - Visually guiding the user with labels and input cues.
+ *
+ * Author: Sathvik Chilakala
+ * Date: June 12, 2025
+ */
+
+
 public class LoginPanel extends JPanel {
 
     public LoginPanel(LoginNanny joinRoomNanny) {

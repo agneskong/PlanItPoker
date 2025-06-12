@@ -4,6 +4,21 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.LinkedList;
 
+/**
+ * WestPanel is the left-side panel of the Planning Poker UI,
+ * responsible for displaying the current user, list of players,
+ * game controls (Start, Logout), and invitation URL.
+ *
+ * It interacts with DashboardNanny to start the session,
+ * and LoginNanny to handle user logout.
+ * The panel also supports copying the invitation URL to clipboard
+ * and refreshes player names dynamically.
+ *
+ *
+ * Author: Agnes Kong
+ * Date: June 12, 2025
+ */
+
 public class WestPanel extends JPanel {
     private JLabel userLabel;
     private JTextArea playersArea;

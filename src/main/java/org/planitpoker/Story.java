@@ -3,14 +3,16 @@ package org.planitpoker;
 import java.util.HashMap;
 import java.util.Map;
 
-
 /**
- * Story is a single estimation, added helpers to complete the distrubtedeventhandler
- * voting results, and status
+ * Represents a story in the PlanItPoker application for estimation and voting.
  *
- * @author Sathvik Chilakala
+ * Each Story has a title, a map of votes by users, and an active status indicating
+ * whether voting is still open. Provides methods to submit votes, mark completion,
+ * clear votes, and calculate the average vote.
+ *
+ * Author: Agnes Kong
+ * Date: June 12, 2025
  */
-
 
 public class Story {
     private final String title;

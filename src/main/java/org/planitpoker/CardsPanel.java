@@ -3,6 +3,15 @@ package org.planitpoker;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * The class represents the UI component that displays
+ * a grid of Planning Poker cards. Each card is a button with a predefined
+ * value (e.g., Fibonacci numbers, '?', '☕') used during estimation sessions.
+ * The panel arranges the cards in a 4x3 grid and styles them uniformly.
+ *
+ * Author: Justin Diaz
+ * Date: June 12, 2025
+ */
 
 public class CardsPanel extends JPanel {
 

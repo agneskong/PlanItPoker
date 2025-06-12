@@ -11,6 +11,20 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.io.*;
 
+/**
+ * This class provides utility methods to interact with the Taiga REST API.
+ * It supports authenticating users, retrieving project IDs by slug,
+ * fetching user stories for projects, and obtaining detailed information about
+ * stories and projects from Taiga.
+ *
+ * It is designed to facilitate integration with Taiga for project and
+ * story management, allowing other components to programmatically
+ * access and process project backlog data.
+ *
+ * Author: Agnes Kong
+ * Date: June 12, 2025
+ */
+
 public class TaigaStoryFetcher {
 	
 	private static final String TAIGA_API = "https://api.taiga.io/api/v1";

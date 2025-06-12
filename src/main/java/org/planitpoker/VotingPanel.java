@@ -7,10 +7,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * VotingPanel is responsible for handling the voting user interface
- * vote submission, and updating the results in real time
+ * VotingPanel manages the voting user interface in the Planning Poker app.
  *
- * @author Sathvik Chilakala
+ * It handles vote submission, tracks the elapsed voting time per user and story,
+ * updates results in real-time, and allows toggling between the voting UI and results chart.
+ * It integrates with VotingNanny for MQTT message publishing and works alongside other UI components such as EastPanel and SouthPanel.
+ *
+ *
+ * Author: Agnes Kong
+ * Date: June 12, 2025
  */
 
 public class VotingPanel extends JPanel {

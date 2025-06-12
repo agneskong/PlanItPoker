@@ -3,6 +3,17 @@ package org.planitpoker;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * TaigaLoginDialog is a modal dialog that prompts the user to enter their
+ * Taiga username and password for authentication.
+ *
+ * It provides simple text fields for username and password input, and a login button.
+ * Once the login button is pressed, the dialog closes and indicates submission.
+ *
+ * Author: Agnes Kong
+ * Date: June 12, 2025
+ */
+
 public class TaigaLoginDialog extends JDialog {
     private JTextField usernameField;
     private JPasswordField passwordField;

@@ -1,5 +1,15 @@
 package org.planitpoker;
 
+/**
+ * The  class manages the creation of new Planning Poker rooms.
+ * It sets the current room and mode in the shared {@link Blackboard}, publishes
+ * the creation event via MQTT if it's a new room, and updates the GUI accordingly.
+ * This class acts as a controller between the login flow and room setup.
+ *
+ * Author: Justin Diaz
+ * Date: June 12, 2025
+ */
+
 public class CreateRoomNanny {
 
     private Main main;

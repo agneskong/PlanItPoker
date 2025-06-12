@@ -14,6 +14,28 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
+/**
+ * PlotPanel is a Swing JPanel that visualizes voting data for planning poker stories.
+ *
+ * It displays three charts side-by-side:
+ * - A pie chart showing the vote distribution for the current story.
+ * - A bar chart showing the number of votes each story has received.
+ * - A bar chart showing the number of votes cast by each team member across all stories.
+ *
+ * The panel also includes the title of the current story at the top and a button
+ * at the bottom to return to the voting interface via a callback.
+ *
+ * This panel uses JFreeChart to generate and render charts.
+ *
+ * Usage:
+ * - Construct with the current Story, a list of all Stories, and a Runnable callback
+ *   to invoke when returning to voting.
+ *
+ * Author: Sathvik Chilakala
+ * Date: June 12, 2025
+ */
+
+
 public class PlotPanel extends JPanel {
     public PlotPanel(Story story, LinkedList<Story> allStories, Runnable returnToVotingCallback) {
         setLayout(new BorderLayout(20, 20));

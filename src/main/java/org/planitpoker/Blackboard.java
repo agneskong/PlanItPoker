@@ -4,6 +4,19 @@ import java.util.LinkedList;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * The class acts as a central storage area (or "blackboard")
+ * for managing various static application data including user names, stories,
+ * the current room, mode, authentication token, and a mapping of story titles to their IDs.
+ * <p>
+ * This centralized class facilitates data management and state coordination
+ * in the application, enabling methods to add, retrieve, and update the stored information.
+ * </p>
+ *
+ * Author: Justin Diaz
+ * Date: June 12, 2025
+ */
+
 public class Blackboard {
 
     private static LinkedList<String> names = new LinkedList<>();

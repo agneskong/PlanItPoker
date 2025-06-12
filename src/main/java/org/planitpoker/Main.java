@@ -3,6 +3,20 @@ package org.planitpoker;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * The Main class serves as the entry point and primary JFrame container for the Planning Poker application.
+ * It initializes the logging system and distributed event handler, then loads the initial login interface.
+ *
+ * Core responsibilities include:
+ * - Bootstrapping the application and setting up shared infrastructure (logging, event handling).
+ * - Hosting the login interface and providing access to the LoginNanny for authentication flow.
+ * - Managing application lifecycle and GUI transitions.
+ *
+ * Author: Sathvik Chilakala
+ * Date: June 12, 2025
+ */
+
+
 public class Main extends JFrame {
     private LoginNanny loginNanny;
     private static boolean loggerInitialized = false;
