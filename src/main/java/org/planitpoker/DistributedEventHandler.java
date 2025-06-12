@@ -1,9 +1,12 @@
 package org.planitpoker;
-import java.awt.*;
+
+
 import java.awt.Window;
 import org.eclipse.paho.client.mqttv3.*;
 import javax.swing.*;
+import java.awt.*;
 import org.planitpoker.Logger;
+
 
 public class DistributedEventHandler implements MqttCallback {
     private MQTTSubscriber subscriber;
@@ -46,7 +49,11 @@ public class DistributedEventHandler implements MqttCallback {
                     }
                 }
             }
+        } else if (msg.startsWith("create-room:")) {
+            String room = msg.substring("create-room:".length());
+            Blackboard.addCurrentRoom(room);
         }
+
         // Handle incoming sync-stories for new user
         else if (msg.startsWith("sync-stories:")) {
             String[] parts = msg.split(":", 4);
@@ -127,11 +134,14 @@ public class DistributedEventHandler implements MqttCallback {
         } else if (msg.startsWith("join-room:")) {
             String[] parts = msg.split(":");
             if (parts.length >= 3) {
+                String room = parts[1];
                 String user = parts[2];
-                Blackboard.addName(user);
-                // Broadcast updated user list to all clients in the room
-                String room = Blackboard.getCurrentRoom();
-                if (room != null) {
+
+                if (room.equals(Blackboard.getCurrentRoom()) && !user.equals(room)) {
+                    if (!Blackboard.getNames().contains(user)) {
+                        Blackboard.addName(user);
+                    }
+
                     try {
                         MQTTPublisher publisher = new MQTTPublisher();
                         StringBuilder sb = new StringBuilder();
@@ -148,7 +158,7 @@ public class DistributedEventHandler implements MqttCallback {
                 }
             }
 
-        } else if (msg.startsWith("logout:")) {
+    } else if (msg.startsWith("logout:")) {
             String[] parts = msg.split(":");
             if (parts.length >= 3) {
                 String user = parts[2];

@@ -1,7 +1,8 @@
 package org.planitpoker;
 
-import org.eclipse.paho.client.mqttv3.*;
-import org.planitpoker.Logger;
+import org.eclipse.paho.client.mqttv3.MqttClient;
+import org.eclipse.paho.client.mqttv3.MqttException;
+import org.eclipse.paho.client.mqttv3.MqttMessage;
 
 public class MQTTPublisher {
     private final String broker = "tcp://test.mosquitto.org:1883";

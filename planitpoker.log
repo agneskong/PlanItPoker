@@ -103,6 +103,42 @@
 [INFO] Logging out...
 [INFO] Logging out...
 [INFO] Subscribed to topic: planitpoker/events
+[INFO] Subscribed to topic: planitpoker/events
+[INFO] Justin Entering a room...
+[INFO] Justin Logging in...
+[INFO] Creating room...CSC307, mode: Scrum
+[INFO] Published to planitpoker/events: estimate:CSC307:Justin is Cool:Justin:20
+[DEBUG] MQTT RECEIVED estimate:CSC307:Justin is Cool:Justin:20
+[INFO] Published to planitpoker/events: reveal:CSC307:Justin is Cool
+[DEBUG] MQTT RECEIVED reveal:CSC307:Justin is Cool
+[INFO] Subscribed to topic: planitpoker/events
+[INFO] Justin Entering a room...
+[INFO] Justin Logging in...
+[INFO] Creating room...CSC307, mode: Scrum
+[DEBUG] MQTT RECEIVED add-story:CSC307:Justin is cool
+[INFO] Published to planitpoker/events: add-story:CSC307:Justin is cool
+[DEBUG] MQTT RECEIVED add-story:CSC307:Justin is cool
+[INFO] Published to planitpoker/events: add-story:CSC307:Justin is cool
+[DEBUG] MQTT RECEIVED estimate:CSC307:Justin is cool:Justin:20
+[INFO] Published to planitpoker/events: estimate:CSC307:Justin is cool:Justin:20
+[DEBUG] MQTT RECEIVED reveal:CSC307:Justin is cool
+[INFO] Published to planitpoker/events: reveal:CSC307:Justin is cool
+[INFO] Logging out...
+[INFO] Enter your name Logging in...
+[DEBUG] MQTT RECEIVED join-room:CSC307:Enter your name
+[INFO] Published to planitpoker/events: join-room:CSC307:Enter your name
+[INFO] Published to planitpoker/events: request-stories:CSC307:Enter your name
+[INFO] Published to planitpoker/events: request-users:CSC307:Enter your name
+[INFO] Published to planitpoker/events: sync-users:CSC307:Enter your name:Enter your name
+[DEBUG] MQTT RECEIVED request-stories:CSC307:Enter your name
+[INFO] Published to planitpoker/events: sync-stories:CSC307:Enter your name:Justin is cool
+[DEBUG] MQTT RECEIVED request-users:CSC307:Enter your name
+[INFO] Published to planitpoker/events: sync-users:CSC307:Enter your name:Enter your name
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Enter your name:Enter your name
+[DEBUG] MQTT RECEIVED sync-stories:CSC307:Enter your name:Justin is cool
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Enter your name:Enter your name
+[INFO] Creating room...CSC307, mode: Scrum
+[INFO] Subscribed to topic: planitpoker/events
 [INFO] Agnes Entering a room...
 [INFO] Agnes Logging in...
 [INFO] Creating room...CSC307, mode: Scrum
@@ -381,3 +417,666 @@
 [DEBUG] MQTT RECEIVED estimate:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:agnes:5
 [INFO] Published to planitpoker/events: result:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:5.00
 [DEBUG] MQTT RECEIVED result:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:5.00
+[INFO] Subscribed to topic: planitpoker/events
+[INFO] Justin Entering a room...
+[INFO] Justin Logging in...
+[INFO] Creating room...CSC307, mode: Scrum
+[INFO] Published to planitpoker/events: estimate:CSC307:Justin Diaz, Cool.:Justin:40
+[DEBUG] MQTT RECEIVED estimate:CSC307:Justin Diaz, Cool.:Justin:40
+[INFO] Logging out...
+[INFO] Subscribed to topic: planitpoker/events
+[INFO] Justin Entering a room...
+[INFO] Justin Logging in...
+[INFO] Creating room...CSC307, mode: Scrum
+[INFO] importing stories...
+[INFO] importing stories...
+[INFO] importing stories...
+[INFO] importing stories...
+[INFO] importing stories...
+[INFO] importing stories...
+[INFO] importing stories...
+[INFO] importing stories...
+[INFO] importing stories...
+[INFO] importing stories...
+[INFO] importing stories...
+[INFO] importing stories...
+[INFO] importing stories...
+[INFO] importing stories...
+[INFO] importing stories...
+[INFO] importing stories...
+[INFO] importing stories...
+[INFO] importing stories...
+[INFO] importing stories...
+[INFO] importing stories...
+[INFO] canceling...
+[INFO] canceling...
+[INFO] canceling...
+[INFO] importing stories...
+[INFO] importing stories...
+[INFO] importing stories...
+[INFO] importing stories...
+[INFO] importing stories...
+[INFO] importing stories...
+[INFO] importing stories...
+[INFO] Subscribed to topic: planitpoker/events
+[INFO] Justin Entering a room...
+[INFO] Justin Logging in...
+[INFO] Creating room...CSC307, mode: Scrum
+[DEBUG] MQTT RECEIVED estimate:CSC307:story 1:agnes:5
+[DEBUG] MQTT RECEIVED result:CSC307:story 1:5.00
+[DEBUG] MQTT RECEIVED estimate:CSC307:story 2:agnes:3
+[DEBUG] MQTT RECEIVED result:CSC307:story 2:3.00
+[DEBUG] MQTT RECEIVED estimate:CSC307:story 3:agnes:1
+[DEBUG] MQTT RECEIVED result:CSC307:story 3:1.00
+[DEBUG] MQTT RECEIVED estimate:CSC307:heres story 2:agnes:1
+[DEBUG] MQTT RECEIVED result:CSC307:heres story 2:1.00
+[DEBUG] MQTT RECEIVED estimate:CSC307:first one:agnes:2
+[DEBUG] MQTT RECEIVED result:CSC307:first one:2.00
+[INFO] importing stories...
+[DEBUG] MQTT RECEIVED estimate:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:agnes:3
+[DEBUG] MQTT RECEIVED result:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:3.00
+[DEBUG] MQTT RECEIVED estimate:CSC307:#7960428 – As a team member, I want to reset the vote counter for stories:agnes:3
+[DEBUG] MQTT RECEIVED result:CSC307:#7960428 – As a team member, I want to reset the vote counter for stories:3.00
+[DEBUG] MQTT RECEIVED estimate:CSC307:Put your stories text here. Each line contains new story.:agnes:3
+[DEBUG] MQTT RECEIVED result:CSC307:Put your stories text here. Each line contains new story.:3.00
+[DEBUG] MQTT RECEIVED estimate:CSC307:Justin Diaz, Cool.:agnes:3
+[DEBUG] MQTT RECEIVED result:CSC307:Justin Diaz, Cool.:3.00
+[INFO] Subscribed to topic: planitpoker/events
+[INFO] Justin Entering a room...
+[INFO] Justin Logging in...
+[INFO] Creating room...CSC307, mode: Scrum
+[INFO] importing stories...
+[INFO] Subscribed to topic: planitpoker/events
+[INFO] Justin Entering a room...
+[INFO] Justin Logging in...
+[INFO] Creating room...CSC307, mode: Scrum
+[INFO] importing stories...
+[INFO] Subscribed to topic: planitpoker/events
+[INFO] Justin Entering a room...
+[INFO] Justin Logging in...
+[INFO] Creating room...CSC307, mode: Scrum
+[INFO] Subscribed to topic: planitpoker/events
+[INFO] Justin 2 Entering a room...
+[INFO] Justin 2 Logging in...
+[INFO] Creating room...CSC307, mode: Scrum
+[INFO] importing stories...
+[INFO] importing stories...
+[INFO] importing stories...
+[DEBUG] MQTT RECEIVED add-story:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.
+[INFO] Published to planitpoker/events: add-story:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.
+[DEBUG] MQTT RECEIVED add-story:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.
+[INFO] Published to planitpoker/events: add-story:CSC307:#7960425 – As a team member, I want to see who's in the meeting so that I can make sure everyone's there
+[DEBUG] MQTT RECEIVED add-story:CSC307:#7960425 – As a team member, I want to see who's in the meeting so that I can make sure everyone's there
+[DEBUG] MQTT RECEIVED add-story:CSC307:#7960425 – As a team member, I want to see who's in the meeting so that I can make sure everyone's there
+[DEBUG] MQTT RECEIVED add-story:CSC307:Put your stories text here. Each line contains new story.
+[INFO] Published to planitpoker/events: add-story:CSC307:Put your stories text here. Each line contains new story.
+[DEBUG] MQTT RECEIVED add-story:CSC307:Put your stories text here. Each line contains new story.
+[DEBUG] MQTT RECEIVED add-story:CSC307:#7960428 – As a team member, I want to reset the vote counter for stories
+[DEBUG] MQTT RECEIVED add-story:CSC307:#7960428 – As a team member, I want to reset the vote counter for stories
+[INFO] Published to planitpoker/events: add-story:CSC307:#7960428 – As a team member, I want to reset the vote counter for stories
+[INFO] Subscribed to topic: planitpoker/events
+[INFO] Subscribed to topic: planitpoker/events
+[INFO] Justin Entering a room...
+[INFO] Justin Logging in...
+[INFO] Justin Entering a room...
+[INFO] Justin Logging in...
+[INFO] Creating room...CSC307, mode: Scrum
+[INFO] Creating room...CSC307, mode: Scrum
+[INFO] Subscribed to topic: planitpoker/events
+[INFO] Justin Entering a room...
+[INFO] Justin Logging in...
+[INFO] Subscribed to topic: planitpoker/events
+[INFO] Subscribed to topic: planitpoker/events
+[INFO] Justin Entering a room...
+[INFO] Justin Logging in...
+[INFO] Vik Entering a room...
+[INFO] Vik Logging in...
+[INFO] Subscribed to topic: planitpoker/events
+[INFO] Subscribed to topic: planitpoker/events
+[INFO] Justin Entering a room...
+[INFO] Justin Logging in...
+[INFO] Vik Entering a room...
+[INFO] Vik Logging in...
+[INFO] Creating room: CSC307, mode: Scrum
+[INFO] Published to planitpoker/events: create-room:CSC307
+[DEBUG] MQTT RECEIVED create-room:CSC307
+[DEBUG] MQTT RECEIVED create-room:CSC307
+[INFO] Creating room...CSC307, mode: Scrum
+[INFO] Subscribed to topic: planitpoker/events
+[INFO] Justin Entering a room...
+[INFO] Justin Logging in...
+[INFO] Subscribed to topic: planitpoker/events
+[INFO] Vik Entering a room...
+[INFO] Vik Logging in...
+[INFO] Creating room...CSC307, mode: Scrum
+[INFO] Creating room: CSC307, mode: Scrum
+[INFO] Published to planitpoker/events: create-room:CSC307
+[DEBUG] MQTT RECEIVED create-room:CSC307
+[DEBUG] MQTT RECEIVED create-room:CSC307
+[INFO] Subscribed to topic: planitpoker/events
+[INFO] Subscribed to topic: planitpoker/events
+[INFO] Subscribed to topic: planitpoker/events
+[INFO] Justin Entering a room...
+[INFO] Justin Logging in...
+[INFO] Creating room: CSC307, mode: Scrum
+[INFO] Published to planitpoker/events: create-room:CSC307
+[DEBUG] MQTT RECEIVED create-room:CSC307
+[INFO] importing stories...
+[INFO] Subscribed to topic: planitpoker/events
+[INFO] Vik Entering a room...
+[INFO] Vik Logging in...
+[INFO] Creating room...CSC307, mode: Scrum
+[INFO] importing stories...
+[INFO] Subscribed to topic: planitpoker/events
+[INFO] Subscribed to topic: planitpoker/events
+[INFO] Justin Entering a room...
+[INFO] Justin Logging in...
+[INFO] Josh Entering a room...
+[INFO] Josh Logging in...
+[INFO] Creating room: CSC307, mode: Scrum
+[DEBUG] MQTT RECEIVED create-room:CSC307
+[INFO] Published to planitpoker/events: create-room:CSC307
+[DEBUG] MQTT RECEIVED create-room:CSC307
+[INFO] Creating room...CSC307, mode: Scrum
+[INFO] importing stories...
+[INFO] importing stories...
+[INFO] importing stories...
+[INFO] importing stories...
+[INFO] importing stories...
+[INFO] importing stories...
+[INFO] importing stories...
+[INFO] importing stories...
+[INFO] importing stories...
+[INFO] importing stories...
+[INFO] importing stories...
+[INFO] importing stories...
+[INFO] importing stories...
+[INFO] importing stories...
+[INFO] importing stories...
+[INFO] importing stories...
+[INFO] importing stories...
+[INFO] importing stories...
+[INFO] importing stories...
+[INFO] importing stories...
+[INFO] importing stories...
+[INFO] importing stories...
+[INFO] importing stories...
+[INFO] Subscribed to topic: planitpoker/events
+[INFO] Subscribed to topic: planitpoker/events
+[INFO] Justin Entering a room...
+[INFO] Justin Logging in...
+[INFO] Josh Entering a room...
+[INFO] Josh Logging in...
+[INFO] Creating room: CSC307, mode: Scrum
+[DEBUG] MQTT RECEIVED create-room:CSC307
+[INFO] Published to planitpoker/events: create-room:CSC307
+[DEBUG] MQTT RECEIVED create-room:CSC307
+[INFO] Creating room...CSC307, mode: Scrum
+[INFO] Subscribed to topic: planitpoker/events
+[INFO] Subscribed to topic: planitpoker/events
+[INFO] Justin Entering a room...
+[INFO] Justin Logging in...
+[INFO] Josh Entering a room...
+[INFO] Josh Logging in...
+[INFO] Creating room: CSC307, mode: Scrum
+[INFO] Published to planitpoker/events: create-room:CSC307
+[DEBUG] MQTT RECEIVED create-room:CSC307
+[DEBUG] MQTT RECEIVED create-room:CSC307
+[INFO] Creating room: CSC307, mode: Scrum
+[DEBUG] MQTT RECEIVED create-room:CSC307
+[DEBUG] MQTT RECEIVED create-room:CSC307
+[INFO] Published to planitpoker/events: create-room:CSC307
+[INFO] importing stories...
+[INFO] importing stories...
+[INFO] Published to planitpoker/events: estimate:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:Josh:5
+[DEBUG] MQTT RECEIVED estimate:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:Josh:5
+[DEBUG] MQTT RECEIVED result:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:5.00
+[INFO] Published to planitpoker/events: result:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:5.00
+[DEBUG] MQTT RECEIVED estimate:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:Josh:5
+[INFO] Published to planitpoker/events: estimate:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:Josh:5
+[DEBUG] MQTT RECEIVED result:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:5.00
+[INFO] Published to planitpoker/events: result:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:5.00
+[INFO] Published to planitpoker/events: estimate:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:Josh:5
+[DEBUG] MQTT RECEIVED estimate:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:Josh:5
+[DEBUG] MQTT RECEIVED result:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:5.00
+[INFO] Published to planitpoker/events: result:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:5.00
+[DEBUG] MQTT RECEIVED estimate:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:Josh:5
+[INFO] Published to planitpoker/events: estimate:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:Josh:5
+[DEBUG] MQTT RECEIVED result:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:5.00
+[INFO] Published to planitpoker/events: result:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:5.00
+[INFO] Published to planitpoker/events: estimate:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:Josh:5
+[DEBUG] MQTT RECEIVED estimate:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:Josh:5
+[INFO] Published to planitpoker/events: result:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:5.00
+[DEBUG] MQTT RECEIVED result:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:5.00
+[DEBUG] MQTT RECEIVED estimate:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:Josh:20
+[INFO] Published to planitpoker/events: estimate:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:Josh:20
+[INFO] Published to planitpoker/events: result:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:20.00
+[DEBUG] MQTT RECEIVED result:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:20.00
+[INFO] Published to planitpoker/events: estimate:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:Josh:5
+[DEBUG] MQTT RECEIVED estimate:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:Josh:5
+[INFO] Published to planitpoker/events: result:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:5.00
+[DEBUG] MQTT RECEIVED result:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:5.00
+[INFO] Logging out...
+[INFO] Subscribed to topic: planitpoker/events
+[INFO] Subscribed to topic: planitpoker/events
+[INFO] Justin Entering a room...
+[INFO] Justin Logging in...
+[INFO] Justin Entering a room...
+[INFO] Justin Logging in...
+[INFO] Creating room: CSC307, mode: Scrum
+[DEBUG] MQTT RECEIVED create-room:CSC307
+[INFO] Published to planitpoker/events: create-room:CSC307
+[DEBUG] MQTT RECEIVED create-room:CSC307
+[DEBUG] MQTT RECEIVED join-room:Justin:CSC307
+[INFO] Published to planitpoker/events: join-room:Justin:CSC307
+[DEBUG] MQTT RECEIVED join-room:Justin:CSC307
+[INFO] Published to planitpoker/events: request-stories:CSC307:Justin
+[INFO] Published to planitpoker/events: request-users:CSC307:Justin
+[INFO] Published to planitpoker/events: sync-users:CSC307:CSC307:Justin|CSC307
+[DEBUG] MQTT RECEIVED request-stories:CSC307:Justin
+[INFO] Published to planitpoker/events: sync-users:CSC307:CSC307:Justin|CSC307
+[DEBUG] MQTT RECEIVED request-stories:CSC307:Justin
+[DEBUG] MQTT RECEIVED request-users:CSC307:Justin
+[INFO] Published to planitpoker/events: sync-stories:CSC307:Justin:Put your stories text here. Each line contains new story.
+[DEBUG] MQTT RECEIVED request-users:CSC307:Justin
+[INFO] Published to planitpoker/events: sync-users:CSC307:Justin:Justin|CSC307
+[DEBUG] MQTT RECEIVED sync-users:CSC307:CSC307:Justin|CSC307
+[DEBUG] MQTT RECEIVED sync-users:CSC307:CSC307:Justin|CSC307
+[DEBUG] MQTT RECEIVED sync-stories:CSC307:Justin:Put your stories text here. Each line contains new story.
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Justin:Justin|CSC307
+[INFO] Creating room: CSC307, mode: Scrum
+[INFO] Published to planitpoker/events: sync-users:CSC307:Justin:Justin|CSC307
+[DEBUG] MQTT RECEIVED sync-users:CSC307:CSC307:Justin|CSC307
+[DEBUG] MQTT RECEIVED sync-users:CSC307:CSC307:Justin|CSC307
+[DEBUG] MQTT RECEIVED sync-stories:CSC307:Justin:Put your stories text here. Each line contains new story.
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Justin:Justin|CSC307
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Justin:Justin|CSC307
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Justin:Justin|CSC307
+[INFO] Published to planitpoker/events: join-room:CSC307:CSC307
+[DEBUG] MQTT RECEIVED join-room:CSC307:CSC307
+[DEBUG] MQTT RECEIVED join-room:CSC307:CSC307
+[INFO] Published to planitpoker/events: request-stories:CSC307:CSC307
+[INFO] Published to planitpoker/events: request-users:CSC307:CSC307
+[INFO] Published to planitpoker/events: sync-users:CSC307:CSC307:Justin|CSC307
+[DEBUG] MQTT RECEIVED request-stories:CSC307:CSC307
+[INFO] Published to planitpoker/events: sync-users:CSC307:CSC307:Justin|CSC307
+[DEBUG] MQTT RECEIVED request-stories:CSC307:CSC307
+[INFO] Published to planitpoker/events: sync-stories:CSC307:CSC307:Put your stories text here. Each line contains new story.
+[DEBUG] MQTT RECEIVED request-users:CSC307:CSC307
+[INFO] Published to planitpoker/events: sync-stories:CSC307:CSC307:Put your stories text here. Each line contains new story.
+[DEBUG] MQTT RECEIVED request-users:CSC307:CSC307
+[INFO] Published to planitpoker/events: sync-users:CSC307:CSC307:Justin|CSC307
+[DEBUG] MQTT RECEIVED sync-users:CSC307:CSC307:Justin|CSC307
+[DEBUG] MQTT RECEIVED sync-users:CSC307:CSC307:Justin|CSC307
+[DEBUG] MQTT RECEIVED sync-stories:CSC307:CSC307:Put your stories text here. Each line contains new story.
+[DEBUG] MQTT RECEIVED sync-stories:CSC307:CSC307:Put your stories text here. Each line contains new story.
+[DEBUG] MQTT RECEIVED sync-users:CSC307:CSC307:Justin|CSC307
+[DEBUG] MQTT RECEIVED sync-users:CSC307:CSC307:Justin|CSC307
+[INFO] Published to planitpoker/events: sync-users:CSC307:CSC307:Justin|CSC307
+[DEBUG] MQTT RECEIVED sync-users:CSC307:CSC307:Justin|CSC307
+[DEBUG] MQTT RECEIVED sync-users:CSC307:CSC307:Justin|CSC307
+[DEBUG] MQTT RECEIVED sync-stories:CSC307:CSC307:Put your stories text here. Each line contains new story.
+[DEBUG] MQTT RECEIVED sync-stories:CSC307:CSC307:Put your stories text here. Each line contains new story.
+[DEBUG] MQTT RECEIVED sync-users:CSC307:CSC307:Justin|CSC307
+[DEBUG] MQTT RECEIVED sync-users:CSC307:CSC307:Justin|CSC307
+[INFO] Subscribed to topic: planitpoker/events
+[INFO] Subscribed to topic: planitpoker/events
+[INFO] Justin Entering a room...
+[INFO] Justin Logging in...
+[INFO] Josh Entering a room...
+[INFO] Josh Logging in...
+[INFO] Creating room: CSC307, mode: Scrum
+[DEBUG] MQTT RECEIVED create-room:CSC307
+[INFO] Published to planitpoker/events: create-room:CSC307
+[DEBUG] MQTT RECEIVED create-room:CSC307
+[DEBUG] MQTT RECEIVED join-room:Justin:CSC307
+[INFO] Published to planitpoker/events: join-room:Justin:CSC307
+[DEBUG] MQTT RECEIVED join-room:Justin:CSC307
+[INFO] Published to planitpoker/events: request-stories:CSC307:Justin
+[INFO] Published to planitpoker/events: request-users:CSC307:Justin
+[INFO] Creating room: CSC307, mode: Scrum
+[INFO] Published to planitpoker/events: sync-users:CSC307:CSC307:Justin|CSC307
+[DEBUG] MQTT RECEIVED request-stories:CSC307:Justin
+[DEBUG] MQTT RECEIVED request-users:CSC307:Justin
+[INFO] Published to planitpoker/events: sync-users:CSC307:CSC307:Josh|CSC307
+[DEBUG] MQTT RECEIVED request-stories:CSC307:Justin
+[DEBUG] MQTT RECEIVED request-users:CSC307:Justin
+[INFO] Published to planitpoker/events: join-room:CSC307:CSC307
+[INFO] Published to planitpoker/events: request-stories:CSC307:CSC307
+[INFO] Published to planitpoker/events: request-users:CSC307:CSC307
+[INFO] Published to planitpoker/events: sync-users:CSC307:Justin:Justin|CSC307
+[DEBUG] MQTT RECEIVED sync-users:CSC307:CSC307:Josh|CSC307
+[DEBUG] MQTT RECEIVED sync-users:CSC307:CSC307:Justin|CSC307
+[DEBUG] MQTT RECEIVED join-room:CSC307:CSC307
+[INFO] Published to planitpoker/events: sync-users:CSC307:Justin:Josh|CSC307
+[DEBUG] MQTT RECEIVED sync-users:CSC307:CSC307:Josh|CSC307
+[DEBUG] MQTT RECEIVED sync-users:CSC307:CSC307:Justin|CSC307
+[DEBUG] MQTT RECEIVED join-room:CSC307:CSC307
+[INFO] Published to planitpoker/events: sync-users:CSC307:CSC307:Justin|CSC307|Josh
+[DEBUG] MQTT RECEIVED request-stories:CSC307:CSC307
+[DEBUG] MQTT RECEIVED request-users:CSC307:CSC307
+[INFO] Published to planitpoker/events: sync-users:CSC307:CSC307:Josh|CSC307|Justin
+[DEBUG] MQTT RECEIVED request-stories:CSC307:CSC307
+[DEBUG] MQTT RECEIVED request-users:CSC307:CSC307
+[INFO] Published to planitpoker/events: sync-users:CSC307:CSC307:Josh|CSC307|Justin
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Justin:Justin|CSC307
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Justin:Josh|CSC307
+[DEBUG] MQTT RECEIVED sync-users:CSC307:CSC307:Justin|CSC307|Josh
+[DEBUG] MQTT RECEIVED sync-users:CSC307:CSC307:Josh|CSC307|Justin
+[DEBUG] MQTT RECEIVED sync-users:CSC307:CSC307:Josh|CSC307|Justin
+[DEBUG] MQTT RECEIVED sync-users:CSC307:CSC307:Justin|CSC307|Josh
+[INFO] Published to planitpoker/events: sync-users:CSC307:CSC307:Justin|CSC307|Josh
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Justin:Justin|CSC307
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Justin:Josh|CSC307
+[DEBUG] MQTT RECEIVED sync-users:CSC307:CSC307:Justin|CSC307|Josh
+[DEBUG] MQTT RECEIVED sync-users:CSC307:CSC307:Josh|CSC307|Justin
+[DEBUG] MQTT RECEIVED sync-users:CSC307:CSC307:Josh|CSC307|Justin
+[DEBUG] MQTT RECEIVED sync-users:CSC307:CSC307:Justin|CSC307|Josh
+[INFO] importing stories...
+[INFO] importing stories...
+[DEBUG] MQTT RECEIVED estimate:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:Justin:3
+[INFO] Published to planitpoker/events: estimate:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:Justin:3
+[DEBUG] MQTT RECEIVED estimate:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:Justin:3
+[INFO] Published to planitpoker/events: result:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:3.00
+[DEBUG] MQTT RECEIVED result:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:3.00
+[DEBUG] MQTT RECEIVED result:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:3.00
+[DEBUG] MQTT RECEIVED estimate:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:Justin:5
+[INFO] Published to planitpoker/events: estimate:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:Justin:5
+[DEBUG] MQTT RECEIVED estimate:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:Justin:5
+[DEBUG] MQTT RECEIVED result:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:5.00
+[INFO] Published to planitpoker/events: result:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:5.00
+[DEBUG] MQTT RECEIVED result:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:5.00
+[DEBUG] MQTT RECEIVED estimate:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:Justin:20
+[INFO] Published to planitpoker/events: estimate:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:Justin:20
+[DEBUG] MQTT RECEIVED estimate:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:Justin:20
+[DEBUG] MQTT RECEIVED result:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:20.00
+[INFO] Published to planitpoker/events: result:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:20.00
+[DEBUG] MQTT RECEIVED result:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:20.00
+[INFO] Published to planitpoker/events: estimate:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:Josh:40
+[DEBUG] MQTT RECEIVED estimate:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:Josh:40
+[DEBUG] MQTT RECEIVED estimate:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:Josh:40
+[DEBUG] MQTT RECEIVED result:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:40.00
+[INFO] Published to planitpoker/events: result:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:40.00
+[DEBUG] MQTT RECEIVED result:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:40.00
+[INFO] Subscribed to topic: planitpoker/events
+[INFO] Subscribed to topic: planitpoker/events
+[INFO] Justin Entering a room...
+[INFO] Justin Logging in...
+[INFO] John Entering a room...
+[INFO] John Logging in...
+[INFO] Creating room: CSC307, mode: Scrum
+[INFO] Published to planitpoker/events: create-room:CSC307
+[DEBUG] MQTT RECEIVED create-room:CSC307
+[DEBUG] MQTT RECEIVED create-room:CSC307
+[INFO] Published to planitpoker/events: join-room:Justin:CSC307
+[DEBUG] MQTT RECEIVED join-room:Justin:CSC307
+[DEBUG] MQTT RECEIVED join-room:Justin:CSC307
+[INFO] Published to planitpoker/events: request-stories:CSC307:Justin
+[DEBUG] MQTT RECEIVED request-stories:CSC307:Justin
+[DEBUG] MQTT RECEIVED request-stories:CSC307:Justin
+[INFO] Published to planitpoker/events: request-users:CSC307:Justin
+[DEBUG] MQTT RECEIVED request-users:CSC307:Justin
+[DEBUG] MQTT RECEIVED request-users:CSC307:Justin
+[INFO] Published to planitpoker/events: sync-users:CSC307:Justin:Justin|CSC307
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Justin:John|CSC307
+[INFO] Published to planitpoker/events: sync-users:CSC307:Justin:John|CSC307
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Justin:Justin|CSC307
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Justin:John|CSC307
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Justin:Justin|CSC307
+[INFO] Subscribed to topic: planitpoker/events
+[INFO] Subscribed to topic: planitpoker/events
+[INFO] Justin Entering a room...
+[INFO] Justin Logging in...
+[INFO] Josh Entering a room...
+[INFO] Josh Logging in...
+[INFO] Creating room: CSC307, mode: Scrum
+[DEBUG] MQTT RECEIVED create-room:CSC307
+[INFO] Published to planitpoker/events: create-room:CSC307
+[DEBUG] MQTT RECEIVED create-room:CSC307
+[DEBUG] MQTT RECEIVED join-room:Justin:CSC307
+[INFO] Published to planitpoker/events: join-room:Justin:CSC307
+[DEBUG] MQTT RECEIVED join-room:Justin:CSC307
+[DEBUG] MQTT RECEIVED request-stories:CSC307:Justin
+[DEBUG] MQTT RECEIVED request-stories:CSC307:Justin
+[INFO] Published to planitpoker/events: request-stories:CSC307:Justin
+[DEBUG] MQTT RECEIVED request-users:CSC307:Justin
+[DEBUG] MQTT RECEIVED request-users:CSC307:Justin
+[INFO] Published to planitpoker/events: request-users:CSC307:Justin
+[INFO] Published to planitpoker/events: sync-users:CSC307:Justin:Josh
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Justin:Justin
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Justin:Josh
+[INFO] Published to planitpoker/events: sync-users:CSC307:Justin:Justin
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Justin:Justin
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Justin:Josh
+[INFO] Creating room: CSC307, mode: Scrum
+[INFO] Published to planitpoker/events: join-room:Justin:CSC307
+[DEBUG] MQTT RECEIVED join-room:Justin:CSC307
+[DEBUG] MQTT RECEIVED join-room:Justin:CSC307
+[DEBUG] MQTT RECEIVED request-stories:CSC307:Justin
+[INFO] Published to planitpoker/events: request-stories:CSC307:Justin
+[DEBUG] MQTT RECEIVED request-stories:CSC307:Justin
+[INFO] Published to planitpoker/events: request-users:CSC307:Justin
+[DEBUG] MQTT RECEIVED request-users:CSC307:Justin
+[DEBUG] MQTT RECEIVED request-users:CSC307:Justin
+[INFO] Published to planitpoker/events: sync-users:CSC307:Justin:Justin|Josh
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Justin:Justin|Josh
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Justin:Josh|Justin
+[INFO] Published to planitpoker/events: sync-users:CSC307:Justin:Josh|Justin
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Justin:Justin|Josh
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Justin:Josh|Justin
+[INFO] importing stories...
+[INFO] importing stories...
+[INFO] Subscribed to topic: planitpoker/events
+[INFO] Subscribed to topic: planitpoker/events
+[INFO] Subscribed to topic: planitpoker/events
+[INFO] Justin Entering a room...
+[INFO] Justin Logging in...
+[INFO] Josh Entering a room...
+[INFO] Josh Logging in...
+[INFO] Steven Entering a room...
+[INFO] Steven Logging in...
+[INFO] Creating room: CSC307, mode: Scrum
+[DEBUG] MQTT RECEIVED create-room:CSC307
+[INFO] Published to planitpoker/events: create-room:CSC307
+[DEBUG] MQTT RECEIVED create-room:CSC307
+[DEBUG] MQTT RECEIVED create-room:CSC307
+[INFO] Published to planitpoker/events: join-room:Justin:CSC307
+[DEBUG] MQTT RECEIVED join-room:Justin:CSC307
+[DEBUG] MQTT RECEIVED join-room:Justin:CSC307
+[DEBUG] MQTT RECEIVED join-room:Justin:CSC307
+[INFO] Published to planitpoker/events: request-stories:CSC307:Justin
+[DEBUG] MQTT RECEIVED request-stories:CSC307:Justin
+[DEBUG] MQTT RECEIVED request-stories:CSC307:Justin
+[DEBUG] MQTT RECEIVED request-stories:CSC307:Justin
+[INFO] Published to planitpoker/events: request-users:CSC307:Justin
+[DEBUG] MQTT RECEIVED request-users:CSC307:Justin
+[DEBUG] MQTT RECEIVED request-users:CSC307:Justin
+[DEBUG] MQTT RECEIVED request-users:CSC307:Justin
+[INFO] Published to planitpoker/events: sync-users:CSC307:Justin:Josh
+[INFO] Published to planitpoker/events: sync-users:CSC307:Justin:Steven
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Justin:Josh
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Justin:Josh
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Justin:Steven
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Justin:Steven
+[INFO] Published to planitpoker/events: sync-users:CSC307:Justin:Justin
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Justin:Josh
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Justin:Steven
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Justin:Justin
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Justin:Justin
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Justin:Justin
+[INFO] Creating room: CSC307, mode: Scrum
+[INFO] Published to planitpoker/events: join-room:Justin:CSC307
+[DEBUG] MQTT RECEIVED join-room:Justin:CSC307
+[DEBUG] MQTT RECEIVED join-room:Justin:CSC307
+[DEBUG] MQTT RECEIVED join-room:Justin:CSC307
+[INFO] Published to planitpoker/events: request-stories:CSC307:Justin
+[DEBUG] MQTT RECEIVED request-stories:CSC307:Justin
+[DEBUG] MQTT RECEIVED request-stories:CSC307:Justin
+[DEBUG] MQTT RECEIVED request-stories:CSC307:Justin
+[INFO] Published to planitpoker/events: request-users:CSC307:Justin
+[DEBUG] MQTT RECEIVED request-users:CSC307:Justin
+[DEBUG] MQTT RECEIVED request-users:CSC307:Justin
+[DEBUG] MQTT RECEIVED request-users:CSC307:Justin
+[INFO] Published to planitpoker/events: sync-users:CSC307:Justin:Josh|Steven|Justin
+[INFO] Published to planitpoker/events: sync-users:CSC307:Justin:Justin|Josh|Steven
+[INFO] Published to planitpoker/events: sync-users:CSC307:Justin:Steven|Josh|Justin
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Justin:Josh|Steven|Justin
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Justin:Josh|Steven|Justin
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Justin:Justin|Josh|Steven
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Justin:Justin|Josh|Steven
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Justin:Steven|Josh|Justin
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Justin:Josh|Steven|Justin
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Justin:Steven|Josh|Justin
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Justin:Justin|Josh|Steven
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Justin:Steven|Josh|Justin
+[INFO] Creating room: CSC307, mode: Scrum
+[INFO] Published to planitpoker/events: join-room:Justin:CSC307
+[DEBUG] MQTT RECEIVED join-room:Justin:CSC307
+[DEBUG] MQTT RECEIVED join-room:Justin:CSC307
+[DEBUG] MQTT RECEIVED join-room:Justin:CSC307
+[INFO] Published to planitpoker/events: request-stories:CSC307:Justin
+[DEBUG] MQTT RECEIVED request-stories:CSC307:Justin
+[DEBUG] MQTT RECEIVED request-stories:CSC307:Justin
+[DEBUG] MQTT RECEIVED request-stories:CSC307:Justin
+[INFO] Published to planitpoker/events: request-users:CSC307:Justin
+[DEBUG] MQTT RECEIVED request-users:CSC307:Justin
+[DEBUG] MQTT RECEIVED request-users:CSC307:Justin
+[DEBUG] MQTT RECEIVED request-users:CSC307:Justin
+[INFO] Published to planitpoker/events: sync-users:CSC307:Justin:Steven|Josh|Justin
+[INFO] Published to planitpoker/events: sync-users:CSC307:Justin:Justin|Josh|Steven
+[INFO] Published to planitpoker/events: sync-users:CSC307:Justin:Josh|Steven|Justin
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Justin:Steven|Josh|Justin
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Justin:Steven|Josh|Justin
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Justin:Justin|Josh|Steven
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Justin:Josh|Steven|Justin
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Justin:Steven|Josh|Justin
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Justin:Justin|Josh|Steven
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Justin:Justin|Josh|Steven
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Justin:Josh|Steven|Justin
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Justin:Josh|Steven|Justin
+[INFO] importing stories...
+[INFO] importing stories...
+[INFO] Published to planitpoker/events: estimate:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:Steven:3
+[DEBUG] MQTT RECEIVED estimate:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:Steven:3
+[DEBUG] MQTT RECEIVED estimate:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:Steven:3
+[DEBUG] MQTT RECEIVED result:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:3.00
+[DEBUG] MQTT RECEIVED result:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:3.00
+[INFO] Published to planitpoker/events: result:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:3.00
+[DEBUG] MQTT RECEIVED estimate:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:Justin:3
+[INFO] Published to planitpoker/events: estimate:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:Justin:3
+[DEBUG] MQTT RECEIVED estimate:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:Justin:3
+[INFO] Published to planitpoker/events: result:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:3.00
+[DEBUG] MQTT RECEIVED result:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:3.00
+[DEBUG] MQTT RECEIVED result:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:3.00
+[INFO] Published to planitpoker/events: estimate:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:Steven:20
+[DEBUG] MQTT RECEIVED estimate:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:Steven:20
+[DEBUG] MQTT RECEIVED estimate:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:Steven:20
+[INFO] Published to planitpoker/events: result:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:20.00
+[DEBUG] MQTT RECEIVED result:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:20.00
+[DEBUG] MQTT RECEIVED result:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:20.00
+[INFO] Published to planitpoker/events: estimate:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:Justin:5
+[DEBUG] MQTT RECEIVED estimate:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:Justin:5
+[DEBUG] MQTT RECEIVED estimate:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:Justin:5
+[INFO] Published to planitpoker/events: result:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:5.00
+[DEBUG] MQTT RECEIVED result:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:5.00
+[DEBUG] MQTT RECEIVED result:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:5.00
+[INFO] Subscribed to topic: planitpoker/events
+[INFO] Justin Entering a room...
+[INFO] Justin Logging in...
+[INFO] Creating room: CSC307, mode: Scrum
+[INFO] Published to planitpoker/events: create-room:CSC307
+[DEBUG] MQTT RECEIVED create-room:CSC307
+[INFO] Published to planitpoker/events: join-room:Justin:CSC307
+[DEBUG] MQTT RECEIVED join-room:Justin:CSC307
+[INFO] Published to planitpoker/events: request-stories:CSC307:Justin
+[DEBUG] MQTT RECEIVED request-stories:CSC307:Justin
+[INFO] Published to planitpoker/events: request-users:CSC307:Justin
+[DEBUG] MQTT RECEIVED request-users:CSC307:Justin
+[INFO] Published to planitpoker/events: sync-users:CSC307:Justin:Justin
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Justin:Justin
+[INFO] importing stories...
+[DEBUG] MQTT RECEIVED estimate:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:Justin:3
+[INFO] Published to planitpoker/events: estimate:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:Justin:3
+[INFO] Published to planitpoker/events: result:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:3.00
+[DEBUG] MQTT RECEIVED result:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:3.00
+[INFO] Published to planitpoker/events: estimate:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:Justin:5
+[DEBUG] MQTT RECEIVED estimate:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:Justin:5
+[INFO] Published to planitpoker/events: result:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:5.00
+[DEBUG] MQTT RECEIVED result:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:5.00
+[INFO] Published to planitpoker/events: estimate:CSC307:#7960425 – As a team member, I want to see who's in the meeting so that I can make sure everyone's there:Justin:5
+[DEBUG] MQTT RECEIVED estimate:CSC307:#7960425 – As a team member, I want to see who's in the meeting so that I can make sure everyone's there:Justin:5
+[INFO] Published to planitpoker/events: result:CSC307:#7960425 – As a team member, I want to see who's in the meeting so that I can make sure everyone's there:5.00
+[DEBUG] MQTT RECEIVED result:CSC307:#7960425 – As a team member, I want to see who's in the meeting so that I can make sure everyone's there:5.00
+[INFO] Subscribed to topic: planitpoker/events
+[INFO] Subscribed to topic: planitpoker/events
+[INFO] Justin Entering a room...
+[INFO] Justin Logging in...
+[INFO] Agnes Entering a room...
+[INFO] Agnes Logging in...
+[INFO] Creating room: CSC307, mode: Scrum
+[INFO] Published to planitpoker/events: create-room:CSC307
+[DEBUG] MQTT RECEIVED create-room:CSC307
+[DEBUG] MQTT RECEIVED create-room:CSC307
+[INFO] Published to planitpoker/events: join-room:Justin:CSC307
+[DEBUG] MQTT RECEIVED join-room:Justin:CSC307
+[DEBUG] MQTT RECEIVED join-room:Justin:CSC307
+[INFO] Published to planitpoker/events: request-stories:CSC307:Justin
+[DEBUG] MQTT RECEIVED request-stories:CSC307:Justin
+[DEBUG] MQTT RECEIVED request-stories:CSC307:Justin
+[INFO] Published to planitpoker/events: request-users:CSC307:Justin
+[DEBUG] MQTT RECEIVED request-users:CSC307:Justin
+[DEBUG] MQTT RECEIVED request-users:CSC307:Justin
+[INFO] Published to planitpoker/events: sync-users:CSC307:Justin:Agnes
+[INFO] Published to planitpoker/events: sync-users:CSC307:Justin:Justin
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Justin:Agnes
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Justin:Agnes
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Justin:Justin
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Justin:Justin
+[INFO] Creating room: CSC307, mode: Scrum
+[INFO] Published to planitpoker/events: join-room:Justin:CSC307
+[DEBUG] MQTT RECEIVED join-room:Justin:CSC307
+[DEBUG] MQTT RECEIVED join-room:Justin:CSC307
+[INFO] Published to planitpoker/events: request-stories:CSC307:Justin
+[DEBUG] MQTT RECEIVED request-stories:CSC307:Justin
+[DEBUG] MQTT RECEIVED request-stories:CSC307:Justin
+[INFO] Published to planitpoker/events: request-users:CSC307:Justin
+[DEBUG] MQTT RECEIVED request-users:CSC307:Justin
+[DEBUG] MQTT RECEIVED request-users:CSC307:Justin
+[INFO] Published to planitpoker/events: sync-users:CSC307:Justin:Agnes|Justin
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Justin:Agnes|Justin
+[INFO] Published to planitpoker/events: sync-users:CSC307:Justin:Justin|Agnes
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Justin:Agnes|Justin
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Justin:Justin|Agnes
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Justin:Justin|Agnes
+[INFO] importing stories...
+[INFO] importing stories...
+[INFO] Published to planitpoker/events: estimate:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:Justin:3
+[DEBUG] MQTT RECEIVED estimate:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:Justin:3
+[DEBUG] MQTT RECEIVED estimate:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:Justin:3
+[INFO] Published to planitpoker/events: result:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:3.00
+[DEBUG] MQTT RECEIVED result:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:3.00
+[DEBUG] MQTT RECEIVED result:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:3.00
+[INFO] Published to planitpoker/events: estimate:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:Agnes:5
+[DEBUG] MQTT RECEIVED estimate:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:Agnes:5
+[DEBUG] MQTT RECEIVED estimate:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:Agnes:5
+[INFO] Published to planitpoker/events: result:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:5.00
+[DEBUG] MQTT RECEIVED result:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:5.00
+[DEBUG] MQTT RECEIVED result:CSC307:#7960399 – As a team member, I want to reset the points given to a story so that it can be voted on again.:5.00
+[DEBUG] MQTT RECEIVED estimate:CSC307:#7960425 – As a team member, I want to see who's in the meeting so that I can make sure everyone's there:Justin:3
+[INFO] Published to planitpoker/events: estimate:CSC307:#7960425 – As a team member, I want to see who's in the meeting so that I can make sure everyone's there:Justin:3
+[DEBUG] MQTT RECEIVED estimate:CSC307:#7960425 – As a team member, I want to see who's in the meeting so that I can make sure everyone's there:Justin:3
+[INFO] Published to planitpoker/events: result:CSC307:#7960425 – As a team member, I want to see who's in the meeting so that I can make sure everyone's there:3.00
+[DEBUG] MQTT RECEIVED result:CSC307:#7960425 – As a team member, I want to see who's in the meeting so that I can make sure everyone's there:3.00
+[DEBUG] MQTT RECEIVED result:CSC307:#7960425 – As a team member, I want to see who's in the meeting so that I can make sure everyone's there:3.00
+[INFO] Published to planitpoker/events: estimate:CSC307:#7960425 – As a team member, I want to see who's in the meeting so that I can make sure everyone's there:Justin:3
+[DEBUG] MQTT RECEIVED estimate:CSC307:#7960425 – As a team member, I want to see who's in the meeting so that I can make sure everyone's there:Justin:3
+[DEBUG] MQTT RECEIVED estimate:CSC307:#7960425 – As a team member, I want to see who's in the meeting so that I can make sure everyone's there:Justin:3
+[DEBUG] MQTT RECEIVED result:CSC307:#7960425 – As a team member, I want to see who's in the meeting so that I can make sure everyone's there:3.00
+[INFO] Published to planitpoker/events: result:CSC307:#7960425 – As a team member, I want to see who's in the meeting so that I can make sure everyone's there:3.00
+[DEBUG] MQTT RECEIVED result:CSC307:#7960425 – As a team member, I want to see who's in the meeting so that I can make sure everyone's there:3.00
+[INFO] Published to planitpoker/events: estimate:CSC307:#7960425 – As a team member, I want to see who's in the meeting so that I can make sure everyone's there:Agnes:5
+[DEBUG] MQTT RECEIVED estimate:CSC307:#7960425 – As a team member, I want to see who's in the meeting so that I can make sure everyone's there:Agnes:5
+[DEBUG] MQTT RECEIVED estimate:CSC307:#7960425 – As a team member, I want to see who's in the meeting so that I can make sure everyone's there:Agnes:5
+[DEBUG] MQTT RECEIVED result:CSC307:#7960425 – As a team member, I want to see who's in the meeting so that I can make sure everyone's there:5.00
+[DEBUG] MQTT RECEIVED result:CSC307:#7960425 – As a team member, I want to see who's in the meeting so that I can make sure everyone's there:5.00
+[INFO] Published to planitpoker/events: result:CSC307:#7960425 – As a team member, I want to see who's in the meeting so that I can make sure everyone's there:5.00

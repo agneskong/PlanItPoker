@@ -1,17 +1,8 @@
 package org.planitpoker;
 
-import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.HashMap;
 import java.util.Map;
-
-
-/**
- * Blackboard is a shared data source for all the other components,
- * voting, and game status
- *
- * @author Sathvik Chilakala
- */
-
 
 public class Blackboard {
 
@@ -22,45 +13,18 @@ public class Blackboard {
     private static String authToken;
     private static final Map<String, Integer> storyTitleToId = new HashMap<>();
 
-    public static void setAuthToken(String token) {
-        authToken = token;
-    }
-
-    public static String getAuthToken() {
-        return authToken;
-    }
-
-    public static void mapStory(String title, int id) {
-        storyTitleToId.put(title, id);
-    }
-
-    public static int getStoryId(String key) {
-        Integer id = storyTitleToId.get(key);
-        if (id == null) {
-            System.err.println("❌ Story not mapped for key: " + key);
-            return -1;
-        }
-        return id;
-    }
-
-    public static void addName(String name) {
+    public static synchronized void addName(String name) {
         if (!names.contains(name)) {
             names.add(name);
         }
     }
 
-    public static LinkedList<String> getNames() {
-        return names;
+    public static synchronized LinkedList<String> getNames() {
+        return new LinkedList<>(names);
     }
 
     public static void addStory(Story story) {
-        boolean exists = false;
-        for (Story s : stories) {
-            if (s.getTitle().equals(story.getTitle())) {
-                exists = true;
-                break;
-            }
-        }
+        boolean exists = stories.stream().anyMatch(s -> s.getTitle().equals(story.getTitle()));
         if (!exists) {
             stories.add(story);
         }
@@ -86,9 +50,26 @@ public class Blackboard {
         return mode;
     }
 
+    public static void setAuthToken(String token) {
+        authToken = token;
+    }
+
+    public static String getAuthToken() {
+        return authToken;
+    }
+
+    public static void mapStory(String title, int id) {
+        storyTitleToId.put(title, id);
+    }
+
+    public static int getStoryId(String key) {
+        return storyTitleToId.getOrDefault(key, -1);
+    }
+
     public static void logoutCurrentUser() {
         if (!names.isEmpty()) names.removeLast();
         currentRoom = null;
         mode = null;
     }
 }
+

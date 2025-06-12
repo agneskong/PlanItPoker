@@ -1,7 +1,5 @@
 package org.planitpoker;
 
-import org.planitpoker.Logger;
-
 public class CreateRoomNanny {
 
     private Main main;
@@ -13,16 +11,24 @@ public class CreateRoomNanny {
     }
 
     public void createRoom(String name, String selectedItem) {
-        Logger.getLogger().info("Creating room..." + name + ", mode: " + selectedItem);
+        Logger.getLogger().info("Creating room: " + name + ", mode: " + selectedItem);
+        boolean isNewRoom = Blackboard.getCurrentRoom() == null || !Blackboard.getCurrentRoom().equals(name);
+
         Blackboard.addCurrentRoom(name);
         Blackboard.addCurrentMode(selectedItem);
+
+        if (isNewRoom) {
+            publishRoomCreation(name);
+        }
+
+        loginNanny.joinRoom(Blackboard.getNames().getLast(), name); // Re-send join logic
         switchGUI();
     }
 
+
     private void switchGUI() {
         main.setTitle("Stories");
-        StoriesNanny storiesNanny = new StoriesNanny(main, loginNanny);
-        StoriesPanel storiesPanel = new StoriesPanel(storiesNanny);
+        StoriesPanel storiesPanel = new StoriesPanel(new StoriesNanny(main, loginNanny));
         main.setContentPane(storiesPanel);
         main.setSize(500, 500);
         main.revalidate();
@@ -32,8 +38,7 @@ public class CreateRoomNanny {
     public void publishRoomCreation(String roomName) {
         try {
             MQTTPublisher publisher = new MQTTPublisher();
-            String msg = "create-room:" + roomName;
-            publisher.publish("planitpoker/events", msg);
+            publisher.publish("planitpoker/events", "create-room:" + roomName);
             publisher.close();
         } catch (Exception e) {
             e.printStackTrace();
