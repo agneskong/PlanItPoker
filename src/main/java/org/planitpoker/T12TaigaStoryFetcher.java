@@ -63,7 +63,7 @@ public class T12TaigaStoryFetcher {
 		os.close();
 
 		int status = conn.getResponseCode();
-		System.out.println("🔧 HTTP Status: " + status);
+		T12Logger.getLogger().info("🔧 HTTP Status: " + status);
 
 		InputStream responseStream = (status >= 400) ? conn.getErrorStream() : conn.getInputStream();
 
@@ -71,7 +71,7 @@ public class T12TaigaStoryFetcher {
 		String response = in.lines().collect(Collectors.joining());
 		in.close();
 
-		System.out.println("🔍 Raw response:\n" + response);
+		T12Logger.getLogger().info("🔍 Raw response:\n" + response);
 
 		if (status >= 400) {
 			throw new IOException("Login failed: " + response);
@@ -123,8 +123,8 @@ public class T12TaigaStoryFetcher {
 			10136073, 1,  // Design
 			10136071, 2,  // Front
 			10136075, 3   // Back
-		);		
-		System.out.println("Backlog stories:");
+		);
+		T12Logger.getLogger().info("Backlog stories:");
 		for (int i = 0; i < allStories.length(); i++) {
 			JSONObject story = allStories.getJSONObject(i);
 			if (story.isNull("milestone")) {
@@ -132,8 +132,6 @@ public class T12TaigaStoryFetcher {
 				int id = story.getInt("id");
 				String titleKey = "#" + id;
 				T12Blackboard.mapStory(titleKey, id);
-				int storyId = T12Blackboard.getStoryId("#7960399");
-				System.out.println(storyId);
 				String subject = story.optString("subject", "(no title)");				
 				String responsible = "Unassigned";
 				if (!story.isNull("assigned_to_extra_info")) {
@@ -142,8 +140,8 @@ public class T12TaigaStoryFetcher {
 				}				
 				String totalPoints = story.isNull("total_points")
 					? "—"
-					: String.valueOf(story.getDouble("total_points"));				
-				System.out.printf("• #%d - %s\n   Responsible: %s\n   Total Points: %s\n",
+					: String.valueOf(story.getDouble("total_points"));
+				T12Logger.getLogger().info("• #%d - %s\n   Responsible: %s\n   Total Points: %s\n",
 					id, subject, responsible, totalPoints);				
 				if (!story.isNull("points")) {
 					JSONObject pointsObj = story.getJSONObject("points");
@@ -152,14 +150,14 @@ public class T12TaigaStoryFetcher {
 						int pointId = pointsObj.getInt(roleId);
 						int value = pointIdToValue.getOrDefault(pointId, -1);
 						String role = roleIdToName.getOrDefault(roleId, "Unknown");
-						
-						System.out.printf("     - %s (roleId: %s) → pointId: %d → value: %s\n",
+
+						T12Logger.getLogger().info("     - %s (roleId: %s) → pointId: %d → value: %s\n",
 							role, roleId, pointId, (value >= 0 ? value : "?"));
 						if (value >= 0) sum += value;
-					}				
-					System.out.println("     = Computed Sum: " + sum + "\n");
+					}
+					T12Logger.getLogger().info("     = Computed Sum: " + sum + "\n");
 				} else {
-					System.out.println("     No per-role points assigned.\n");
+					T12Logger.getLogger().info("     No per-role points assigned.\n");
 				}
 			}
 		}		
@@ -211,7 +209,7 @@ public class T12TaigaStoryFetcher {
 		reader.close();
 
 		JSONObject story = new JSONObject(response);
-		System.out.println("📘 Story Details:\n" + story.toString(2)); // Pretty-print
+		T12Logger.getLogger().info("📘 Story Details:\n" + story.toString(2)); // Pretty-print
 		return story;
 	}
 
@@ -226,7 +224,7 @@ public class T12TaigaStoryFetcher {
 		in.close();
 
 		JSONObject json = new JSONObject(response);
-		System.out.println("📦 Project Info:\n" + json.toString(2));
+		T12Logger.getLogger().info("📦 Project Info:\n" + json.toString(2));
 		return json;
 	}
 }
