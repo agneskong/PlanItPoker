@@ -11,7 +11,7 @@ package org.planitpoker;
  *
  * This class acts as a controller between user interaction and backend communication.
  *
- * Author: Sathvik Chilakala
+ * Author: Sathvik Chilakala and Justin Diaz
  * Date: June 12, 2025
  */
 

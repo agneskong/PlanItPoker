@@ -16,7 +16,7 @@ import java.util.List;
  *
  * This flexible design allows for modular logging to multiple outputs.
  *
- * Author: Sathvik Chilakala
+ * Author: Sathvik Chilakala and Justin Diaz
  * Date: June 12, 2025
  */
 
