@@ -17,28 +17,28 @@ import java.awt.*;
  */
 
 
-public class Main extends JFrame {
-    private LoginNanny loginNanny;
+public class T12Main extends JFrame {
+    private T12LoginNanny loginNanny;
     private static boolean loggerInitialized = false;
-    private static DistributedEventHandler eventHandler;
+    private static T12DistributedEventHandler eventHandler;
 
-    public Main() {
+    public T12Main() {
         initializeLoggerOnce();
         initializeEventHandlerOnce();
 
-        loginNanny = new LoginNanny(this);
-        LoginPanel loginPanel = new LoginPanel(loginNanny);
+        loginNanny = new T12LoginNanny(this);
+        T12LoginPanel loginPanel = new T12LoginPanel(loginNanny);
         setContentPane(loginPanel);
     }
 
-    public LoginNanny getLoginNanny() {
+    public T12LoginNanny getLoginNanny() {
         return loginNanny;
     }
 
     private void initializeLoggerOnce() {
         if (!loggerInitialized) {
-            Logger.addAppender(new ConsoleAppender());
-            Logger.addAppender(new FileAppender());
+            T12Logger.addAppender(new T12ConsoleAppender());
+            T12Logger.addAppender(new T12FileAppender());
             loggerInitialized = true;
         }
     }
@@ -46,7 +46,7 @@ public class Main extends JFrame {
     private void initializeEventHandlerOnce() {
         if (eventHandler == null) {
             try {
-                eventHandler = new DistributedEventHandler("planitpoker/events", this);
+                eventHandler = new T12DistributedEventHandler("planitpoker/events", this);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -56,11 +56,11 @@ public class Main extends JFrame {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             // Optional: Reset static state to ensure clean rerun
-            Blackboard.logoutCurrentUser();  // Clears last user
+            T12Blackboard.logoutCurrentUser();  // Clears last user
             Frame[] oldFrames =  JFrame.getFrames();
             for (Frame f : oldFrames) f.dispose();
 
-            Main main = new Main();
+            T12Main main = new T12Main();
             main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             main.setSize(400, 400);
             main.setLocationRelativeTo(null);

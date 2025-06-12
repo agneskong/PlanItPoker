@@ -17,7 +17,7 @@ import java.util.function.Consumer;
  * Date: June 12, 2025
  */
 
-public class EastPanel extends JPanel {
+public class T12EastPanel extends JPanel {
     private JLabel votesLabel;
     private JLabel averageLabel;
     private String storyTitle;
@@ -25,7 +25,7 @@ public class EastPanel extends JPanel {
     private JTextArea playersArea;
     private JTextArea votedArea;
 
-    public EastPanel(String storyTitle, Consumer<Void> nextStoryHandler) {
+    public T12EastPanel(String storyTitle, Consumer<Void> nextStoryHandler) {
         this.storyTitle = storyTitle;
         this.nextStoryHandler = nextStoryHandler;
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -96,12 +96,12 @@ public class EastPanel extends JPanel {
         updatePlayers();
 
         revealButton.addActionListener(e -> {
-            Story currentStory = findStory();
+            T12Story currentStory = findStory();
             if (currentStory != null) {
                 try {
-                    VotingNanny votingNanny = VotingPanel.getVotingNannyStatic();
+                    T12VotingNanny votingNanny = T12VotingPanel.getVotingNannyStatic();
                     if (votingNanny != null) {
-                        votingNanny.revealCards(Blackboard.getCurrentRoom(), currentStory.getTitle());
+                        votingNanny.revealCards(T12Blackboard.getCurrentRoom(), currentStory.getTitle());
                     }
                 } catch (Exception ex) {
                     ex.printStackTrace();
@@ -116,8 +116,8 @@ public class EastPanel extends JPanel {
         logoutButton.addActionListener(e -> {
             // Use main frame's login nanny to logout and switch GUI
             JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
-            if (topFrame instanceof Main) {
-                ((Main) topFrame).getLoginNanny().logout();
+            if (topFrame instanceof T12Main) {
+                ((T12Main) topFrame).getLoginNanny().logout();
             }
         });
     }
@@ -127,7 +127,7 @@ public class EastPanel extends JPanel {
     }
 
     public void updateStats() {
-        Story story = findStory();
+        T12Story story = findStory();
         if (story != null) {
             StringBuilder sb = new StringBuilder();
             for (String user : story.getVotes().keySet()) {
@@ -146,13 +146,13 @@ public class EastPanel extends JPanel {
     public void updatePlayers() {
         // Show all users in the room
         StringBuilder sb = new StringBuilder();
-        for (String name : Blackboard.getNames()) {
+        for (String name : T12Blackboard.getNames()) {
             sb.append(name).append("\n");
         }
         playersArea.setText(sb.toString());
 
         // Show users who have voted for the current story
-        Story story = findStory();
+        T12Story story = findStory();
         StringBuilder votedSb = new StringBuilder();
         if (story != null) {
             for (String user : story.getVotes().keySet()) {
@@ -162,8 +162,8 @@ public class EastPanel extends JPanel {
         votedArea.setText(votedSb.toString());
     }
 
-    private Story findStory() {
-        for (Story s : Blackboard.getStories()) {
+    private T12Story findStory() {
+        for (T12Story s : T12Blackboard.getStories()) {
             if (s.getTitle().equals(storyTitle)) return s;
         }
         return null;

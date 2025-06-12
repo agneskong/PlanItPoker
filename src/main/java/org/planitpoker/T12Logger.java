@@ -21,20 +21,20 @@ import java.util.List;
  */
 
 
-public class Logger {
-    private static final List<Appender> appenders = new ArrayList<>();
-    private static final Logger instance = new Logger();
+public class T12Logger {
+    private static final List<T12Appender> appenders = new ArrayList<>();
+    private static final T12Logger instance = new T12Logger();
 
-    public static Logger getLogger() {
+    public static T12Logger getLogger() {
         return instance;
     }
 
-    public static void addAppender(Appender appender) {
+    public static void addAppender(T12Appender appender) {
         appenders.add(appender);
     }
 
     private void log(String level, String message) {
-        for (Appender appender : appenders) {
+        for (T12Appender appender : appenders) {
             appender.append(level, message);
         }
     }

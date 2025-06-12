@@ -18,11 +18,11 @@ import java.util.Map;
  * Date: June 12, 2025
  */
 
-public class VotingPanel extends JPanel {
-    private static VotingNanny votingNannyStatic;
+public class T12VotingPanel extends JPanel {
+    private static T12VotingNanny votingNannyStatic;
     private String storyTitle;
     private int storyIndex = 0;
-    private EastPanel eastPanel;
+    private T12EastPanel eastPanel;
 
     // Timer related
     private JLabel timerLabel;
@@ -34,7 +34,7 @@ public class VotingPanel extends JPanel {
     private JPanel cardPanel;
     private JLabel titleLabel;
 
-    public VotingPanel(VotingNanny votingNanny) {
+    public T12VotingPanel(T12VotingNanny votingNanny) {
         votingNannyStatic = votingNanny;
         setLayout(new BorderLayout(20, 20));
         setBackground(new Color(245, 248, 255));
@@ -64,7 +64,7 @@ public class VotingPanel extends JPanel {
 
         add(topPanel, BorderLayout.NORTH);
 
-        LinkedList<Story> stories = Blackboard.getStories();
+        LinkedList<T12Story> stories = T12Blackboard.getStories();
         if (!stories.isEmpty()) {
             storyTitle = stories.get(storyIndex).getTitle();
         } else {
@@ -86,9 +86,9 @@ public class VotingPanel extends JPanel {
             card.addActionListener(e -> {
                 try {
                     int val = value.equals("½") ? 1 : (value.matches("\\d+") ? Integer.parseInt(value) : 0);
-                    String user = Blackboard.getNames().isEmpty() ? "DemoUser" : Blackboard.getNames().getLast();
-                    votingNanny.sendEstimate(Blackboard.getCurrentRoom(), storyTitle, user, val);
-                    votingNanny.broadcastResult(Blackboard.getCurrentRoom(), storyTitle, val);
+                    String user = T12Blackboard.getNames().isEmpty() ? "DemoUser" : T12Blackboard.getNames().getLast();
+                    votingNanny.sendEstimate(T12Blackboard.getCurrentRoom(), storyTitle, user, val);
+                    votingNanny.broadcastResult(T12Blackboard.getCurrentRoom(), storyTitle, val);
 
                     // Stop timer for this user/story and save
                     stopUserTimer(user, storyTitle);
@@ -100,10 +100,10 @@ public class VotingPanel extends JPanel {
         }
         add(cardPanel, BorderLayout.CENTER);
 
-        eastPanel = new EastPanel(storyTitle, this::handleNextStory);
+        eastPanel = new T12EastPanel(storyTitle, this::handleNextStory);
         add(eastPanel, BorderLayout.EAST);
 
-        add(new SouthPanel(), BorderLayout.SOUTH);
+        add(new T12SouthPanel(), BorderLayout.SOUTH);
 
         Timer eastPanelTimer = new Timer(1000, e -> eastPanel.updateStats());
         eastPanelTimer.start();
@@ -134,14 +134,14 @@ public class VotingPanel extends JPanel {
         timerLabel.setText("Voted in: " + totalTime + "s");
     }
 
-    public static VotingNanny getVotingNannyStatic() {
+    public static T12VotingNanny getVotingNannyStatic() {
         return votingNannyStatic;
     }
 
     public void handleNextStory(Void v) {
-        LinkedList<Story> stories = Blackboard.getStories();
+        LinkedList<T12Story> stories = T12Blackboard.getStories();
         if (stories.isEmpty()) return;
-        Story currentStory = stories.get(storyIndex);
+        T12Story currentStory = stories.get(storyIndex);
         // Only mark as completed and move to next on Next Story
         currentStory.markCompleted();
         if (storyIndex < stories.size() - 1) {
@@ -163,8 +163,8 @@ public class VotingPanel extends JPanel {
 
     private void showResultsChart() {
         removeAll();
-        Story currentStory = Blackboard.getStories().get(storyIndex);
-        add(new PlotPanel(currentStory, Blackboard.getStories(), this::returnToVoting), BorderLayout.CENTER);
+        T12Story currentStory = T12Blackboard.getStories().get(storyIndex);
+        add(new T12PlotPanel(currentStory, T12Blackboard.getStories(), this::returnToVoting), BorderLayout.CENTER);
         revalidate();
         repaint();
     }
@@ -183,7 +183,7 @@ public class VotingPanel extends JPanel {
         add(topPanel, BorderLayout.NORTH);
         add(cardPanel, BorderLayout.CENTER);
         add(eastPanel, BorderLayout.EAST);
-        add(new SouthPanel(), BorderLayout.SOUTH);
+        add(new T12SouthPanel(), BorderLayout.SOUTH);
         revalidate();
         repaint();
     }

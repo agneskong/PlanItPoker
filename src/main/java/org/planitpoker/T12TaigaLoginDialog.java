@@ -14,12 +14,12 @@ import java.awt.*;
  * Date: June 12, 2025
  */
 
-public class TaigaLoginDialog extends JDialog {
+public class T12TaigaLoginDialog extends JDialog {
     private JTextField usernameField;
     private JPasswordField passwordField;
     private boolean submitted = false;
 
-    public TaigaLoginDialog(JFrame parent) {
+    public T12TaigaLoginDialog(JFrame parent) {
         super(parent, "Taiga Login", true);
         setSize(300, 150);
         setLayout(new GridLayout(3, 1));

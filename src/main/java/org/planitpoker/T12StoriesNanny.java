@@ -4,7 +4,6 @@ import javax.swing.*;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.planitpoker.Logger;
 
 /**
  * StoriesNanny handles operations related to managing user stories within the PlanItPoker app.
@@ -21,12 +20,12 @@ import org.planitpoker.Logger;
  * Date: June 12, 2025
  */
 
-public class StoriesNanny {
+public class T12StoriesNanny {
 
-    private Main main;
-    private LoginNanny loginNanny;
+    private T12Main main;
+    private T12LoginNanny loginNanny;
 
-    public StoriesNanny(Main main, LoginNanny loginNanny) {
+    public T12StoriesNanny(T12Main main, T12LoginNanny loginNanny) {
         this.main = main;
         this.loginNanny = loginNanny;
     }
@@ -37,10 +36,10 @@ public class StoriesNanny {
         for (String line : lines) {
             line = line.trim();
             if (!line.isEmpty()) {
-                Blackboard.addStory(new Story(line));
+                T12Blackboard.addStory(new T12Story(line));
                 try {
-                    MQTTPublisher publisher = new MQTTPublisher();
-                    String room = Blackboard.getCurrentRoom();
+                    T12MQTTPublisher publisher = new T12MQTTPublisher();
+                    String room = T12Blackboard.getCurrentRoom();
                     String msg = String.format("add-story:%s:%s", room, line);
                     publisher.publish("planitpoker/events", msg);
                     publisher.close();
@@ -59,14 +58,14 @@ public class StoriesNanny {
         for (String line : lines) {
             line = line.trim();
             if (!line.isEmpty()) {
-                Blackboard.addStory(new Story(line));
+                T12Blackboard.addStory(new T12Story(line));
             }
         }
         switchGUI();
     }
 
     public void importStories(JFrame parentFrame, JTextArea outputTextArea) {
-        TaigaLoginDialog loginDialog = new TaigaLoginDialog(parentFrame);
+        T12TaigaLoginDialog loginDialog = new T12TaigaLoginDialog(parentFrame);
         loginDialog.setLocationRelativeTo(parentFrame);
         loginDialog.setVisible(true);
 
@@ -75,11 +74,11 @@ public class StoriesNanny {
             String password = loginDialog.getPassword();
 
             try {
-                String token = TaigaStoryFetcher.loginAndGetToken(username, password);
-                Blackboard.setAuthToken(token);
-                int projectId = TaigaStoryFetcher.getProjectId(token, "agneskong-test-1");
+                String token = T12TaigaStoryFetcher.loginAndGetToken(username, password);
+                T12Blackboard.setAuthToken(token);
+                int projectId = T12TaigaStoryFetcher.getProjectId(token, "agneskong-test-1");
 
-                JSONArray stories = TaigaStoryFetcher.fetchUserStories(token, projectId);
+                JSONArray stories = T12TaigaStoryFetcher.fetchUserStories(token, projectId);
 
                 outputTextArea.setText("");  // ✅ Clear area and write new stories
                 for (int i = 0; i < stories.length(); i++) {
@@ -92,18 +91,18 @@ public class StoriesNanny {
             }
         }
 
-        Logger.getLogger().info("importing stories...");
+        T12Logger.getLogger().info("importing stories...");
     }
 
 
     public void cancel() {
-        Logger.getLogger().info("canceling...");
+        T12Logger.getLogger().info("canceling...");
     }
 
     private void switchGUI() {
         main.setTitle("dashboard");
-        DashboardNanny dashboardNanny = new DashboardNanny(main, loginNanny);
-        DashboardPanel dashboardPanel = new DashboardPanel(dashboardNanny, main, loginNanny);
+        T12DashboardNanny dashboardNanny = new T12DashboardNanny(main, loginNanny);
+        T12DashboardPanel dashboardPanel = new T12DashboardPanel(dashboardNanny, main, loginNanny);
         main.setContentPane(dashboardPanel);
         main.setSize(800, 600);
         main.setLocationRelativeTo(null);
@@ -113,8 +112,8 @@ public class StoriesNanny {
 
     public void goToVotingPanel() {
         main.setTitle("Voting");
-        VotingNanny votingNanny = new VotingNanny(main);
-        VotingPanel votingPanel = new VotingPanel(votingNanny);
+        T12VotingNanny votingNanny = new T12VotingNanny(main);
+        T12VotingPanel votingPanel = new T12VotingPanel(votingNanny);
         main.setContentPane(votingPanel);
         main.setSize(900, 700);
         main.setLocationRelativeTo(null);

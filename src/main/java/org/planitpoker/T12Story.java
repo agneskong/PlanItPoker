@@ -14,12 +14,12 @@ import java.util.Map;
  * Date: June 12, 2025
  */
 
-public class Story {
+public class T12Story {
     private final String title;
     private Map<String, Integer> votes;
     private boolean active; 
 
-    public Story(String title) {
+    public T12Story(String title) {
         this.title = title;
         this.active = true;
         this.votes = new HashMap<>();

@@ -21,18 +21,18 @@ import java.awt.*;
 public class PlanItPokerDemo {
 
     public static void main(String[] args) {
-        Blackboard.addStory(new Story("Build login screen"));
-        Blackboard.addStory(new Story("Create dashboard page"));
-        Blackboard.addStory(new Story("Implement voting backend"));
+        T12Blackboard.addStory(new T12Story("Build login screen"));
+        T12Blackboard.addStory(new T12Story("Create dashboard page"));
+        T12Blackboard.addStory(new T12Story("Implement voting backend"));
 
         JFrame frame = new JFrame("PlanItPoker Demo");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(800, 600);
         frame.setLayout(new BorderLayout());
-        frame.add(new CardsPanel(), BorderLayout.CENTER);
-        String storyTitle = Blackboard.getStories().isEmpty() ? "No Stories" : Blackboard.getStories().get(0).getTitle();
-        frame.add(new EastPanel(storyTitle, v -> {}), BorderLayout.EAST);
-        frame.add(new SouthPanel(), BorderLayout.SOUTH);
+        frame.add(new T12CardsPanel(), BorderLayout.CENTER);
+        String storyTitle = T12Blackboard.getStories().isEmpty() ? "No Stories" : T12Blackboard.getStories().get(0).getTitle();
+        frame.add(new T12EastPanel(storyTitle, v -> {}), BorderLayout.EAST);
+        frame.add(new T12SouthPanel(), BorderLayout.SOUTH);
 
         frame.setVisible(true);
     }

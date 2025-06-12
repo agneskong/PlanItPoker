@@ -3,7 +3,6 @@ package org.planitpoker;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.awt.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
@@ -25,7 +24,7 @@ import java.io.*;
  * Date: June 12, 2025
  */
 
-public class TaigaStoryFetcher {
+public class T12TaigaStoryFetcher {
 	
 	private static final String TAIGA_API = "https://api.taiga.io/api/v1";
 
@@ -132,8 +131,8 @@ public class TaigaStoryFetcher {
 				backlogStories.put(story);				
 				int id = story.getInt("id");
 				String titleKey = "#" + id;
-				Blackboard.mapStory(titleKey, id);
-				int storyId = Blackboard.getStoryId("#7960399");
+				T12Blackboard.mapStory(titleKey, id);
+				int storyId = T12Blackboard.getStoryId("#7960399");
 				System.out.println(storyId);
 				String subject = story.optString("subject", "(no title)");				
 				String responsible = "Unassigned";

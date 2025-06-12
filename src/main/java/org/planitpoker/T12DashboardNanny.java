@@ -8,11 +8,11 @@ package org.planitpoker;
  * Date: June 12, 2025
  */
 
-public class DashboardNanny {
-    private Main main;
-    private LoginNanny loginNanny;
+public class T12DashboardNanny {
+    private T12Main main;
+    private T12LoginNanny loginNanny;
 
-    public DashboardNanny(Main main, LoginNanny loginNanny) {
+    public T12DashboardNanny(T12Main main, T12LoginNanny loginNanny) {
         this.main = main;
         this.loginNanny = loginNanny;
     }
@@ -23,8 +23,8 @@ public class DashboardNanny {
 
     private void switchGUI() {
         main.setTitle("voting");
-        VotingNanny votingNanny = new VotingNanny(main);
-        VotingPanel votingPanel = new VotingPanel(votingNanny);
+        T12VotingNanny votingNanny = new T12VotingNanny(main);
+        T12VotingPanel votingPanel = new T12VotingPanel(votingNanny);
 
         main.setContentPane(votingPanel);
         main.setSize(800, 600);

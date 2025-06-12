@@ -13,9 +13,9 @@ import java.awt.*;
  * Date: June 12, 2025
  */
 
-public class CreateRoomPanel extends JPanel {
+public class T12CreateRoomPanel extends JPanel {
 
-    public CreateRoomPanel(CreateRoomNanny createRoomNanny, LoginNanny loginNanny) {
+    public T12CreateRoomPanel(T12CreateRoomNanny createRoomNanny, T12LoginNanny loginNanny) {
         setBackground(new Color(245, 248, 255));
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
@@ -88,7 +88,7 @@ public class CreateRoomPanel extends JPanel {
 
     private void refreshUsers(JTextArea usersArea) {
         StringBuilder sb = new StringBuilder();
-        for (String user : Blackboard.getNames()) {
+        for (String user : T12Blackboard.getNames()) {
             sb.append(user).append("\n");
         }
         usersArea.setText(sb.toString());

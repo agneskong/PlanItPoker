@@ -36,8 +36,8 @@ import java.util.Map;
  */
 
 
-public class PlotPanel extends JPanel {
-    public PlotPanel(Story story, LinkedList<Story> allStories, Runnable returnToVotingCallback) {
+public class T12PlotPanel extends JPanel {
+    public T12PlotPanel(T12Story story, LinkedList<T12Story> allStories, Runnable returnToVotingCallback) {
         setLayout(new BorderLayout(20, 20));
         setBackground(new Color(245, 248, 255));
 
@@ -69,7 +69,7 @@ public class PlotPanel extends JPanel {
 
         // Bar chart: votes per story
         DefaultCategoryDataset storyDataset = new DefaultCategoryDataset();
-        for (Story s : allStories) {
+        for (T12Story s : allStories) {
             storyDataset.addValue(s.getVotes().size(), "Votes", s.getTitle());
         }
         JFreeChart storyBarChart = ChartFactory.createBarChart(
@@ -82,7 +82,7 @@ public class PlotPanel extends JPanel {
         // Bar chart: votes per team member (across all stories)
         DefaultCategoryDataset userDataset = new DefaultCategoryDataset();
         Map<String, Integer> userVotes = new HashMap<>();
-        for (Story s : allStories) {
+        for (T12Story s : allStories) {
             for (String user : s.getVotes().keySet()) {
                 userVotes.put(user, userVotes.getOrDefault(user, 0) + 1);
             }

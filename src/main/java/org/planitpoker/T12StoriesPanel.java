@@ -14,9 +14,9 @@ import java.awt.*;
  * Date: June 12, 2025
  */
 
-public class StoriesPanel extends JPanel {
+public class T12StoriesPanel extends JPanel {
 
-    public StoriesPanel(StoriesNanny storiesNanny) {
+    public T12StoriesPanel(T12StoriesNanny storiesNanny) {
         setBackground(new Color(245, 248, 255));
         setLayout(new BorderLayout(20, 20));
 

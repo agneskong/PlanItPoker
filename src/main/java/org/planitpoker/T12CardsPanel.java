@@ -13,13 +13,13 @@ import java.awt.*;
  * Date: June 12, 2025
  */
 
-public class CardsPanel extends JPanel {
+public class T12CardsPanel extends JPanel {
 
     private static final String[] CARD_VALUES = {
             "0", "½", "1", "2", "3", "5", "8", "20", "40", "100", "?", "☕"
     };
 
-    public CardsPanel() {
+    public T12CardsPanel() {
         setLayout(new GridLayout(4, 3, 10, 10));
         for (String value : CARD_VALUES) {
             JButton card = new JButton(value);

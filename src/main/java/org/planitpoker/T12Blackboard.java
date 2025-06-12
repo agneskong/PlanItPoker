@@ -17,10 +17,10 @@ import java.util.Map;
  * Date: June 12, 2025
  */
 
-public class Blackboard {
+public class T12Blackboard {
 
     private static LinkedList<String> names = new LinkedList<>();
-    private static LinkedList<Story> stories = new LinkedList<>();
+    private static LinkedList<T12Story> stories = new LinkedList<>();
     private static String currentRoom;
     private static String mode;
     private static String authToken;
@@ -36,14 +36,14 @@ public class Blackboard {
         return new LinkedList<>(names);
     }
 
-    public static void addStory(Story story) {
+    public static void addStory(T12Story story) {
         boolean exists = stories.stream().anyMatch(s -> s.getTitle().equals(story.getTitle()));
         if (!exists) {
             stories.add(story);
         }
     }
 
-    public static LinkedList<Story> getStories() {
+    public static LinkedList<T12Story> getStories() {
         return stories;
     }
 

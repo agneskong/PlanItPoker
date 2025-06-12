@@ -16,22 +16,22 @@ package org.planitpoker;
  */
 
 
-public class LoginNanny {
-    private Main main;
+public class T12LoginNanny {
+    private T12Main main;
 
-    public LoginNanny(Main main) {
+    public T12LoginNanny(T12Main main) {
         this.main = main;
     }
 
     public void enterRoom(String name) {
-        Logger.getLogger().info(name + " Entering a room...");
+        T12Logger.getLogger().info(name + " Entering a room...");
         login(name);
     }
 
     public void login(String name) {
-        Logger.getLogger().info(name + " Logging in...");
-        Blackboard.addName(name);
-        String room = Blackboard.getCurrentRoom();
+        T12Logger.getLogger().info(name + " Logging in...");
+        T12Blackboard.addName(name);
+        String room = T12Blackboard.getCurrentRoom();
         if (room != null) {
             joinRoom(name, room);
         }
@@ -40,7 +40,7 @@ public class LoginNanny {
 
     public void joinRoom(String name, String room) {
         try {
-            MQTTPublisher publisher = new MQTTPublisher();
+            T12MQTTPublisher publisher = new T12MQTTPublisher();
             publisher.publish("planitpoker/events", "join-room:" + name + ":" + room);
             publisher.publish("planitpoker/events", "request-stories:" + room + ":" + name);
             publisher.publish("planitpoker/events", "request-users:" + room + ":" + name);
@@ -51,12 +51,12 @@ public class LoginNanny {
     }
 
     public void logout() {
-        Logger.getLogger().info("Logging out...");
-        if (!Blackboard.getNames().isEmpty()) {
-            Blackboard.getNames().removeLast();
+        T12Logger.getLogger().info("Logging out...");
+        if (!T12Blackboard.getNames().isEmpty()) {
+            T12Blackboard.getNames().removeLast();
         }
         main.setTitle("Login");
-        LoginPanel loginPanel = new LoginPanel(new LoginNanny(main));
+        T12LoginPanel loginPanel = new T12LoginPanel(new T12LoginNanny(main));
         main.setContentPane(loginPanel);
         main.setSize(400, 400);
         main.revalidate();
@@ -65,7 +65,7 @@ public class LoginNanny {
 
     private void switchGUI() {
         main.setTitle("Room");
-        CreateRoomPanel createRoomPanel = new CreateRoomPanel(new CreateRoomNanny(main, this), this);
+        T12CreateRoomPanel createRoomPanel = new T12CreateRoomPanel(new T12CreateRoomNanny(main, this), this);
         main.setContentPane(createRoomPanel);
         main.setSize(500, 500);
         main.revalidate();

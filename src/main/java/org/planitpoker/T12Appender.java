@@ -10,6 +10,6 @@ package org.planitpoker;
  * Date: June 12, 2025
  */
 
-public interface Appender {
+public interface T12Appender {
     void append(String level, String message);
 } 

@@ -17,9 +17,9 @@ import java.awt.*;
  */
 
 
-public class LoginPanel extends JPanel {
+public class T12LoginPanel extends JPanel {
 
-    public LoginPanel(LoginNanny joinRoomNanny) {
+    public T12LoginPanel(T12LoginNanny joinRoomNanny) {
         setBackground(new Color(245, 248, 255));
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
@@ -57,7 +57,7 @@ public class LoginPanel extends JPanel {
         add(enterButton);
         add(Box.createVerticalStrut(18));
         add(accountLabel);
-        add(Box.createVerticalStrut(6));
+        add(Box.createVerticalStrut(4));
         add(loginButton);
 
         enterButton.addActionListener(e -> joinRoomNanny.enterRoom(nameField.getText()));

@@ -1,7 +1,5 @@
 package org.planitpoker;
 
-import org.json.JSONObject;
-
 /**
  * Controller responsible for managing voting interactions in the Planning Poker app.
  *
@@ -13,16 +11,16 @@ import org.json.JSONObject;
  * Date: June 12, 2025
  */
 
-public class VotingNanny {
-    private Main main;
+public class T12VotingNanny {
+    private T12Main main;
 
-    public VotingNanny(Main main) {
+    public T12VotingNanny(T12Main main) {
         this.main = main;
     }
 
     public void sendEstimate(String room, String story, String user, int estimate) {
         try {
-            MQTTPublisher publisher = new MQTTPublisher();
+            T12MQTTPublisher publisher = new T12MQTTPublisher();
             String msg = String.format("estimate:%s:%s:%s:%d", room, story, user, estimate);
             publisher.publish("planitpoker/events", msg);
             publisher.close();
@@ -33,8 +31,8 @@ public class VotingNanny {
 
     public void revealCards(String room, String story) {
         try {
-            MQTTPublisher publisher = new MQTTPublisher();
-            String user = Blackboard.getNames().isEmpty() ? "" : Blackboard.getNames().getLast();
+            T12MQTTPublisher publisher = new T12MQTTPublisher();
+            String user = T12Blackboard.getNames().isEmpty() ? "" : T12Blackboard.getNames().getLast();
             String msg = String.format("reveal:%s:%s:%s", room, story, user);
             publisher.publish("planitpoker/events", msg);
             publisher.close();
@@ -45,8 +43,8 @@ public class VotingNanny {
 
     public void broadcastResult(String room, String story, double avg) {
         try {
-            MQTTPublisher publisher = new MQTTPublisher();
-            String user = Blackboard.getNames().isEmpty() ? "" : Blackboard.getNames().getLast();
+            T12MQTTPublisher publisher = new T12MQTTPublisher();
+            String user = T12Blackboard.getNames().isEmpty() ? "" : T12Blackboard.getNames().getLast();
             String msg = String.format("result:%s:%s:%.2f:%s", room, story, avg, user);
             publisher.publish("planitpoker/events", msg);
             publisher.close();
@@ -58,8 +56,8 @@ public class VotingNanny {
     private void switchGUI() {
         main.setTitle("Room");
         // Updated for new constructors:
-        CreateRoomNanny createRoomNanny = new CreateRoomNanny(main, main.getLoginNanny());
-        CreateRoomPanel createRoomPanel = new CreateRoomPanel(createRoomNanny, main.getLoginNanny());
+        T12CreateRoomNanny createRoomNanny = new T12CreateRoomNanny(main, main.getLoginNanny());
+        T12CreateRoomPanel createRoomPanel = new T12CreateRoomPanel(createRoomNanny, main.getLoginNanny());
         main.setContentPane(createRoomPanel);
         main.setSize(500, 500);
         main.revalidate();

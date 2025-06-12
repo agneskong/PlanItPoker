@@ -16,7 +16,7 @@ import java.io.PrintWriter;
  * Date: June 12, 2025
  */
 
-public class FileAppender implements Appender {
+public class T12FileAppender implements T12Appender {
     private static final String LOG_FILE = "planitpoker.log";
 
     @Override

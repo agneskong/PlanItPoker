@@ -9,7 +9,7 @@ package org.planitpoker;
  * Date: June 12, 2025
  */
 
-public class ConsoleAppender implements Appender {
+public class T12ConsoleAppender implements T12Appender {
     @Override
     public void append(String level, String message) {
         System.out.println("[" + level + "] " + message);

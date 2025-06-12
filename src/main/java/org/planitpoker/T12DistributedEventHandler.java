@@ -3,8 +3,6 @@ package org.planitpoker;
 import java.awt.Window;
 import org.eclipse.paho.client.mqttv3.*;
 import javax.swing.*;
-import java.awt.*;
-import org.planitpoker.Logger;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,15 +20,15 @@ import java.util.Map;
  */
 
 
-public class DistributedEventHandler implements MqttCallback {
-    private MQTTSubscriber subscriber;
-    private Main mainFrame;
+public class T12DistributedEventHandler implements MqttCallback {
+    private T12MQTTSubscriber subscriber;
+    private T12Main mainFrame;
     private interface MessageHandler { void handle(String msg); }
     private final Map<String, MessageHandler> handlerMap = new HashMap<>();
 
-    public DistributedEventHandler(String topic, Main mainFrame) throws MqttException {
+    public T12DistributedEventHandler(String topic, T12Main mainFrame) throws MqttException {
         this.mainFrame = mainFrame;
-        subscriber = new MQTTSubscriber(topic, this);
+        subscriber = new T12MQTTSubscriber(topic, this);
         handlerMap.put("request-stories:", this::handleRequestStories);
         handlerMap.put("create-room:", this::handleCreateRoom);
         handlerMap.put("sync-stories:", this::handleSyncStories);
@@ -46,13 +44,13 @@ public class DistributedEventHandler implements MqttCallback {
 
     @Override
     public void connectionLost(Throwable cause) {
-        Logger.getLogger().warn("MQTT connection lost: " + cause.getMessage());
+        T12Logger.getLogger().warn("MQTT connection lost: " + cause.getMessage());
     }
 
     @Override
     public void messageArrived(String topic, MqttMessage message) {
         String msg = new String(message.getPayload());
-        Logger.getLogger().debug("MQTT RECEIVED " + msg);
+        T12Logger.getLogger().debug("MQTT RECEIVED " + msg);
         for (Map.Entry<String, MessageHandler> entry : handlerMap.entrySet()) {
             if (msg.startsWith(entry.getKey())) {
                 entry.getValue().handle(msg);
@@ -66,11 +64,11 @@ public class DistributedEventHandler implements MqttCallback {
         if (parts.length >= 3) {
             String room = parts[1];
             String user = parts[2];
-            if (room.equals(Blackboard.getCurrentRoom()) && !Blackboard.getStories().isEmpty()) {
+            if (room.equals(T12Blackboard.getCurrentRoom()) && !T12Blackboard.getStories().isEmpty()) {
                 try {
-                    MQTTPublisher publisher = new MQTTPublisher();
+                    T12MQTTPublisher publisher = new T12MQTTPublisher();
                     StringBuilder sb = new StringBuilder();
-                    for (Story s : Blackboard.getStories()) {
+                    for (T12Story s : T12Blackboard.getStories()) {
                         sb.append(s.getTitle()).append("|");
                     }
                     if (sb.length() > 0) sb.setLength(sb.length() - 1);
@@ -86,7 +84,7 @@ public class DistributedEventHandler implements MqttCallback {
 
     private void handleCreateRoom(String msg) {
         String room = msg.substring("create-room:".length());
-        Blackboard.addCurrentRoom(room);
+        T12Blackboard.addCurrentRoom(room);
     }
 
     private void handleSyncStories(String msg) {
@@ -95,18 +93,18 @@ public class DistributedEventHandler implements MqttCallback {
             String room = parts[1];
             String user = parts[2];
             String storyList = parts[3];
-            String currentUser = Blackboard.getNames().isEmpty() ? "" : Blackboard.getNames().getLast();
-            if (room.equals(Blackboard.getCurrentRoom()) && user.equals(currentUser)) {
+            String currentUser = T12Blackboard.getNames().isEmpty() ? "" : T12Blackboard.getNames().getLast();
+            if (room.equals(T12Blackboard.getCurrentRoom()) && user.equals(currentUser)) {
                 for (String title : storyList.split("\\|")) {
                     boolean exists = false;
-                    for (Story s : Blackboard.getStories()) {
+                    for (T12Story s : T12Blackboard.getStories()) {
                         if (s.getTitle().equals(title)) {
                             exists = true;
                             break;
                         }
                     }
                     if (!exists && !title.trim().isEmpty()) {
-                        Blackboard.addStory(new Story(title));
+                        T12Blackboard.addStory(new T12Story(title));
                     }
                 }
                 refreshAllStoryPanels();
@@ -119,11 +117,11 @@ public class DistributedEventHandler implements MqttCallback {
         if (parts.length >= 3) {
             String room = parts[1];
             String user = parts[2];
-            if (room.equals(Blackboard.getCurrentRoom()) && !Blackboard.getNames().isEmpty()) {
+            if (room.equals(T12Blackboard.getCurrentRoom()) && !T12Blackboard.getNames().isEmpty()) {
                 try {
-                    MQTTPublisher publisher = new MQTTPublisher();
+                    T12MQTTPublisher publisher = new T12MQTTPublisher();
                     StringBuilder sb = new StringBuilder();
-                    for (String n : Blackboard.getNames()) {
+                    for (String n : T12Blackboard.getNames()) {
                         sb.append(n).append("|");
                     }
                     if (sb.length() > 0) sb.setLength(sb.length() - 1);
@@ -143,11 +141,11 @@ public class DistributedEventHandler implements MqttCallback {
             String room = parts[1];
             String user = parts[2];
             String userList = parts[3];
-            if (room.equals(Blackboard.getCurrentRoom())) {
-                Blackboard.getNames().clear();
+            if (room.equals(T12Blackboard.getCurrentRoom())) {
+                T12Blackboard.getNames().clear();
                 for (String n : userList.split("\\|")) {
                     if (!n.trim().isEmpty()) {
-                        Blackboard.addName(n);
+                        T12Blackboard.addName(n);
                     }
                 }
                 SwingUtilities.invokeLater(() -> {
@@ -166,14 +164,14 @@ public class DistributedEventHandler implements MqttCallback {
         if (parts.length >= 3) {
             String room = parts[1];
             String user = parts[2];
-            if (room.equals(Blackboard.getCurrentRoom()) && !user.equals(room)) {
-                if (!Blackboard.getNames().contains(user)) {
-                    Blackboard.addName(user);
+            if (room.equals(T12Blackboard.getCurrentRoom()) && !user.equals(room)) {
+                if (!T12Blackboard.getNames().contains(user)) {
+                    T12Blackboard.addName(user);
                 }
                 try {
-                    MQTTPublisher publisher = new MQTTPublisher();
+                    T12MQTTPublisher publisher = new T12MQTTPublisher();
                     StringBuilder sb = new StringBuilder();
-                    for (String n : Blackboard.getNames()) {
+                    for (String n : T12Blackboard.getNames()) {
                         sb.append(n).append("|");
                     }
                     if (sb.length() > 0) sb.setLength(sb.length() - 1);
@@ -191,13 +189,13 @@ public class DistributedEventHandler implements MqttCallback {
         String[] parts = msg.split(":");
         if (parts.length >= 3) {
             String user = parts[2];
-            Blackboard.getNames().remove(user);
-            String room = Blackboard.getCurrentRoom();
+            T12Blackboard.getNames().remove(user);
+            String room = T12Blackboard.getCurrentRoom();
             if (room != null) {
                 try {
-                    MQTTPublisher publisher = new MQTTPublisher();
+                    T12MQTTPublisher publisher = new T12MQTTPublisher();
                     StringBuilder sb = new StringBuilder();
-                    for (String n : Blackboard.getNames()) {
+                    for (String n : T12Blackboard.getNames()) {
                         sb.append(n).append("|");
                     }
                     if (sb.length() > 0) sb.setLength(sb.length() - 1);
@@ -216,15 +214,15 @@ public class DistributedEventHandler implements MqttCallback {
         if (parts.length >= 3) {
             String room = parts[1];
             String storyTitle = parts[2];
-            if (room.equals(Blackboard.getCurrentRoom())) {
+            if (room.equals(T12Blackboard.getCurrentRoom())) {
                 boolean exists = false;
-                for (Story s : Blackboard.getStories()) {
+                for (T12Story s : T12Blackboard.getStories()) {
                     if (s.getTitle().equals(storyTitle)) {
                         exists = true; break;
                     }
                 }
                 if (!exists && !storyTitle.trim().isEmpty()) {
-                    Blackboard.addStory(new Story(storyTitle));
+                    T12Blackboard.addStory(new T12Story(storyTitle));
                 }
             }
         }
@@ -238,16 +236,16 @@ public class DistributedEventHandler implements MqttCallback {
             String storyTitle = parts[2];
             String user = parts[3];
             int vote = Integer.parseInt(parts[4]);
-            if (room.equals(Blackboard.getCurrentRoom())) {
-                Story found = null;
-                for (Story s : Blackboard.getStories()) {
+            if (room.equals(T12Blackboard.getCurrentRoom())) {
+                T12Story found = null;
+                for (T12Story s : T12Blackboard.getStories()) {
                     if (s.getTitle().equals(storyTitle)) {
                         found = s; break;
                     }
                 }
                 if (found == null) {
-                    found = new Story(storyTitle);
-                    Blackboard.addStory(found);
+                    found = new T12Story(storyTitle);
+                    T12Blackboard.addStory(found);
                 }
                 found.submitVotes(user, vote);
                 refreshAllStoryPanels();
@@ -261,9 +259,9 @@ public class DistributedEventHandler implements MqttCallback {
             String room = parts[1];
             String storyTitle = parts[2];
             String revealUser = parts[3];
-            String currentUser = Blackboard.getNames().isEmpty() ? "" : Blackboard.getNames().getLast();
-            if (room.equals(Blackboard.getCurrentRoom()) && revealUser.equals(currentUser)) {
-                for (Story s : Blackboard.getStories()) {
+            String currentUser = T12Blackboard.getNames().isEmpty() ? "" : T12Blackboard.getNames().getLast();
+            if (room.equals(T12Blackboard.getCurrentRoom()) && revealUser.equals(currentUser)) {
+                for (T12Story s : T12Blackboard.getStories()) {
                     if (s.getTitle().equals(storyTitle)) {
                         s.markCompleted();
                         StringBuilder votesMsg = new StringBuilder();
@@ -278,8 +276,8 @@ public class DistributedEventHandler implements MqttCallback {
                         });
                     }
                 }
-            } else if (room.equals(Blackboard.getCurrentRoom())) {
-                for (Story s : Blackboard.getStories()) {
+            } else if (room.equals(T12Blackboard.getCurrentRoom())) {
+                for (T12Story s : T12Blackboard.getStories()) {
                     if (s.getTitle().equals(storyTitle)) {
                         s.markCompleted();
                         refreshAllStoryPanels();
@@ -296,14 +294,14 @@ public class DistributedEventHandler implements MqttCallback {
             String storyTitle = parts[2];
             String avg = parts[3];
             String resultUser = parts[4];
-            String currentUser = Blackboard.getNames().isEmpty() ? "" : Blackboard.getNames().getLast();
-            if (room.equals(Blackboard.getCurrentRoom()) && resultUser.equals(currentUser)) {
+            String currentUser = T12Blackboard.getNames().isEmpty() ? "" : T12Blackboard.getNames().getLast();
+            if (room.equals(T12Blackboard.getCurrentRoom()) && resultUser.equals(currentUser)) {
                 SwingUtilities.invokeLater(() -> {
                     JOptionPane.showMessageDialog(mainFrame,
                         "Average vote for story '" + storyTitle + "': " + avg);
                     refreshAllStoryPanels();
                 });
-            } else if (room.equals(Blackboard.getCurrentRoom())) {
+            } else if (room.equals(T12Blackboard.getCurrentRoom())) {
                 refreshAllStoryPanels();
             }
         }

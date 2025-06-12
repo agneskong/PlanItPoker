@@ -19,14 +19,14 @@ import java.util.HashSet; // <-- ADD THIS!
  */
 
 
-public class SouthPanel extends JPanel {
+public class T12SouthPanel extends JPanel {
     private JTabbedPane storyTabs;
     private JTextArea activeStories;
     private JTextArea completedStories;
     private JTextArea allStories;
-    public static final Set<SouthPanel> INSTANCES = new HashSet<>();
+    public static final Set<T12SouthPanel> INSTANCES = new HashSet<>();
 
-    public SouthPanel() {
+    public T12SouthPanel() {
         INSTANCES.add(this);
         setBackground(new Color(245, 248, 255));
         setLayout(new BorderLayout());
@@ -54,7 +54,7 @@ public class SouthPanel extends JPanel {
         StringBuilder completed = new StringBuilder();
         StringBuilder all = new StringBuilder();
 
-        for (Story story : Blackboard.getStories()) {
+        for (T12Story story : T12Blackboard.getStories()) {
             all.append("- ").append(story.getTitle()).append("\n");
             if (story.isActive()) {
                 active.append("- ").append(story.getTitle()).append("\n");
@@ -68,7 +68,7 @@ public class SouthPanel extends JPanel {
     }
 
     public static void refreshAllPanels() {
-        for (SouthPanel panel : INSTANCES) {
+        for (T12SouthPanel panel : INSTANCES) {
             panel.refreshStories();
         }
     }

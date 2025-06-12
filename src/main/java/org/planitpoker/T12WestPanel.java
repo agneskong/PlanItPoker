@@ -19,14 +19,14 @@ import java.util.LinkedList;
  * Date: June 12, 2025
  */
 
-public class WestPanel extends JPanel {
+public class T12WestPanel extends JPanel {
     private JLabel userLabel;
     private JTextArea playersArea;
-    private DashboardNanny dashboardNanny;
-    private Main main;
-    private LoginNanny loginNanny;
+    private T12DashboardNanny dashboardNanny;
+    private T12Main main;
+    private T12LoginNanny loginNanny;
 
-    public WestPanel(DashboardNanny dashboardNanny, Main main, LoginNanny loginNanny) {
+    public T12WestPanel(T12DashboardNanny dashboardNanny, T12Main main, T12LoginNanny loginNanny) {
         this.dashboardNanny = dashboardNanny;
         this.main = main;
         this.loginNanny = loginNanny;
@@ -103,14 +103,14 @@ public class WestPanel extends JPanel {
     }
 
     private String getCurrentUser() {
-        LinkedList<String> names = Blackboard.getNames();
+        LinkedList<String> names = T12Blackboard.getNames();
         return names.isEmpty() ? "User" : names.getLast();
     }
 
     private void refreshPlayerNames() {
         userLabel.setText(getCurrentUser());
         StringBuilder sb = new StringBuilder();
-        for (String name : Blackboard.getNames()) {
+        for (String name : T12Blackboard.getNames()) {
             sb.append(name).append("\n");
         }
         playersArea.setText(sb.toString());
