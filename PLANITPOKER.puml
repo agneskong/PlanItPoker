@@ -1,0 +1,473 @@
+@startuml
+
+' External/placeholder classes
+class Story
+class MqttClient
+class MqttMessage
+interface MqttCallback
+class Logger {
+    + static Logger getLogger()
+    + void info(String message)
+}
+class ChartPanel
+class JFreeChart
+class PiePlot
+class CategoryPlot
+class DefaultPieDataset
+class DefaultCategoryDataset
+class Timer
+class JScrollPane
+class JTextArea
+class JTabbedPane
+
+class Blackboard {
+    - static LinkedList<String> names
+    - static LinkedList<Story> stories
+    - static String currentRoom
+    - static String mode
+    - static String authToken
+    - static final Map<String, Integer> storyTitleToId
+
+    + static synchronized void addName(String name)
+    + static synchronized LinkedList<String> getNames()
+    + static void addStory(Story story)
+    + static LinkedList<Story> getStories()
+    + static void addCurrentRoom(String name)
+    + static String getCurrentRoom()
+    + static void addCurrentMode(String selectedItem)
+    + static String getMode()
+    + static void setAuthToken(String token)
+    + static String getAuthToken()
+    + static void mapStory(String title, int id)
+    + static int getStoryId(String key)
+    + static void logoutCurrentUser()
+}
+
+class MQTTPublisher {
+    - final String broker = "tcp://test.mosquitto.org:1883"
+    - final String clientId
+    - MqttClient client
+
+    + MQTTPublisher() throws MqttException
+    + void publish(String topic, String message) throws MqttException
+    + void close() throws MqttException
+}
+
+class MQTTSubscriber {
+    - final String broker = "tcp://test.mosquitto.org:1883"
+    - final String clientId
+    - MqttClient client
+
+    + MQTTSubscriber(String topic, MqttCallback callback) throws MqttException
+    + void close() throws MqttException
+}
+
+class PlotPanel {
+    + PlotPanel(Story story, LinkedList<Story> allStories, Runnable returnToVotingCallback)
+}
+
+class SouthPanel {
+    - JTabbedPane storyTabs
+    - JTextArea activeStories
+    - JTextArea completedStories
+    - JTextArea allStories
+    - static final Set<SouthPanel> INSTANCES
+
+    + SouthPanel()
+    + void refreshStories()
+    + static void refreshAllPanels()
+    + void removeNotify()
+}
+
+' --- Additions for StoriesNanny ---
+class StoriesNanny {
+    - Main main
+    - LoginNanny loginNanny
+
+    + StoriesNanny(Main main, LoginNanny loginNanny)
+    + void saveAndAddNew(JTextArea storyTextArea)
+    + void saveAndClose(JTextArea storyTextArea)
+    + void importStories(JFrame parentFrame, JTextArea outputTextArea)
+    + void cancel()
+    + void goToVotingPanel()
+}
+
+' --- Additions for StoriesPanel ---
+class StoriesPanel {
+    + StoriesPanel(StoriesNanny storiesNanny)
+}
+
+' --- Expanded definition for Story ---
+class Story {
+    - String title
+    - Map<String, Integer> votes
+    - boolean active
+
+    + Story(String title)
+    + String getTitle()
+    + boolean isActive()
+    + void markCompleted()
+    + void submitVotes(String user, int vote)
+    + Map<String, Integer> getVotes()
+    + void clearVotes()
+    + double calculateAverage()
+}
+
+' --- Additions for TaigaLoginDialog ---
+class TaigaLoginDialog {
+    - JTextField usernameField
+    - JPasswordField passwordField
+    - boolean submitted
+
+    + TaigaLoginDialog(JFrame parent)
+    + boolean wasSubmitted()
+    + String getUsername()
+    + String getPassword()
+}
+
+' --- Additions for TaigaStoryFetcher ---
+class TaigaStoryFetcher {
+    {static} + String loginAndGetToken(String username, String password)
+    {static} + int getProjectId(String token, String projectSlug)
+    {static} + JSONArray fetchUserStories(String token, int projectId)
+    {static} + JSONObject getStoryDetails(String token, int storyId)
+    {static} + JSONObject getProjectInfo(String token, int projectId)
+}
+
+' --- VotingNanny Class Diagram Addition ---
+class VotingNanny {
+    - Main main
+    + VotingNanny(Main main)
+    + void sendEstimate(String room, String story, String user, int estimate)
+    + void revealCards(String room, String story)
+    + void broadcastResult(String room, String story, double avg)
+    - void switchGUI()
+}
+
+' --- VotingPanel Class Diagram Addition ---
+class VotingPanel {
+    - static VotingNanny votingNannyStatic
+    - String storyTitle
+    - int storyIndex
+    - EastPanel eastPanel
+    - JLabel timerLabel
+    - Timer timer
+    - long startTime
+    - Map<String, Map<String, Long>> voteTimes
+    - JButton showDataButton
+    - JPanel cardPanel
+    - JLabel titleLabel
+    + VotingPanel(VotingNanny votingNanny)
+    + void handleNextStory(Void v)
+    + void refreshStories()
+    + static VotingNanny getVotingNannyStatic()
+    - void startUserTimer()
+    - void updateTimer()
+    - void stopUserTimer(String user, String story)
+    - void showResultsChart()
+    - void returnToVoting()
+}
+
+' --- WestPanel Class Diagram Addition ---
+class WestPanel {
+    - JLabel userLabel
+    - JTextArea playersArea
+    - DashboardNanny dashboardNanny
+    - Main main
+    - LoginNanny loginNanny
+    + WestPanel(DashboardNanny, Main, LoginNanny)
+    - String getCurrentUser()
+    - void refreshPlayerNames()
+    - void handleLogout()
+    + void refreshStories()
+}
+
+' --- Appender Interface Addition ---
+interface Appender {
+    + void append(String level, String message)
+}
+
+class CardsPanel {
+    - static final String[] CARD_VALUES
+    + CardsPanel()
+}
+
+class ConsoleAppender {
+    + void append(String level, String message)
+}
+
+class CreateRoomNanny {
+    - Main main
+    - LoginNanny loginNanny
+
+    + CreateRoomNanny(Main main, LoginNanny loginNanny)
+    + void createRoom(String name, String selectedItem)
+    + void publishRoomCreation(String roomName)
+    - void switchGUI()
+}
+
+class CreateRoomPanel {
+    + CreateRoomPanel(CreateRoomNanny createRoomNanny, LoginNanny loginNanny)
+    - void refreshUsers(JTextArea usersArea)
+}
+
+class DashboardNanny {
+    - Main main
+    - LoginNanny loginNanny
+
+    + DashboardNanny(Main main, LoginNanny loginNanny)
+    + void startButton()
+    - void switchGUI()
+}
+
+class DashboardPanel {
+    + DashboardPanel(DashboardNanny dashboardNanny, Main main, LoginNanny loginNanny)
+}
+
+class DistributedEventHandler {
+    - MQTTSubscriber subscriber
+    - Main mainFrame
+
+    + DistributedEventHandler(String topic, Main mainFrame) throws MqttException
+    + void connectionLost(Throwable cause)
+    + void messageArrived(String topic, MqttMessage message)
+    + void deliveryComplete(IMqttDeliveryToken token)
+    - static void refreshAllStoryPanels()
+    - static void refreshIfPanel(Component comp)
+}
+
+class EastPanel {
+    - JLabel votesLabel
+    - JLabel averageLabel
+    - String storyTitle
+    - Consumer<Void> nextStoryHandler
+    - JTextArea playersArea
+    - JTextArea votedArea
+
+    + EastPanel(String storyTitle, Consumer<Void> nextStoryHandler)
+    + void setStoryTitle(String storyTitle)
+    + void updateStats()
+    + void updatePlayers()
+    + void refreshStories()
+    - Story findStory()
+}
+
+class FileAppender {
+    - static final String LOG_FILE = "planitpoker.log"
+
+    + void append(String level, String message)
+}
+
+class Logger {
+    - static appenders: List<Appender> = new ArrayList<>()
+    - static instance: Logger = new Logger()
+    + static getLogger(): Logger
+    + static addAppender(appender: Appender): void
+    - log(level: String, message: String): void
+    + trace(message: String): void
+    + debug(message: String): void
+    + info(message: String): void
+    + warn(message: String): void
+    + error(message: String): void
+}
+
+class LoginNanny {
+    - main: Main
+    + LoginNanny(main: Main)
+    + enterRoom(name: String): void
+    + login(name: String): void
+    + joinRoom(name: String, room: String): void
+    + logout(): void
+    - switchGUI(): void
+}
+
+class LoginPanel {
+    - titleLabel: JLabel
+    - subtitleLabel: JLabel
+    - nameField: JTextField
+    - enterButton: JButton
+    - accountLabel: JLabel
+    - loginButton: JButton
+
+    + LoginPanel(joinRoomNanny: LoginNanny)
+}
+
+Blackboard --> Story : uses
+MQTTPublisher --> MqttClient : uses
+MQTTPublisher --> MqttMessage : uses
+MQTTPublisher --> Logger : logs
+MQTTSubscriber --> MqttClient : uses
+MQTTSubscriber --> MqttCallback : registers
+MQTTSubscriber --> Logger : logs
+
+PlotPanel --> Story : renders
+PlotPanel --> "LinkedList<Story>" : uses
+PlotPanel --> Runnable : callback
+PlotPanel --> ChartPanel : UI component
+PlotPanel --> JFreeChart : renders
+PlotPanel --> PiePlot : configures
+PlotPanel --> CategoryPlot : configures
+PlotPanel --> DefaultPieDataset : charts
+PlotPanel --> DefaultCategoryDataset : charts
+
+SouthPanel --> Blackboard : gets stories
+SouthPanel --> Story : displays
+SouthPanel --> JTextArea : UI
+SouthPanel --> JTabbedPane : UI
+SouthPanel --> JScrollPane : UI
+SouthPanel --> Timer : refresh interval
+SouthPanel --> Set : tracks instances
+
+StoriesNanny --> Main : uses
+StoriesNanny --> LoginNanny : uses
+StoriesNanny --> JTextArea : modifies
+StoriesNanny --> JFrame : imports
+StoriesNanny --> JOptionPane : UI feedback
+StoriesNanny --> Story : creates
+StoriesNanny --> Blackboard : updates
+StoriesNanny --> MQTTPublisher : publishes
+StoriesNanny --> TaigaLoginDialog : creates
+StoriesNanny --> TaigaStoryFetcher : fetches
+StoriesNanny --> JSONArray : parses
+StoriesNanny --> JSONObject : parses
+StoriesNanny --> Logger : logs
+StoriesNanny --> DashboardNanny : switches to
+StoriesNanny --> DashboardPanel : UI
+StoriesNanny --> VotingNanny : switches to
+StoriesNanny --> VotingPanel : UI
+
+StoriesPanel --> JPanel : extends
+StoriesPanel --> StoriesNanny : calls
+StoriesPanel --> JTextArea : uses
+StoriesPanel --> JScrollPane : wraps
+StoriesPanel --> JButton : triggers
+StoriesPanel --> JLabel : UI
+StoriesPanel --> JFrame : parent reference
+StoriesPanel --> SwingUtilities : utility
+StoriesPanel --> BorderLayout : layout
+StoriesPanel --> GridLayout : layout
+StoriesPanel --> Font : styles
+StoriesPanel --> Color : background
+
+Story --> Map : holds votes
+
+TaigaLoginDialog --> JDialog : extends
+TaigaLoginDialog --> JTextField : input
+TaigaLoginDialog --> JPasswordField : input
+TaigaLoginDialog --> JButton : confirms
+TaigaLoginDialog --> JFrame : parent reference
+TaigaLoginDialog --> GridLayout : layout
+
+TaigaStoryFetcher --> "uses" JSONObject
+TaigaStoryFetcher --> "uses" JSONArray
+TaigaStoryFetcher --> "uses" Blackboard : story mapping
+TaigaStoryFetcher --> "calls" URL
+TaigaStoryFetcher --> "calls" HttpURLConnection
+TaigaStoryFetcher --> "reads" BufferedReader
+TaigaStoryFetcher --> "writes" OutputStream
+
+VotingNanny --> Main
+VotingNanny --> MQTTPublisher : publishes messages
+VotingNanny --> CreateRoomNanny : uses in switchGUI()
+VotingNanny --> CreateRoomPanel : sets GUI
+VotingNanny --> LoginNanny : accesses via main
+
+VotingPanel --> VotingNanny : uses for sendEstimate(), broadcastResult()
+VotingPanel --> EastPanel : voting sidebar
+VotingPanel --> SouthPanel : reused UI panel
+VotingPanel --> PlotPanel : shows chart on demand
+VotingPanel --> Story : gets and updates stories
+VotingPanel --> Blackboard : accesses current room, users, stories
+
+WestPanel --> DashboardNanny : uses startButton()
+WestPanel --> LoginNanny : calls logout()
+WestPanel --> Blackboard : retrieves user names
+WestPanel --> Main : reference for navigation (unused directly here)
+
+Logger --> Appender : uses
+
+CardsPanel --> JButton : creates
+CardsPanel --> GridLayout : uses layout
+CardsPanel --> Color : sets background
+CardsPanel --> Font : sets font
+CardsPanel --> JPanel : extends
+
+ConsoleAppender ..|> Appender : implements
+
+CreateRoomNanny --> Main : controls GUI
+CreateRoomNanny --> LoginNanny : calls joinRoom()
+CreateRoomNanny --> Blackboard : sets room & mode
+CreateRoomNanny --> Logger : logs room creation
+CreateRoomNanny --> MQTTPublisher : publishes event
+CreateRoomNanny --> StoriesPanel : creates for GUI
+CreateRoomNanny --> StoriesNanny : constructs
+
+CreateRoomPanel --> CreateRoomNanny : invokes createRoom()
+CreateRoomPanel --> LoginNanny : invokes logout()
+CreateRoomPanel --> Blackboard : fetches user list
+CreateRoomPanel --> JTextArea : updates users
+CreateRoomPanel --> JPanel : extends
+CreateRoomPanel --> JButton : UI controls
+CreateRoomPanel --> JLabel : UI
+CreateRoomPanel --> JComboBox : UI
+CreateRoomPanel --> JTextField : UI
+CreateRoomPanel --> JScrollPane : wraps usersArea
+CreateRoomPanel --> Timer : refresh loop
+CreateRoomPanel --> BoxLayout : layout manager
+
+DashboardNanny --> Main : controls frame
+DashboardNanny --> LoginNanny : holds reference
+DashboardNanny --> VotingNanny : creates
+DashboardNanny --> VotingPanel : displays
+
+DashboardPanel --> DashboardNanny : passes to WestPanel
+DashboardPanel --> Main : passes to WestPanel
+DashboardPanel --> LoginNanny : passes to WestPanel
+DashboardPanel --> CardsPanel : adds center
+DashboardPanel --> SouthPanel : adds south
+DashboardPanel --> WestPanel : adds east
+DashboardPanel --> JPanel : extends
+DashboardPanel --> BorderLayout : uses
+DashboardPanel --> Color : sets background
+
+DistributedEventHandler --> MQTTSubscriber : subscribes
+DistributedEventHandler --> MQTTPublisher : publishes events
+DistributedEventHandler --> MqttCallback : implements
+DistributedEventHandler --> MqttMessage : processes
+DistributedEventHandler --> Blackboard : reads/writes users & stories
+DistributedEventHandler --> Story : creates/modifies
+DistributedEventHandler --> Logger : logs MQTT events
+DistributedEventHandler --> Main : updates GUI
+DistributedEventHandler --> JOptionPane : shows results
+DistributedEventHandler --> SwingUtilities : GUI thread
+DistributedEventHandler --> Window : scans visible components
+
+EastPanel --> Story : queries and displays stats
+EastPanel --> Blackboard : reads usernames and stories
+EastPanel --> VotingNanny : calls revealCards()
+EastPanel --> VotingPanel : uses static reference
+EastPanel --> Main : gets LoginNanny to logout
+EastPanel --> LoginNanny : logout()
+EastPanel --> Component : extends JPanel
+EastPanel --> ConsumerVoid : nextStoryHandler
+
+FileAppender ..|> Appender
+FileAppender --> FileWriter
+FileAppender --> PrintWriter
+FileAppender --> IOException
+
+LoginNanny --> Main : has a
+LoginNanny ..> Logger : uses
+LoginNanny ..> Blackboard : uses
+LoginNanny ..> MQTTPublisher : uses
+LoginNanny ..> LoginPanel : creates
+LoginNanny ..> CreateRoomPanel : creates
+LoginNanny ..> CreateRoomNanny : creates
+
+LoginPanel ..> LoginNanny : uses
+LoginPanel --|> JPanel
+LoginPanel *-- JLabel
+LoginPanel *-- JTextField
+LoginPanel *-- JButton
+
+@enduml
