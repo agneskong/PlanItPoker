@@ -82,7 +82,7 @@ public class EastPanel extends JPanel {
         add(Box.createVerticalStrut(8));
         add(votedLabel);
         add(votedArea);
-        add(Box.createVerticalStrut(10));
+        add(Box.createVerticalStrut(6));
         add(logoutButton);
 
         updateStats();
