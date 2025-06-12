@@ -1080,3 +1080,342 @@
 [DEBUG] MQTT RECEIVED result:CSC307:#7960425 – As a team member, I want to see who's in the meeting so that I can make sure everyone's there:5.00
 [DEBUG] MQTT RECEIVED result:CSC307:#7960425 – As a team member, I want to see who's in the meeting so that I can make sure everyone's there:5.00
 [INFO] Published to planitpoker/events: result:CSC307:#7960425 – As a team member, I want to see who's in the meeting so that I can make sure everyone's there:5.00
+[INFO] Subscribed to topic: planitpoker/events
+[INFO] john Entering a room...
+[INFO] john Logging in...
+[INFO] Subscribed to topic: planitpoker/events
+[INFO] bob Entering a room...
+[INFO] bob Logging in...
+[INFO] Creating room: CSC307, mode: Scrum
+[INFO] Published to planitpoker/events: create-room:CSC307
+[DEBUG] MQTT RECEIVED create-room:CSC307
+[DEBUG] MQTT RECEIVED create-room:CSC307
+[DEBUG] MQTT RECEIVED join-room:john:CSC307
+[DEBUG] MQTT RECEIVED join-room:john:CSC307
+[INFO] Published to planitpoker/events: join-room:john:CSC307
+[DEBUG] MQTT RECEIVED request-stories:CSC307:john
+[DEBUG] MQTT RECEIVED request-stories:CSC307:john
+[INFO] Published to planitpoker/events: request-stories:CSC307:john
+[DEBUG] MQTT RECEIVED request-users:CSC307:john
+[DEBUG] MQTT RECEIVED request-users:CSC307:john
+[INFO] Published to planitpoker/events: request-users:CSC307:john
+[INFO] Published to planitpoker/events: sync-users:CSC307:john:bob
+[DEBUG] MQTT RECEIVED sync-users:CSC307:john:bob
+[DEBUG] MQTT RECEIVED sync-users:CSC307:john:john
+[INFO] Published to planitpoker/events: sync-users:CSC307:john:john
+[DEBUG] MQTT RECEIVED sync-users:CSC307:john:bob
+[DEBUG] MQTT RECEIVED sync-users:CSC307:john:john
+[INFO] Creating room: CSC307, mode: Scrum
+[DEBUG] MQTT RECEIVED join-room:john:CSC307
+[DEBUG] MQTT RECEIVED join-room:john:CSC307
+[INFO] Published to planitpoker/events: join-room:john:CSC307
+[DEBUG] MQTT RECEIVED request-stories:CSC307:john
+[INFO] Published to planitpoker/events: request-stories:CSC307:john
+[DEBUG] MQTT RECEIVED request-stories:CSC307:john
+[DEBUG] MQTT RECEIVED request-users:CSC307:john
+[DEBUG] MQTT RECEIVED request-users:CSC307:john
+[INFO] Published to planitpoker/events: request-users:CSC307:john
+[INFO] Published to planitpoker/events: sync-users:CSC307:john:john|bob
+[DEBUG] MQTT RECEIVED sync-users:CSC307:john:john|bob
+[DEBUG] MQTT RECEIVED sync-users:CSC307:john:bob|john
+[INFO] Published to planitpoker/events: sync-users:CSC307:john:bob|john
+[DEBUG] MQTT RECEIVED sync-users:CSC307:john:john|bob
+[DEBUG] MQTT RECEIVED sync-users:CSC307:john:bob|john
+[DEBUG] MQTT RECEIVED add-story:CSC307:john 1
+[INFO] Published to planitpoker/events: add-story:CSC307:john 1
+[DEBUG] MQTT RECEIVED add-story:CSC307:john 1
+[INFO] Published to planitpoker/events: add-story:CSC307:bob 1
+[DEBUG] MQTT RECEIVED add-story:CSC307:bob 1
+[DEBUG] MQTT RECEIVED add-story:CSC307:bob 1
+[INFO] Published to planitpoker/events: estimate:CSC307:john 1:bob:3
+[DEBUG] MQTT RECEIVED estimate:CSC307:john 1:bob:3
+[DEBUG] MQTT RECEIVED estimate:CSC307:john 1:bob:3
+[INFO] Published to planitpoker/events: result:CSC307:john 1:3.00
+[DEBUG] MQTT RECEIVED result:CSC307:john 1:3.00
+[DEBUG] MQTT RECEIVED result:CSC307:john 1:3.00
+[DEBUG] MQTT RECEIVED estimate:CSC307:john 1:john:100
+[DEBUG] MQTT RECEIVED estimate:CSC307:john 1:john:100
+[INFO] Published to planitpoker/events: estimate:CSC307:john 1:john:100
+[DEBUG] MQTT RECEIVED result:CSC307:john 1:100.00
+[DEBUG] MQTT RECEIVED result:CSC307:john 1:100.00
+[INFO] Published to planitpoker/events: result:CSC307:john 1:100.00
+[DEBUG] MQTT RECEIVED estimate:CSC307:bob 1:john:1
+[DEBUG] MQTT RECEIVED estimate:CSC307:bob 1:john:1
+[INFO] Published to planitpoker/events: estimate:CSC307:bob 1:john:1
+[DEBUG] MQTT RECEIVED result:CSC307:bob 1:1.00
+[DEBUG] MQTT RECEIVED result:CSC307:bob 1:1.00
+[INFO] Published to planitpoker/events: result:CSC307:bob 1:1.00
+[INFO] Subscribed to topic: planitpoker/events
+[INFO] Subscribed to topic: planitpoker/events
+[INFO] john Entering a room...
+[INFO] john Logging in...
+[INFO] bob Entering a room...
+[INFO] bob Logging in...
+[INFO] Creating room: CSC307, mode: Scrum
+[INFO] Creating room: CSC307, mode: Scrum
+[DEBUG] MQTT RECEIVED create-room:CSC307
+[INFO] Published to planitpoker/events: create-room:CSC307
+[DEBUG] MQTT RECEIVED create-room:CSC307
+[DEBUG] MQTT RECEIVED create-room:CSC307
+[DEBUG] MQTT RECEIVED create-room:CSC307
+[INFO] Published to planitpoker/events: create-room:CSC307
+[DEBUG] MQTT RECEIVED join-room:bob:CSC307
+[INFO] Published to planitpoker/events: join-room:bob:CSC307
+[DEBUG] MQTT RECEIVED join-room:bob:CSC307
+[DEBUG] MQTT RECEIVED request-stories:CSC307:bob
+[INFO] Published to planitpoker/events: request-stories:CSC307:bob
+[DEBUG] MQTT RECEIVED request-stories:CSC307:bob
+[DEBUG] MQTT RECEIVED request-users:CSC307:bob
+[INFO] Published to planitpoker/events: request-users:CSC307:bob
+[DEBUG] MQTT RECEIVED request-users:CSC307:bob
+[INFO] Published to planitpoker/events: join-room:john:CSC307
+[INFO] Published to planitpoker/events: request-stories:CSC307:john
+[INFO] Published to planitpoker/events: request-users:CSC307:john
+[INFO] Published to planitpoker/events: sync-users:CSC307:bob:john
+[DEBUG] MQTT RECEIVED join-room:john:CSC307
+[DEBUG] MQTT RECEIVED request-stories:CSC307:john
+[DEBUG] MQTT RECEIVED request-users:CSC307:john
+[INFO] Published to planitpoker/events: sync-users:CSC307:bob:bob
+[DEBUG] MQTT RECEIVED join-room:john:CSC307
+[DEBUG] MQTT RECEIVED request-stories:CSC307:john
+[DEBUG] MQTT RECEIVED request-users:CSC307:john
+[INFO] Published to planitpoker/events: sync-users:CSC307:john:bob
+[INFO] Published to planitpoker/events: sync-users:CSC307:john:john
+[DEBUG] MQTT RECEIVED sync-users:CSC307:bob:john
+[DEBUG] MQTT RECEIVED sync-users:CSC307:bob:bob
+[DEBUG] MQTT RECEIVED sync-users:CSC307:john:bob
+[DEBUG] MQTT RECEIVED sync-users:CSC307:bob:john
+[DEBUG] MQTT RECEIVED sync-users:CSC307:john:john
+[DEBUG] MQTT RECEIVED sync-users:CSC307:bob:bob
+[DEBUG] MQTT RECEIVED sync-users:CSC307:john:bob
+[DEBUG] MQTT RECEIVED sync-users:CSC307:john:john
+[DEBUG] MQTT RECEIVED add-story:CSC307:john story 1
+[INFO] Published to planitpoker/events: add-story:CSC307:john story 1
+[DEBUG] MQTT RECEIVED add-story:CSC307:john story 1
+[INFO] Published to planitpoker/events: add-story:CSC307:bob story 1
+[DEBUG] MQTT RECEIVED add-story:CSC307:bob story 1
+[DEBUG] MQTT RECEIVED add-story:CSC307:bob story 1
+[DEBUG] MQTT RECEIVED add-story:CSC307:bob story 2
+[DEBUG] MQTT RECEIVED add-story:CSC307:bob story 2
+[INFO] Published to planitpoker/events: add-story:CSC307:bob story 2
+[INFO] Published to planitpoker/events: add-story:CSC307:john story 2
+[DEBUG] MQTT RECEIVED add-story:CSC307:john story 2
+[DEBUG] MQTT RECEIVED add-story:CSC307:john story 2
+[INFO] Published to planitpoker/events: estimate:CSC307:john story 1:bob:40
+[DEBUG] MQTT RECEIVED estimate:CSC307:john story 1:bob:40
+[DEBUG] MQTT RECEIVED estimate:CSC307:john story 1:bob:40
+[INFO] Published to planitpoker/events: result:CSC307:john story 1:40.00
+[DEBUG] MQTT RECEIVED result:CSC307:john story 1:40.00
+[DEBUG] MQTT RECEIVED result:CSC307:john story 1:40.00
+[DEBUG] MQTT RECEIVED estimate:CSC307:john story 1:john:20
+[INFO] Published to planitpoker/events: estimate:CSC307:john story 1:john:20
+[DEBUG] MQTT RECEIVED estimate:CSC307:john story 1:john:20
+[INFO] Published to planitpoker/events: result:CSC307:john story 1:20.00
+[DEBUG] MQTT RECEIVED result:CSC307:john story 1:20.00
+[DEBUG] MQTT RECEIVED result:CSC307:john story 1:20.00
+[INFO] Published to planitpoker/events: estimate:CSC307:john story 1:john:20
+[DEBUG] MQTT RECEIVED estimate:CSC307:john story 1:john:20
+[DEBUG] MQTT RECEIVED estimate:CSC307:john story 1:john:20
+[INFO] Published to planitpoker/events: result:CSC307:john story 1:20.00
+[DEBUG] MQTT RECEIVED result:CSC307:john story 1:20.00
+[DEBUG] MQTT RECEIVED result:CSC307:john story 1:20.00
+[DEBUG] MQTT RECEIVED create-room:CSC307
+[DEBUG] MQTT RECEIVED create-room:CSC307
+[DEBUG] MQTT RECEIVED join-room:Enter your name:CSC307
+[DEBUG] MQTT RECEIVED join-room:Enter your name:CSC307
+[DEBUG] MQTT RECEIVED request-stories:CSC307:Enter your name
+[DEBUG] MQTT RECEIVED request-stories:CSC307:Enter your name
+[INFO] Published to planitpoker/events: sync-stories:CSC307:Enter your name:john story 1|bob story 1|bob story 2|john story 2
+[DEBUG] MQTT RECEIVED request-users:CSC307:Enter your name
+[INFO] Published to planitpoker/events: sync-stories:CSC307:Enter your name:john story 1|bob story 1|bob story 2|john story 2
+[DEBUG] MQTT RECEIVED request-users:CSC307:Enter your name
+[INFO] Published to planitpoker/events: sync-users:CSC307:Enter your name:john|bob
+[DEBUG] MQTT RECEIVED sync-stories:CSC307:Enter your name:john story 1|bob story 1|bob story 2|john story 2
+[DEBUG] MQTT RECEIVED sync-stories:CSC307:Enter your name:john story 1|bob story 1|bob story 2|john story 2
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Enter your name:Enter your name
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Enter your name:john|bob
+[INFO] Published to planitpoker/events: sync-users:CSC307:Enter your name:bob|john
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Enter your name:bob|john
+[DEBUG] MQTT RECEIVED sync-stories:CSC307:Enter your name:john story 1|bob story 1|bob story 2|john story 2
+[DEBUG] MQTT RECEIVED sync-stories:CSC307:Enter your name:john story 1|bob story 1|bob story 2|john story 2
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Enter your name:Enter your name
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Enter your name:john|bob
+[DEBUG] MQTT RECEIVED sync-users:CSC307:Enter your name:bob|john
+[DEBUG] MQTT RECEIVED create-room:CSC307
+[DEBUG] MQTT RECEIVED create-room:CSC307
+[DEBUG] MQTT RECEIVED join-room:agnes:CSC307
+[DEBUG] MQTT RECEIVED join-room:agnes:CSC307
+[DEBUG] MQTT RECEIVED request-stories:CSC307:agnes
+[DEBUG] MQTT RECEIVED request-stories:CSC307:agnes
+[INFO] Published to planitpoker/events: sync-stories:CSC307:agnes:john story 1|bob story 1|bob story 2|john story 2
+[DEBUG] MQTT RECEIVED request-users:CSC307:agnes
+[INFO] Published to planitpoker/events: sync-stories:CSC307:agnes:john story 1|bob story 1|bob story 2|john story 2
+[DEBUG] MQTT RECEIVED request-users:CSC307:agnes
+[INFO] Published to planitpoker/events: sync-users:CSC307:agnes:john|bob|Enter your name
+[INFO] Published to planitpoker/events: sync-users:CSC307:agnes:bob|john|Enter your name
+[DEBUG] MQTT RECEIVED sync-stories:CSC307:agnes:john story 1|bob story 1|bob story 2|john story 2
+[DEBUG] MQTT RECEIVED sync-stories:CSC307:agnes:john story 1|bob story 1|bob story 2|john story 2
+[DEBUG] MQTT RECEIVED sync-users:CSC307:agnes:agnes
+[DEBUG] MQTT RECEIVED sync-stories:CSC307:agnes:john story 1|bob story 1|bob story 2|john story 2
+[DEBUG] MQTT RECEIVED sync-stories:CSC307:agnes:john story 1|bob story 1|bob story 2|john story 2
+[DEBUG] MQTT RECEIVED sync-users:CSC307:agnes:john|bob|Enter your name
+[DEBUG] MQTT RECEIVED sync-users:CSC307:agnes:agnes
+[DEBUG] MQTT RECEIVED sync-users:CSC307:agnes:bob|john|Enter your name
+[DEBUG] MQTT RECEIVED sync-users:CSC307:agnes:john|bob|Enter your name
+[DEBUG] MQTT RECEIVED sync-users:CSC307:agnes:bob|john|Enter your name
+[DEBUG] MQTT RECEIVED estimate:CSC307:Put your stories text here. Each line contains new story.:Enter your name:3
+[DEBUG] MQTT RECEIVED estimate:CSC307:Put your stories text here. Each line contains new story.:Enter your name:3
+[DEBUG] MQTT RECEIVED result:CSC307:Put your stories text here. Each line contains new story.:3.00
+[DEBUG] MQTT RECEIVED result:CSC307:Put your stories text here. Each line contains new story.:3.00
+[DEBUG] MQTT RECEIVED estimate:CSC307:Put your stories text here. Each line contains new story.:Enter your name:3
+[DEBUG] MQTT RECEIVED estimate:CSC307:Put your stories text here. Each line contains new story.:Enter your name:3
+[DEBUG] MQTT RECEIVED result:CSC307:Put your stories text here. Each line contains new story.:3.00
+[DEBUG] MQTT RECEIVED result:CSC307:Put your stories text here. Each line contains new story.:3.00
+[DEBUG] MQTT RECEIVED estimate:CSC307:Put your stories text here. Each line contains new story.:Enter your name:3
+[DEBUG] MQTT RECEIVED estimate:CSC307:Put your stories text here. Each line contains new story.:Enter your name:3
+[DEBUG] MQTT RECEIVED result:CSC307:Put your stories text here. Each line contains new story.:3.00
+[DEBUG] MQTT RECEIVED result:CSC307:Put your stories text here. Each line contains new story.:3.00
+[DEBUG] MQTT RECEIVED estimate:CSC307:Put your stories text here. Each line contains new story.:Enter your name:3
+[DEBUG] MQTT RECEIVED estimate:CSC307:Put your stories text here. Each line contains new story.:Enter your name:3
+[DEBUG] MQTT RECEIVED result:CSC307:Put your stories text here. Each line contains new story.:3.00
+[DEBUG] MQTT RECEIVED result:CSC307:Put your stories text here. Each line contains new story.:3.00
+[INFO] Subscribed to topic: planitpoker/events
+[INFO] Subscribed to topic: planitpoker/events
+[INFO] bob Entering a room...
+[INFO] bob Logging in...
+[INFO] john Entering a room...
+[INFO] john Logging in...
+[INFO] Creating room: CSC307, mode: Scrum
+[INFO] Creating room: CSC307, mode: Scrum
+[DEBUG] MQTT RECEIVED create-room:CSC307
+[INFO] Published to planitpoker/events: create-room:CSC307
+[DEBUG] MQTT RECEIVED create-room:CSC307
+[DEBUG] MQTT RECEIVED create-room:CSC307
+[INFO] Published to planitpoker/events: create-room:CSC307
+[DEBUG] MQTT RECEIVED create-room:CSC307
+[INFO] Published to planitpoker/events: join-room:bob:CSC307
+[DEBUG] MQTT RECEIVED join-room:bob:CSC307
+[DEBUG] MQTT RECEIVED join-room:bob:CSC307
+[INFO] Published to planitpoker/events: join-room:john:CSC307
+[DEBUG] MQTT RECEIVED join-room:john:CSC307
+[DEBUG] MQTT RECEIVED join-room:john:CSC307
+[INFO] Published to planitpoker/events: request-stories:CSC307:bob
+[DEBUG] MQTT RECEIVED request-stories:CSC307:bob
+[DEBUG] MQTT RECEIVED request-stories:CSC307:bob
+[INFO] Published to planitpoker/events: request-stories:CSC307:john
+[DEBUG] MQTT RECEIVED request-stories:CSC307:john
+[DEBUG] MQTT RECEIVED request-stories:CSC307:john
+[DEBUG] MQTT RECEIVED request-users:CSC307:bob
+[INFO] Published to planitpoker/events: request-users:CSC307:bob
+[DEBUG] MQTT RECEIVED request-users:CSC307:bob
+[INFO] Published to planitpoker/events: request-users:CSC307:john
+[INFO] Published to planitpoker/events: sync-users:CSC307:bob:bob
+[INFO] Published to planitpoker/events: sync-users:CSC307:bob:john
+[DEBUG] MQTT RECEIVED request-users:CSC307:john
+[DEBUG] MQTT RECEIVED request-users:CSC307:john
+[INFO] Published to planitpoker/events: sync-users:CSC307:john:john
+[DEBUG] MQTT RECEIVED sync-users:CSC307:bob:bob
+[DEBUG] MQTT RECEIVED sync-users:CSC307:bob:john
+[DEBUG] MQTT RECEIVED sync-users:CSC307:john:john
+[INFO] Published to planitpoker/events: sync-users:CSC307:john:bob
+[DEBUG] MQTT RECEIVED sync-users:CSC307:john:bob
+[DEBUG] MQTT RECEIVED sync-users:CSC307:bob:bob
+[DEBUG] MQTT RECEIVED sync-users:CSC307:bob:john
+[DEBUG] MQTT RECEIVED sync-users:CSC307:john:john
+[DEBUG] MQTT RECEIVED sync-users:CSC307:john:bob
+[DEBUG] MQTT RECEIVED add-story:CSC307:yo wsg
+[INFO] Published to planitpoker/events: add-story:CSC307:yo wsg
+[DEBUG] MQTT RECEIVED add-story:CSC307:yo wsg
+[DEBUG] MQTT RECEIVED add-story:CSC307:hey
+[DEBUG] MQTT RECEIVED add-story:CSC307:hey
+[INFO] Published to planitpoker/events: add-story:CSC307:hey
+[INFO] Published to planitpoker/events: estimate:CSC307:yo wsg:bob:5
+[DEBUG] MQTT RECEIVED estimate:CSC307:yo wsg:bob:5
+[DEBUG] MQTT RECEIVED estimate:CSC307:yo wsg:bob:5
+[DEBUG] MQTT RECEIVED result:CSC307:yo wsg:5.00
+[INFO] Published to planitpoker/events: result:CSC307:yo wsg:5.00
+[DEBUG] MQTT RECEIVED result:CSC307:yo wsg:5.00
+[INFO] Published to planitpoker/events: estimate:CSC307:yo wsg:john:40
+[DEBUG] MQTT RECEIVED estimate:CSC307:yo wsg:john:40
+[DEBUG] MQTT RECEIVED estimate:CSC307:yo wsg:john:40
+[DEBUG] MQTT RECEIVED result:CSC307:yo wsg:40.00
+[INFO] Published to planitpoker/events: result:CSC307:yo wsg:40.00
+[DEBUG] MQTT RECEIVED result:CSC307:yo wsg:40.00
+[INFO] Logging out...
+[DEBUG] MQTT RECEIVED estimate:CSC307:yo wsg:john:5
+[INFO] Published to planitpoker/events: estimate:CSC307:yo wsg:john:5
+[DEBUG] MQTT RECEIVED estimate:CSC307:yo wsg:john:5
+[DEBUG] MQTT RECEIVED result:CSC307:yo wsg:5.00
+[DEBUG] MQTT RECEIVED result:CSC307:yo wsg:5.00
+[INFO] Published to planitpoker/events: result:CSC307:yo wsg:5.00
+[INFO] Logging out...
+[INFO] Subscribed to topic: planitpoker/events
+[INFO] Subscribed to topic: planitpoker/events
+[INFO] john Entering a room...
+[INFO] john Logging in...
+[INFO] bob Entering a room...
+[INFO] bob Logging in...
+[INFO] Creating room: CSC307, mode: Scrum
+[INFO] Creating room: CSC307, mode: Scrum
+[INFO] Published to planitpoker/events: create-room:CSC307
+[DEBUG] MQTT RECEIVED create-room:CSC307
+[DEBUG] MQTT RECEIVED create-room:CSC307
+[DEBUG] MQTT RECEIVED create-room:CSC307
+[DEBUG] MQTT RECEIVED create-room:CSC307
+[INFO] Published to planitpoker/events: create-room:CSC307
+[DEBUG] MQTT RECEIVED join-room:bob:CSC307
+[DEBUG] MQTT RECEIVED join-room:bob:CSC307
+[INFO] Published to planitpoker/events: join-room:bob:CSC307
+[DEBUG] MQTT RECEIVED request-stories:CSC307:bob
+[DEBUG] MQTT RECEIVED request-stories:CSC307:bob
+[INFO] Published to planitpoker/events: request-stories:CSC307:bob
+[DEBUG] MQTT RECEIVED request-users:CSC307:bob
+[DEBUG] MQTT RECEIVED request-users:CSC307:bob
+[INFO] Published to planitpoker/events: request-users:CSC307:bob
+[INFO] Published to planitpoker/events: join-room:john:CSC307
+[INFO] Published to planitpoker/events: request-stories:CSC307:john
+[INFO] Published to planitpoker/events: request-users:CSC307:john
+[INFO] Published to planitpoker/events: sync-users:CSC307:bob:bob
+[DEBUG] MQTT RECEIVED join-room:john:CSC307
+[DEBUG] MQTT RECEIVED request-stories:CSC307:john
+[DEBUG] MQTT RECEIVED request-users:CSC307:john
+[INFO] Published to planitpoker/events: sync-users:CSC307:bob:john
+[DEBUG] MQTT RECEIVED join-room:john:CSC307
+[DEBUG] MQTT RECEIVED request-stories:CSC307:john
+[DEBUG] MQTT RECEIVED request-users:CSC307:john
+[INFO] Published to planitpoker/events: sync-users:CSC307:john:john
+[DEBUG] MQTT RECEIVED sync-users:CSC307:bob:bob
+[INFO] Published to planitpoker/events: sync-users:CSC307:john:bob
+[DEBUG] MQTT RECEIVED sync-users:CSC307:bob:john
+[DEBUG] MQTT RECEIVED sync-users:CSC307:john:john
+[DEBUG] MQTT RECEIVED sync-users:CSC307:john:bob
+[DEBUG] MQTT RECEIVED sync-users:CSC307:bob:bob
+[DEBUG] MQTT RECEIVED sync-users:CSC307:bob:john
+[DEBUG] MQTT RECEIVED sync-users:CSC307:john:john
+[DEBUG] MQTT RECEIVED sync-users:CSC307:john:bob
+[DEBUG] MQTT RECEIVED add-story:CSC307:Put your stories text here. Each line contains new story.
+[DEBUG] MQTT RECEIVED add-story:CSC307:Put your stories text here. Each line contains new story.
+[INFO] Published to planitpoker/events: add-story:CSC307:Put your stories text here. Each line contains new story.
+[INFO] Published to planitpoker/events: add-story:CSC307:Put your stories text here. Each line contains new story.
+[DEBUG] MQTT RECEIVED add-story:CSC307:Put your stories text here. Each line contains new story.
+[DEBUG] MQTT RECEIVED add-story:CSC307:Put your stories text here. Each line contains new story.
+[DEBUG] MQTT RECEIVED estimate:CSC307:Put your stories text here. Each line contains new story.:john:3
+[DEBUG] MQTT RECEIVED estimate:CSC307:Put your stories text here. Each line contains new story.:john:3
+[INFO] Published to planitpoker/events: estimate:CSC307:Put your stories text here. Each line contains new story.:john:3
+[DEBUG] MQTT RECEIVED result:CSC307:Put your stories text here. Each line contains new story.:3.00:john
+[DEBUG] MQTT RECEIVED result:CSC307:Put your stories text here. Each line contains new story.:3.00:john
+[INFO] Published to planitpoker/events: result:CSC307:Put your stories text here. Each line contains new story.:3.00:john
+[DEBUG] MQTT RECEIVED estimate:CSC307:Put your stories text here. Each line contains new story.:bob:40
+[INFO] Published to planitpoker/events: estimate:CSC307:Put your stories text here. Each line contains new story.:bob:40
+[DEBUG] MQTT RECEIVED estimate:CSC307:Put your stories text here. Each line contains new story.:bob:40
+[DEBUG] MQTT RECEIVED result:CSC307:Put your stories text here. Each line contains new story.:40.00:bob
+[INFO] Published to planitpoker/events: result:CSC307:Put your stories text here. Each line contains new story.:40.00:bob
+[DEBUG] MQTT RECEIVED result:CSC307:Put your stories text here. Each line contains new story.:40.00:bob
+[DEBUG] MQTT RECEIVED reveal:CSC307:Put your stories text here. Each line contains new story.:bob
+[DEBUG] MQTT RECEIVED reveal:CSC307:Put your stories text here. Each line contains new story.:bob
+[INFO] Published to planitpoker/events: reveal:CSC307:Put your stories text here. Each line contains new story.:bob
+[INFO] Published to planitpoker/events: reveal:CSC307:Put your stories text here. Each line contains new story.:john
+[DEBUG] MQTT RECEIVED reveal:CSC307:Put your stories text here. Each line contains new story.:john
+[DEBUG] MQTT RECEIVED reveal:CSC307:Put your stories text here. Each line contains new story.:john
+[INFO] Logging out...
+[INFO] Logging out...

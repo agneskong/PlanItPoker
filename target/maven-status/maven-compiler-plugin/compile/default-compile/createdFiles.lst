@@ -24,5 +24,8 @@ org/planitpoker/DashboardNanny.class
 org/planitpoker/Main.class
 org/planitpoker/PlanItPokerDemo.class
 org/planitpoker/CreateRoomPanel.class
+org/planitpoker/TaigaStoryFetcher.class
+org/planitpoker/TaigaLoginDialog.class
 org/planitpoker/DistributedEventHandler.class
+org/planitpoker/DistributedEventHandler$MessageHandler.class
 org/planitpoker/VotingPanel.class

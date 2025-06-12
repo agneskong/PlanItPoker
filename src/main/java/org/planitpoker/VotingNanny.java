@@ -28,7 +28,8 @@ public class VotingNanny {
     public void revealCards(String room, String story) {
         try {
             MQTTPublisher publisher = new MQTTPublisher();
-            String msg = String.format("reveal:%s:%s", room, story);
+            String user = Blackboard.getNames().isEmpty() ? "" : Blackboard.getNames().getLast();
+            String msg = String.format("reveal:%s:%s:%s", room, story, user);
             publisher.publish("planitpoker/events", msg);
             publisher.close();
         } catch (Exception e) {
@@ -39,7 +40,8 @@ public class VotingNanny {
     public void broadcastResult(String room, String story, double avg) {
         try {
             MQTTPublisher publisher = new MQTTPublisher();
-            String msg = String.format("result:%s:%s:%.2f", room, story, avg);
+            String user = Blackboard.getNames().isEmpty() ? "" : Blackboard.getNames().getLast();
+            String msg = String.format("result:%s:%s:%.2f:%s", room, story, avg, user);
             publisher.publish("planitpoker/events", msg);
             publisher.close();
         } catch (Exception e) {
